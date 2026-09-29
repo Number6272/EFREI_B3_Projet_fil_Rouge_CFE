@@ -46,6 +46,16 @@
         <button class="btn search-form__button" type="submit">Rechercher</button>
       </form>
 
+      <fieldset class="theme-switcher">
+        <legend class="visually-hidden">Thème d'affichage</legend>
+        <input type="radio" id="theme-sombre" name="theme" value="sombre" checked>
+        <label for="theme-sombre"><span class="theme-switcher__name">Sombre</span></label>
+        <input type="radio" id="theme-clair" name="theme" value="clair">
+        <label for="theme-clair"><span class="theme-switcher__name">Clair</span></label>
+        <input type="radio" id="theme-sepia" name="theme" value="sepia">
+        <label for="theme-sepia"><span class="theme-switcher__name">Cinéma</span></label>
+      </fieldset>
+
       <nav class="profile-menu" aria-label="Menu du profil">
         <details>
           <summary>Mon profil</summary>
@@ -58,13 +68,32 @@
         </details>
       </nav>
     </div>
+
+    <div class="site-header__sub">
+      <nav class="breadcrumb" aria-label="Fil d'Ariane" hidden>
+        <ol class="breadcrumb__list"></ol>
+      </nav>
+
+      <nav class="section-nav" aria-label="Sections de la page">
+        <ul class="section-nav__list">
+          <li><a class="section-nav__link" href="#tendances">Tendances</a></li>
+          <li><a class="section-nav__link" href="#recommandes">Recommandés</a></li>
+          <li><a class="section-nav__link" href="#nouveautes">Nouveautés</a></li>
+          <li><a class="section-nav__link" href="#catalogue">Catalogue</a></li>
+          <li><a class="section-nav__link" href="#inscription">Inscription</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main id="contenu-principal" tabindex="-1">
     <h1 class="visually-hidden">StreamFlix : films et séries en streaming</h1>
 
-    <section class="hero" aria-labelledby="hero-titre">
-      <img class="hero__background" src="images/hero-bg.jpg" alt="Scène du film Inception, film vedette de la semaine" width="1920" height="1080">
+    <section class="hero" id="a-la-une" aria-labelledby="hero-titre" data-breadcrumb="À la une">
+      <picture>
+        <source type="image/webp" srcset="images/hero-bg-768.webp 768w, images/hero-bg-1280.webp 1280w, images/hero-bg-1920.webp 1920w" sizes="100vw">
+        <img class="hero__background" src="images/hero-bg.jpg" alt="Scène du film Inception, film vedette de la semaine" width="1920" height="1080">
+      </picture>
       <div class="hero__overlay"></div>
 
       <div class="hero__content">
@@ -339,7 +368,148 @@
       </ul>
     </section>
 
-    <section class="signup" id="inscription" aria-labelledby="inscription-titre">
+    <section class="film-section" id="catalogue" aria-labelledby="catalogue-titre">
+      <h2 class="film-section__title" id="catalogue-titre">Tout le catalogue</h2>
+      <p class="film-section__intro">Tous nos films, du plus court résumé au plus long.</p>
+
+      <ul class="masonry">
+        <li class="masonry__item">
+          <article class="film-card" aria-labelledby="catalogue-matrix">
+            <img class="film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+            <div class="film-card__body">
+              <h3 class="film-card__title" id="catalogue-matrix">
+                <a href="#">The Matrix</a>
+              </h3>
+              <p class="film-card__synopsis">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation.</p>
+              <dl class="film-card__meta">
+                <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                <div>
+                  <dt>Genres</dt>
+                  <dd>
+                    <ul class="film-card__genres">
+                      <li>Action</li>
+                      <li>Science-fiction</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </li>
+        <li class="masonry__item">
+          <article class="film-card" aria-labelledby="catalogue-forrest-gump">
+            <img class="film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
+            <div class="film-card__body">
+              <h3 class="film-card__title" id="catalogue-forrest-gump">
+                <a href="#">Forrest Gump</a>
+              </h3>
+              <p class="film-card__synopsis">Homme simple au grand cœur, Forrest traverse sans le vouloir trente ans d'histoire américaine, de la guerre du Viêt Nam au scandale du Watergate, sans jamais cesser de penser à Jenny, son amour d'enfance.</p>
+              <dl class="film-card__meta">
+                <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H22M">2h22</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.4">4,4</data>/5</dd></div>
+                <div>
+                  <dt>Genres</dt>
+                  <dd>
+                    <ul class="film-card__genres">
+                      <li>Drame</li>
+                      <li>Romance</li>
+                      <li>Comédie</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </li>
+        <li class="masonry__item">
+          <article class="film-card" aria-labelledby="catalogue-interstellar">
+            <img class="film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+            <div class="film-card__body">
+              <h3 class="film-card__title" id="catalogue-interstellar">
+                <a href="#">Interstellar</a>
+              </h3>
+              <p class="film-card__synopsis">Alors que la Terre se meurt, un groupe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
+              <dl class="film-card__meta">
+                <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
+              </dl>
+            </div>
+          </article>
+        </li>
+        <li class="masonry__item">
+          <article class="film-card" aria-labelledby="catalogue-pulp-fiction">
+            <img class="film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+            <div class="film-card__body">
+              <h3 class="film-card__title" id="catalogue-pulp-fiction">
+                <a href="#">Pulp Fiction</a>
+              </h3>
+              <p class="film-card__synopsis">Plusieurs histoires de gangsters de Los Angeles s'entremêlent.</p>
+              <dl class="film-card__meta">
+                <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
+                <div>
+                  <dt>Genres</dt>
+                  <dd>
+                    <ul class="film-card__genres">
+                      <li>Crime</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </li>
+        <li class="masonry__item">
+          <article class="film-card" aria-labelledby="catalogue-dark-knight">
+            <img class="film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+            <div class="film-card__body">
+              <h3 class="film-card__title" id="catalogue-dark-knight">
+                <a href="#">The Dark Knight</a>
+              </h3>
+              <p class="film-card__synopsis">Batman, aidé du lieutenant Gordon et du procureur Harvey Dent, s'attaque au crime organisé de Gotham. Mais un nouveau criminel, le Joker, plonge la ville dans le chaos et pousse le justicier dans ses derniers retranchements.</p>
+              <dl class="film-card__meta">
+                <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
+                <div>
+                  <dt>Genres</dt>
+                  <dd>
+                    <ul class="film-card__genres">
+                      <li>Action</li>
+                      <li>Crime</li>
+                      <li>Drame</li>
+                    </ul>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </li>
+        <li class="masonry__item">
+          <article class="film-card" aria-labelledby="catalogue-inception">
+            <img class="film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+            <div class="film-card__body">
+              <h3 class="film-card__title" id="catalogue-inception">
+                <a href="#">Inception</a>
+              </h3>
+              <p class="film-card__synopsis">Dom Cobb vole des secrets dans les rêves. On lui propose une dernière mission : implanter une idée dans l'esprit d'un héritier.</p>
+              <dl class="film-card__meta">
+                <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+              </dl>
+            </div>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section class="signup" id="inscription" aria-labelledby="inscription-titre" data-breadcrumb="Inscription">
       <h2 class="signup__title" id="inscription-titre">Inscrivez-vous à StreamFlix</h2>
       <p class="signup__intro">Créez votre compte en une minute. Les champs marqués d'un astérisque (*) sont obligatoires.</p>
 
