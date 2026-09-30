@@ -1,3 +1,6 @@
+/* Phase 1 : Bootstrap 5.3 est chargé par le CDN AVANT ce fichier (voir index.html).
+   Nos règles passent donc après les siennes et peuvent le personnaliser. */
+
 /* ==========================================================================
    1. THÈMES : variables de couleur animables
    ========================================================================== */
@@ -200,6 +203,22 @@
   margin: 0;
 }
 
+/* Bootstrap (Reboot) ajoute des marges aux titres, paragraphes et listes : on les remet à zéro */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+dd,
+address {
+  margin: 0;
+}
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height);
@@ -310,19 +329,14 @@ a:hover {
    5. BOUTONS
    ========================================================================== */
 
+/* Les boutons sont des .btn Bootstrap (tailles btn-sm / btn-lg dans le HTML).
+   On garde seulement nos réglages en plus : icône alignée, gras, animation */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
-  min-height: 2.75rem;
-  padding: var(--space-xs) var(--space-lg);
-  border: 2px solid transparent;
-  border-radius: var(--radius-sm);
-  font-size: var(--fs-base);
   font-weight: 700;
-  line-height: 1.2;
-  text-decoration: none;
   white-space: nowrap;
   transition:
     background-color var(--duration-fast) ease,
@@ -335,25 +349,34 @@ a:hover {
   transform: scale(0.97);
 }
 
-.btn--primary {
-  background-color: var(--color-primary);
-  color: white;
+/* Bootstrap lit les couleurs d'un bouton dans des variables --bs-btn-… :
+   on leur donne les couleurs du thème StreamFlix (bleu par défaut dans Bootstrap) */
+.btn-primary {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-color: white;
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: var(--color-primary-hover);
+  --bs-btn-hover-color: white;
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-active-color: white;
 }
 
-.btn--primary:hover {
-  background-color: var(--color-primary-hover);
-  color: white;
-  transform: translateY(-2px);
+.btn-secondary {
+  --bs-btn-bg: dimgray;
+  --bs-btn-border-color: dimgray;
+  --bs-btn-color: white;
+  --bs-btn-hover-bg: dimgray;
+  --bs-btn-hover-border-color: var(--color-text);
+  --bs-btn-hover-color: white;
+  --bs-btn-active-bg: gray;
+  --bs-btn-active-border-color: var(--color-text);
+  --bs-btn-active-color: white;
 }
 
-.btn--secondary {
-  background-color: dimgray;
-  color: white;
-}
-
-.btn--secondary:hover {
-  border-color: var(--color-text);
-  color: white;
+.btn-primary:hover,
+.btn-secondary:hover {
   transform: translateY(-2px);
 }
 
@@ -377,15 +400,11 @@ a:hover {
    6. HEADER (sticky, se réduit au scroll)
    ========================================================================== */
 
-/* Mobile-first : les éléments passent à la ligne (flex-wrap) et sont réordonnés avec order */
+/* Le header contient la navbar Bootstrap (logo, bouton hamburger, menu) puis la ligne des sections */
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-xs) var(--space-md);
+  z-index: 1030;
   padding: var(--space-sm) var(--gutter) 0;
   background-color: var(--color-header-bg);
   border-bottom: 1px solid var(--color-border);
@@ -403,6 +422,7 @@ a:hover {
 .site-header__logo {
   display: block;
   flex-shrink: 0;
+  margin-right: var(--space-lg);
   transition: transform var(--duration-base) var(--ease-out);
 }
 
@@ -419,27 +439,32 @@ a:hover {
   width: 6rem;
 }
 
-/* Navigation principale : défilement horizontal sur mobile, barre cachée */
-.main-nav {
-  order: 3;
-  width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
+/* Bouton hamburger de la navbar : bordure aux couleurs du thème */
+.navbar-toggler {
+  border-color: var(--color-border);
 }
 
-.main-nav::-webkit-scrollbar,
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* Menu déplié sur mobile : liens les uns sous les autres, puis recherche, thèmes et profil */
+.navbar-collapse {
+  min-width: 0;
+  padding-bottom: var(--space-sm);
+}
+
 .section-nav::-webkit-scrollbar {
   display: none;
 }
 
 .main-nav__list {
-  display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-xs);
 }
 
 .main-nav__list a {
   position: relative;
-  display: block;
+  display: inline-block;
   padding-block: var(--space-xs);
   color: var(--color-text-muted);
   font-size: var(--fs-sm);
@@ -476,20 +501,17 @@ a:hover {
   font-weight: 700;
 }
 
-/* Sur mobile, la nav et la recherche se replient quand on défile */
-.site-header.is-scrolled .main-nav,
-.site-header.is-scrolled .search-form {
-  display: none;
-}
-
-/* display: contents : sur mobile, la recherche et le profil deviennent des enfants directs du header */
+/* Sur mobile, recherche, thèmes et profil sont empilés dans le menu déplié */
 .site-header__user {
-  display: contents;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-md);
+  padding-top: var(--space-sm);
 }
 
 /* Barre de recherche */
 .search-form {
-  order: 4;
   display: flex;
   width: 100%;
 }
@@ -524,19 +546,19 @@ a:hover {
   outline-offset: 0;
 }
 
+/* Bouton Bootstrap btn-secondary collé au champ (coins droits arrondis seulement) */
 .search-form__button {
   min-height: 2.5rem;
   padding-inline: var(--space-md);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-size: var(--fs-sm);
 }
 
 .search-form__button:hover {
-  background-color: var(--color-primary);
-  border-color: var(--color-primary);
-  color: white;
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+
+  transform: none;
 }
 
 /* ==========================================================================
@@ -545,11 +567,9 @@ a:hover {
 
 /* Les boutons radio sont cachés : on clique sur les pastilles de couleur (labels) */
 .theme-switcher {
-  order: 1;
   display: flex;
   gap: 2px;
   min-width: 0;
-  margin-left: auto;
   padding: 3px;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
@@ -640,7 +660,6 @@ a:hover {
 
 .profile-menu {
   position: relative;
-  order: 2;
 }
 
 .profile-menu summary {
@@ -739,7 +758,6 @@ a:hover {
    ========================================================================== */
 
 .site-header__sub {
-  order: 5;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -748,8 +766,11 @@ a:hover {
   width: 100%;
 }
 
+/* Bootstrap a aussi une classe .breadcrumb (avec une marge) : on garde la nôtre */
 .breadcrumb {
   display: none;
+  margin: 0;
+  padding: 0;
 }
 
 .breadcrumb__list {
@@ -992,21 +1013,11 @@ main:focus {
   gap: var(--space-sm);
 }
 
-.hero__actions .btn--primary {
-  background-color: white;
-  color: black;
-}
-
-.hero__actions .btn--primary::before {
+.hero__actions .btn-light::before {
   content: "";
   border-top: 0.45em solid transparent;
   border-bottom: 0.45em solid transparent;
   border-left: 0.75em solid currentColor;
-}
-
-.hero__actions .btn--primary:hover {
-  background-color: gainsboro;
-  color: black;
 }
 
 .hero__actions .btn[aria-pressed="true"] {
@@ -1067,15 +1078,11 @@ main:focus {
   font-size: var(--fs-sm);
 }
 
-/* Mobile : carrousel horizontal (cartes en colonnes + scroll-snap) */
+/* Grille Bootstrap : .row + colonnes col-9 (mobile), col-sm-6, col-md-4 (3 par ligne).
+   Mobile : flex-nowrap garde les cartes sur une ligne = carrousel horizontal avec scroll-snap */
 .film-grid {
-  display: grid;
-  grid-auto-flow: column;
-  grid-auto-columns: 70%;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-  margin-inline: calc(var(--gutter) * -1);
-  padding: var(--space-xs) var(--gutter) var(--space-lg);
+  margin-top: var(--space-xs);
+  padding-bottom: var(--space-lg);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: var(--gutter);
@@ -1125,6 +1132,7 @@ main:focus {
    12. CARTE DE FILM
    ========================================================================== */
 
+/* Base : le composant .card de Bootstrap. Nos règles passent après et gardent le style StreamFlix */
 .film-card {
   position: relative;
   display: flex;
@@ -1264,10 +1272,7 @@ main:focus {
 
 .film-card__body .btn {
   align-self: flex-start;
-  min-height: 2.5rem;
   margin-top: auto;
-  padding-inline: var(--space-md);
-  font-size: var(--fs-sm);
 }
 
 /* Container query : si la carte elle-même fait plus de 22rem, l'affiche passe à gauche */
@@ -1377,6 +1382,7 @@ main:focus {
 }
 
 .signup-form legend {
+  float: none;
   margin-bottom: var(--space-md);
   padding: 0;
   font-size: var(--fs-lg);
@@ -1471,9 +1477,7 @@ main:focus {
 }
 
 .signup-form > .btn {
-  width: 100%;
   min-height: 3rem;
-  font-size: var(--fs-lg);
 }
 
 /* ==========================================================================
@@ -1536,10 +1540,6 @@ main:focus {
 
 /* Grand mobile : 2 cartes visibles dans le carrousel */
 @media (min-width: 480px) {
-  .film-grid {
-    grid-auto-columns: 45%;
-  }
-
   .hero__actions .btn {
     padding-inline: var(--space-xl);
   }
@@ -1547,20 +1547,8 @@ main:focus {
 
 /* Tablette : recherche, thèmes et profil sur une ligne, grilles de 3 colonnes */
 @media (min-width: 768px) {
-  .site-header__user {
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
-    margin-left: auto;
-  }
-
   .search-form {
-    order: 0;
     width: auto;
-  }
-
-  .site-header.is-scrolled .search-form {
-    display: flex;
   }
 
   .search-form__input {
@@ -1603,13 +1591,6 @@ main:focus {
     transform: rotate(-45deg);
   }
 
-  .theme-switcher {
-    margin-left: 0;
-  }
-
-  .main-nav__list {
-    gap: var(--space-lg);
-  }
 
   .breadcrumb:not([hidden]) {
     display: block;
@@ -1621,10 +1602,6 @@ main:focus {
   }
 
   .film-grid {
-    grid-auto-flow: row;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-inline: 0;
-    padding-inline: 0;
     overflow: visible;
   }
 
@@ -1650,24 +1627,27 @@ main:focus {
   }
 }
 
-/* Petit ordinateur : tout le header sur une ligne, footer en 3 colonnes */
-@media (min-width: 1024px) {
-  .site-header {
-    column-gap: var(--space-lg);
+/* Navbar dépliée (992px, classe navbar-expand-lg) : tout le header sur une ligne */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    padding-bottom: 0;
   }
 
+  .main-nav__list {
+    gap: var(--space-lg);
+  }
+
+  .site-header__user {
+    flex-wrap: nowrap;
+    margin-left: auto;
+    padding-top: 0;
+  }
+}
+
+/* Petit ordinateur : footer en 3 colonnes */
+@media (min-width: 1024px) {
   .site-header__logo img {
     width: 9rem;
-  }
-
-  .main-nav {
-    flex: 1;
-    order: 0;
-    width: auto;
-  }
-
-  .site-header.is-scrolled .main-nav {
-    display: block;
   }
 
   .main-nav__list a {
@@ -1680,10 +1660,6 @@ main:focus {
 
   .film-section {
     padding-top: var(--space-2xl);
-  }
-
-  .film-grid {
-    gap: var(--space-lg);
   }
 
   .signup {
@@ -1758,10 +1734,6 @@ main:focus {
 
   .hero__content {
     max-width: 46rem;
-  }
-
-  .film-grid {
-    gap: var(--space-xl);
   }
 
   .masonry {

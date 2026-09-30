@@ -12,6 +12,7 @@ function initTheme() {
     if (!input) return;
     input.checked = true;
     root.dataset.theme = value;
+    root.dataset.bsTheme = value === "sombre" ? "dark" : "light";
   }
 
   try {

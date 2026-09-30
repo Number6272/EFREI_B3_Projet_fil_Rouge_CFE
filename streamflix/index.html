@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-bs-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,55 +19,63 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="icon" href="images/logo.png" type="image/png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous" defer></script>
   <script src="js/script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenu-principal">Aller au contenu principal</a>
 
   <header class="site-header">
-    <a class="site-header__logo" href="index.html">
-      <img src="images/logo.png" alt="StreamFlix, retour à l'accueil" width="160" height="45">
-    </a>
+    <nav class="navbar navbar-expand-lg main-nav p-0" aria-label="Navigation principale">
+      <a class="navbar-brand site-header__logo p-0 m-0" href="index.html">
+        <img src="images/logo.png" alt="StreamFlix, retour à l'accueil" width="160" height="45">
+      </a>
 
-    <nav class="main-nav" aria-label="Navigation principale">
-      <ul class="main-nav__list">
-        <li><a href="index.html" aria-current="page">Accueil</a></li>
-        <li><a href="#tendances">Films</a></li>
-        <li><a href="#">Séries</a></li>
-        <li><a href="#">Ma Liste</a></li>
-      </ul>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu-principal" aria-controls="menu-principal" aria-expanded="false" aria-label="Ouvrir ou fermer le menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu-principal">
+        <ul class="navbar-nav main-nav__list">
+          <li class="nav-item"><a class="nav-link" href="index.html" aria-current="page">Accueil</a></li>
+          <li class="nav-item"><a class="nav-link" href="#tendances">Films</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Séries</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Ma Liste</a></li>
+        </ul>
+
+        <div class="site-header__user">
+          <form class="search-form" role="search" action="#" method="get">
+            <label class="visually-hidden" for="recherche">Rechercher un film ou une série</label>
+            <input class="search-form__input" type="search" id="recherche" name="q" placeholder="Titre, genre…" required minlength="2" maxlength="100" autocomplete="off">
+            <button class="btn btn-secondary search-form__button" type="submit">Rechercher</button>
+          </form>
+
+          <fieldset class="theme-switcher">
+            <legend class="visually-hidden">Thème d'affichage</legend>
+            <input type="radio" id="theme-sombre" name="theme" value="sombre" checked>
+            <label for="theme-sombre"><span class="theme-switcher__name">Sombre</span></label>
+            <input type="radio" id="theme-clair" name="theme" value="clair">
+            <label for="theme-clair"><span class="theme-switcher__name">Clair</span></label>
+            <input type="radio" id="theme-sepia" name="theme" value="sepia">
+            <label for="theme-sepia"><span class="theme-switcher__name">Cinéma</span></label>
+          </fieldset>
+
+          <nav class="profile-menu" aria-label="Menu du profil">
+            <details>
+              <summary>Mon profil</summary>
+              <ul class="profile-menu__list">
+                <li><a href="#">Mon compte</a></li>
+                <li><a href="#">Paramètres</a></li>
+                <li><a href="#">Centre d'aide</a></li>
+                <li><a href="#">Se déconnecter</a></li>
+              </ul>
+            </details>
+          </nav>
+        </div>
+      </div>
     </nav>
-
-    <div class="site-header__user">
-      <form class="search-form" role="search" action="#" method="get">
-        <label class="visually-hidden" for="recherche">Rechercher un film ou une série</label>
-        <input class="search-form__input" type="search" id="recherche" name="q" placeholder="Titre, genre…" required minlength="2" maxlength="100" autocomplete="off">
-        <button class="btn search-form__button" type="submit">Rechercher</button>
-      </form>
-
-      <fieldset class="theme-switcher">
-        <legend class="visually-hidden">Thème d'affichage</legend>
-        <input type="radio" id="theme-sombre" name="theme" value="sombre" checked>
-        <label for="theme-sombre"><span class="theme-switcher__name">Sombre</span></label>
-        <input type="radio" id="theme-clair" name="theme" value="clair">
-        <label for="theme-clair"><span class="theme-switcher__name">Clair</span></label>
-        <input type="radio" id="theme-sepia" name="theme" value="sepia">
-        <label for="theme-sepia"><span class="theme-switcher__name">Cinéma</span></label>
-      </fieldset>
-
-      <nav class="profile-menu" aria-label="Menu du profil">
-        <details>
-          <summary>Mon profil</summary>
-          <ul class="profile-menu__list">
-            <li><a href="#">Mon compte</a></li>
-            <li><a href="#">Paramètres</a></li>
-            <li><a href="#">Centre d'aide</a></li>
-            <li><a href="#">Se déconnecter</a></li>
-          </ul>
-        </details>
-      </nav>
-    </div>
 
     <div class="site-header__sub">
       <nav class="breadcrumb" aria-label="Fil d'Ariane" hidden>
@@ -110,9 +118,9 @@
         <p class="hero__description">Un voleur qui s'infiltre dans les rêves des autres pour voler leurs secrets découvre qu'il doit réaliser l'impossible : planter une idée plutôt que de la voler.</p>
 
         <div class="hero__actions">
-          <button class="btn btn--primary" type="button" aria-describedby="hero-titre">Lecture</button>
-          <a class="btn btn--secondary" href="#" aria-describedby="hero-titre">Plus d'infos</a>
-          <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="hero-titre">Ma liste</button>
+          <button class="btn btn-light btn-lg" type="button" aria-describedby="hero-titre">Lecture</button>
+          <a class="btn btn-secondary btn-lg" href="#" aria-describedby="hero-titre">Plus d'infos</a>
+          <button class="btn btn-secondary btn-lg" type="button" aria-pressed="false" aria-describedby="hero-titre">Ma liste</button>
         </div>
       </div>
     </section>
@@ -121,12 +129,12 @@
       <h2 class="film-section__title" id="tendances-titre">Tendances actuelles</h2>
       <p class="film-section__intro">Les films les mieux notés du moment.</p>
 
-      <ul class="film-grid">
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="tendances-dark-knight">
-            <img class="film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="tendances-dark-knight">
+      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="tendances-dark-knight">
+            <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="tendances-dark-knight">
                 <a href="#">The Dark Knight</a>
               </h3>
               <dl class="film-card__meta">
@@ -144,15 +152,15 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="tendances-dark-knight">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-dark-knight">Ma liste</button>
             </div>
           </article>
         </li>
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="tendances-interstellar">
-            <img class="film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="tendances-interstellar">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="tendances-interstellar">
+            <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="tendances-interstellar">
                 <a href="#">Interstellar</a>
               </h3>
               <dl class="film-card__meta">
@@ -169,15 +177,15 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="tendances-interstellar">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-interstellar">Ma liste</button>
             </div>
           </article>
         </li>
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="tendances-pulp-fiction">
-            <img class="film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="tendances-pulp-fiction">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="tendances-pulp-fiction">
+            <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="tendances-pulp-fiction">
                 <a href="#">Pulp Fiction</a>
               </h3>
               <dl class="film-card__meta">
@@ -194,7 +202,7 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="tendances-pulp-fiction">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-pulp-fiction">Ma liste</button>
             </div>
           </article>
         </li>
@@ -205,12 +213,12 @@
       <h2 class="film-section__title" id="recommandes-titre">Recommandés pour vous</h2>
       <p class="film-section__intro">Une sélection variée choisie pour vous.</p>
 
-      <ul class="film-grid">
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="recommandes-inception">
-            <img class="film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="recommandes-inception">
+      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="recommandes-inception">
+            <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="recommandes-inception">
                 <a href="#">Inception</a>
               </h3>
               <dl class="film-card__meta">
@@ -227,15 +235,15 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="recommandes-inception">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-inception">Ma liste</button>
             </div>
           </article>
         </li>
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="recommandes-matrix">
-            <img class="film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="recommandes-matrix">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="recommandes-matrix">
+            <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="recommandes-matrix">
                 <a href="#">The Matrix</a>
               </h3>
               <dl class="film-card__meta">
@@ -252,15 +260,15 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="recommandes-matrix">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-matrix">Ma liste</button>
             </div>
           </article>
         </li>
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="recommandes-forrest-gump">
-            <img class="film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="recommandes-forrest-gump">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="recommandes-forrest-gump">
+            <img class="card-img-top film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="recommandes-forrest-gump">
                 <a href="#">Forrest Gump</a>
               </h3>
               <dl class="film-card__meta">
@@ -277,7 +285,7 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="recommandes-forrest-gump">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-forrest-gump">Ma liste</button>
             </div>
           </article>
         </li>
@@ -288,12 +296,12 @@
       <h2 class="film-section__title" id="nouveautes-titre">Nouveautés</h2>
       <p class="film-section__intro">Les derniers films ajoutés au catalogue.</p>
 
-      <ul class="film-grid">
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="nouveautes-interstellar">
-            <img class="film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="nouveautes-interstellar">
+      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="nouveautes-interstellar">
+            <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="nouveautes-interstellar">
                 <a href="#">Interstellar</a>
               </h3>
               <dl class="film-card__meta">
@@ -310,15 +318,15 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="nouveautes-interstellar">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-interstellar">Ma liste</button>
             </div>
           </article>
         </li>
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="nouveautes-dark-knight">
-            <img class="film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="nouveautes-dark-knight">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="nouveautes-dark-knight">
+            <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="nouveautes-dark-knight">
                 <a href="#">The Dark Knight</a>
               </h3>
               <dl class="film-card__meta">
@@ -336,15 +344,15 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="nouveautes-dark-knight">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-dark-knight">Ma liste</button>
             </div>
           </article>
         </li>
-        <li class="film-grid__item">
-          <article class="film-card" aria-labelledby="nouveautes-inception">
-            <img class="film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="nouveautes-inception">
+        <li class="film-grid__item col-9 col-sm-6 col-md-4">
+          <article class="card film-card" aria-labelledby="nouveautes-inception">
+            <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="nouveautes-inception">
                 <a href="#">Inception</a>
               </h3>
               <dl class="film-card__meta">
@@ -361,7 +369,7 @@
                   </dd>
                 </div>
               </dl>
-              <button class="btn btn--secondary" type="button" aria-pressed="false" aria-describedby="nouveautes-inception">Ma liste</button>
+              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-inception">Ma liste</button>
             </div>
           </article>
         </li>
@@ -374,13 +382,13 @@
 
       <ul class="masonry">
         <li class="masonry__item">
-          <article class="film-card" aria-labelledby="catalogue-matrix">
-            <img class="film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="catalogue-matrix">
+          <article class="card film-card" aria-labelledby="catalogue-matrix">
+            <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="catalogue-matrix">
                 <a href="#">The Matrix</a>
               </h3>
-              <p class="film-card__synopsis">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation.</p>
+              <p class="card-text film-card__synopsis">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation.</p>
               <dl class="film-card__meta">
                 <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
                 <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
@@ -399,13 +407,13 @@
           </article>
         </li>
         <li class="masonry__item">
-          <article class="film-card" aria-labelledby="catalogue-forrest-gump">
-            <img class="film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="catalogue-forrest-gump">
+          <article class="card film-card" aria-labelledby="catalogue-forrest-gump">
+            <img class="card-img-top film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="catalogue-forrest-gump">
                 <a href="#">Forrest Gump</a>
               </h3>
-              <p class="film-card__synopsis">Homme simple au grand cœur, Forrest traverse sans le vouloir trente ans d'histoire américaine, de la guerre du Viêt Nam au scandale du Watergate, sans jamais cesser de penser à Jenny, son amour d'enfance.</p>
+              <p class="card-text film-card__synopsis">Homme simple au grand cœur, Forrest traverse sans le vouloir trente ans d'histoire américaine, de la guerre du Viêt Nam au scandale du Watergate, sans jamais cesser de penser à Jenny, son amour d'enfance.</p>
               <dl class="film-card__meta">
                 <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
                 <div><dt>Durée</dt><dd><time datetime="PT2H22M">2h22</time></dd></div>
@@ -425,13 +433,13 @@
           </article>
         </li>
         <li class="masonry__item">
-          <article class="film-card" aria-labelledby="catalogue-interstellar">
-            <img class="film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="catalogue-interstellar">
+          <article class="card film-card" aria-labelledby="catalogue-interstellar">
+            <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="catalogue-interstellar">
                 <a href="#">Interstellar</a>
               </h3>
-              <p class="film-card__synopsis">Alors que la Terre se meurt, un groupe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
+              <p class="card-text film-card__synopsis">Alors que la Terre se meurt, un groupe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
               <dl class="film-card__meta">
                 <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
                 <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
@@ -441,13 +449,13 @@
           </article>
         </li>
         <li class="masonry__item">
-          <article class="film-card" aria-labelledby="catalogue-pulp-fiction">
-            <img class="film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="catalogue-pulp-fiction">
+          <article class="card film-card" aria-labelledby="catalogue-pulp-fiction">
+            <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="catalogue-pulp-fiction">
                 <a href="#">Pulp Fiction</a>
               </h3>
-              <p class="film-card__synopsis">Plusieurs histoires de gangsters de Los Angeles s'entremêlent.</p>
+              <p class="card-text film-card__synopsis">Plusieurs histoires de gangsters de Los Angeles s'entremêlent.</p>
               <dl class="film-card__meta">
                 <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
                 <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
@@ -465,13 +473,13 @@
           </article>
         </li>
         <li class="masonry__item">
-          <article class="film-card" aria-labelledby="catalogue-dark-knight">
-            <img class="film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="catalogue-dark-knight">
+          <article class="card film-card" aria-labelledby="catalogue-dark-knight">
+            <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="catalogue-dark-knight">
                 <a href="#">The Dark Knight</a>
               </h3>
-              <p class="film-card__synopsis">Batman, aidé du lieutenant Gordon et du procureur Harvey Dent, s'attaque au crime organisé de Gotham. Mais un nouveau criminel, le Joker, plonge la ville dans le chaos et pousse le justicier dans ses derniers retranchements.</p>
+              <p class="card-text film-card__synopsis">Batman, aidé du lieutenant Gordon et du procureur Harvey Dent, s'attaque au crime organisé de Gotham. Mais un nouveau criminel, le Joker, plonge la ville dans le chaos et pousse le justicier dans ses derniers retranchements.</p>
               <dl class="film-card__meta">
                 <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
                 <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
@@ -491,13 +499,13 @@
           </article>
         </li>
         <li class="masonry__item">
-          <article class="film-card" aria-labelledby="catalogue-inception">
-            <img class="film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
-            <div class="film-card__body">
-              <h3 class="film-card__title" id="catalogue-inception">
+          <article class="card film-card" aria-labelledby="catalogue-inception">
+            <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+            <div class="card-body film-card__body">
+              <h3 class="card-title film-card__title" id="catalogue-inception">
                 <a href="#">Inception</a>
               </h3>
-              <p class="film-card__synopsis">Dom Cobb vole des secrets dans les rêves. On lui propose une dernière mission : implanter une idée dans l'esprit d'un héritier.</p>
+              <p class="card-text film-card__synopsis">Dom Cobb vole des secrets dans les rêves. On lui propose une dernière mission : implanter une idée dans l'esprit d'un héritier.</p>
               <dl class="film-card__meta">
                 <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
                 <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
@@ -565,7 +573,7 @@
           <label for="newsletter">Je souhaite recevoir la newsletter StreamFlix</label>
         </div>
 
-        <button class="btn btn--primary" type="submit">Créer mon compte</button>
+        <button class="btn btn-primary btn-lg w-100" type="submit">Créer mon compte</button>
       </form>
     </section>
   </main>
