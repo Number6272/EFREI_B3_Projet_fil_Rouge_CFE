@@ -1,10 +1,184 @@
-/* Phase 1 : Bootstrap 5.3 est chargé par le CDN AVANT ce fichier (voir index.html).
-   Nos règles passent donc après les siennes et peuvent le personnaliser. */
+@charset "UTF-8";
+:root,
+[data-bs-theme=light] {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #d63384;
+  --bs-red: #dc3545;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #ffc107;
+  --bs-green: #198754;
+  --bs-teal: #20c997;
+  --bs-cyan: #0dcaf0;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-gray-100: #f8f9fa;
+  --bs-gray-200: #e9ecef;
+  --bs-gray-300: #dee2e6;
+  --bs-gray-400: #ced4da;
+  --bs-gray-500: #adb5bd;
+  --bs-gray-600: #6c757d;
+  --bs-gray-700: #495057;
+  --bs-gray-800: #343a40;
+  --bs-gray-900: #212529;
+  --bs-primary: #e50914;
+  --bs-secondary: #564d4d;
+  --bs-success: #198754;
+  --bs-info: #0071eb;
+  --bs-warning: #ffc107;
+  --bs-danger: #dc3545;
+  --bs-light: #f8f9fa;
+  --bs-dark: #221f1f;
+  --bs-primary-rgb: 229, 9, 20;
+  --bs-secondary-rgb: 86, 77, 77;
+  --bs-success-rgb: 25, 135, 84;
+  --bs-info-rgb: 0, 113, 235;
+  --bs-warning-rgb: 255, 193, 7;
+  --bs-danger-rgb: 220, 53, 69;
+  --bs-light-rgb: 248, 249, 250;
+  --bs-dark-rgb: 34, 31, 31;
+  --bs-primary-text-emphasis: rgb(35.9215686275%, 1.4117647059%, 3.137254902%);
+  --bs-secondary-text-emphasis: rgb(13.4901960784%, 12.0784313725%, 12.0784313725%);
+  --bs-success-text-emphasis: rgb(3.9215686275%, 21.1764705882%, 13.1764705882%);
+  --bs-info-text-emphasis: rgb(0%, 17.7254901961%, 36.862745098%);
+  --bs-warning-text-emphasis: rgb(40%, 30.2745098039%, 1.0980392157%);
+  --bs-danger-text-emphasis: rgb(34.5098039216%, 8.3137254902%, 10.8235294118%);
+  --bs-light-text-emphasis: #495057;
+  --bs-dark-text-emphasis: #495057;
+  --bs-primary-bg-subtle: rgb(97.9607843137%, 80.7058823529%, 81.568627451%);
+  --bs-secondary-bg-subtle: rgb(86.7450980392%, 86.0392156863%, 86.0392156863%);
+  --bs-success-bg-subtle: rgb(81.9607843137%, 90.5882352941%, 86.5882352941%);
+  --bs-info-bg-subtle: rgb(80%, 88.862745098%, 98.431372549%);
+  --bs-warning-bg-subtle: rgb(100%, 95.137254902%, 80.5490196078%);
+  --bs-danger-bg-subtle: rgb(97.2549019608%, 84.1568627451%, 85.4117647059%);
+  --bs-light-bg-subtle: rgb(98.6274509804%, 98.8235294118%, 99.0196078431%);
+  --bs-dark-bg-subtle: #ced4da;
+  --bs-primary-border-subtle: rgb(95.9215686275%, 61.4117647059%, 63.137254902%);
+  --bs-secondary-border-subtle: rgb(73.4901960784%, 72.0784313725%, 72.0784313725%);
+  --bs-success-border-subtle: rgb(63.9215686275%, 81.1764705882%, 73.1764705882%);
+  --bs-info-border-subtle: rgb(60%, 77.7254901961%, 96.862745098%);
+  --bs-warning-border-subtle: rgb(100%, 90.2745098039%, 61.0980392157%);
+  --bs-danger-border-subtle: rgb(94.5098039216%, 68.3137254902%, 70.8235294118%);
+  --bs-light-border-subtle: #e9ecef;
+  --bs-dark-border-subtle: #adb5bd;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-font-sans-serif: "Netflix Sans", "Helvetica Neue", sans-serif;
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+  --bs-body-font-family: var(--bs-font-sans-serif);
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #212529;
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-body-bg: #fff;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-emphasis-color: #000;
+  --bs-emphasis-color-rgb: 0, 0, 0;
+  --bs-secondary-color: rgba(33, 37, 41, 0.75);
+  --bs-secondary-color-rgb: 33, 37, 41;
+  --bs-secondary-bg: #e9ecef;
+  --bs-secondary-bg-rgb: 233, 236, 239;
+  --bs-tertiary-color: rgba(33, 37, 41, 0.5);
+  --bs-tertiary-color-rgb: 33, 37, 41;
+  --bs-tertiary-bg: #f8f9fa;
+  --bs-tertiary-bg-rgb: 248, 249, 250;
+  --bs-heading-color: inherit;
+  --bs-link-color: #e50914;
+  --bs-link-color-rgb: 229, 9, 20;
+  --bs-link-decoration: underline;
+  --bs-link-hover-color: rgb(71.8431372549%, 2.8235294118%, 6.2745098039%);
+  --bs-link-hover-color-rgb: 183, 7, 16;
+  --bs-code-color: #d63384;
+  --bs-highlight-color: #212529;
+  --bs-highlight-bg: rgb(100%, 95.137254902%, 80.5490196078%);
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: #dee2e6;
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 0.375rem;
+  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius-lg: 0.5rem;
+  --bs-border-radius-xl: 1rem;
+  --bs-border-radius-xxl: 2rem;
+  --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+  --bs-border-radius-pill: 50rem;
+  --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+  --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --bs-focus-ring-width: 0.25rem;
+  --bs-focus-ring-opacity: 0.25;
+  --bs-focus-ring-color: rgba(229, 9, 20, 0.35);
+  --bs-form-valid-color: #198754;
+  --bs-form-valid-border-color: #198754;
+  --bs-form-invalid-color: #dc3545;
+  --bs-form-invalid-border-color: #dc3545;
+}
+
+[data-bs-theme=dark] {
+  color-scheme: dark;
+  --bs-body-color: whitesmoke;
+  --bs-body-color-rgb: 245, 245, 245;
+  --bs-body-bg: black;
+  --bs-body-bg-rgb: 0, 0, 0;
+  --bs-emphasis-color: #fff;
+  --bs-emphasis-color-rgb: 255, 255, 255;
+  --bs-secondary-color: rgba(245, 245, 245, 0.75);
+  --bs-secondary-color-rgb: 245, 245, 245;
+  --bs-secondary-bg: #343a40;
+  --bs-secondary-bg-rgb: 52, 58, 64;
+  --bs-tertiary-color: rgba(245, 245, 245, 0.5);
+  --bs-tertiary-color-rgb: 245, 245, 245;
+  --bs-tertiary-bg: #221f1f;
+  --bs-tertiary-bg-rgb: 34, 31, 31;
+  --bs-primary-text-emphasis: rgb(93.8823529412%, 42.1176470588%, 44.7058823529%);
+  --bs-secondary-text-emphasis: rgb(60.2352941176%, 58.1176470588%, 58.1176470588%);
+  --bs-success-text-emphasis: rgb(45.8823529412%, 71.7647058824%, 59.7647058824%);
+  --bs-info-text-emphasis: rgb(40%, 66.5882352941%, 95.2941176471%);
+  --bs-warning-text-emphasis: rgb(100%, 85.4117647059%, 41.6470588235%);
+  --bs-danger-text-emphasis: rgb(91.7647058824%, 52.4705882353%, 56.2352941176%);
+  --bs-light-text-emphasis: #f8f9fa;
+  --bs-dark-text-emphasis: #dee2e6;
+  --bs-primary-bg-subtle: rgb(17.9607843137%, 0.7058823529%, 1.568627451%);
+  --bs-secondary-bg-subtle: rgb(6.7450980392%, 6.0392156863%, 6.0392156863%);
+  --bs-success-bg-subtle: rgb(1.9607843137%, 10.5882352941%, 6.5882352941%);
+  --bs-info-bg-subtle: rgb(0%, 8.862745098%, 18.431372549%);
+  --bs-warning-bg-subtle: rgb(20%, 15.137254902%, 0.5490196078%);
+  --bs-danger-bg-subtle: rgb(17.2549019608%, 4.1568627451%, 5.4117647059%);
+  --bs-light-bg-subtle: #343a40;
+  --bs-dark-bg-subtle: #1a1d20;
+  --bs-primary-border-subtle: rgb(53.8823529412%, 2.1176470588%, 4.7058823529%);
+  --bs-secondary-border-subtle: rgb(20.2352941176%, 18.1176470588%, 18.1176470588%);
+  --bs-success-border-subtle: rgb(5.8823529412%, 31.7647058824%, 19.7647058824%);
+  --bs-info-border-subtle: rgb(0%, 26.5882352941%, 55.2941176471%);
+  --bs-warning-border-subtle: rgb(60%, 45.4117647059%, 1.6470588235%);
+  --bs-danger-border-subtle: rgb(51.7647058824%, 12.4705882353%, 16.2352941176%);
+  --bs-light-border-subtle: #495057;
+  --bs-dark-border-subtle: #343a40;
+  --bs-heading-color: inherit;
+  --bs-link-color: #e50914;
+  --bs-link-hover-color: rgb(91.8431372549%, 22.8235294118%, 26.2745098039%);
+  --bs-link-color-rgb: 229, 9, 20;
+  --bs-link-hover-color-rgb: 234, 58, 67;
+  --bs-code-color: rgb(90.3529411765%, 52%, 71.0588235294%);
+  --bs-highlight-color: whitesmoke;
+  --bs-highlight-bg: rgb(40%, 30.2745098039%, 1.0980392157%);
+  --bs-border-color: #495057;
+  --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+  --bs-form-valid-color: rgb(45.8823529412%, 71.7647058824%, 59.7647058824%);
+  --bs-form-valid-border-color: rgb(45.8823529412%, 71.7647058824%, 59.7647058824%);
+  --bs-form-invalid-color: rgb(91.7647058824%, 52.4705882353%, 56.2352941176%);
+  --bs-form-invalid-border-color: rgb(91.7647058824%, 52.4705882353%, 56.2352941176%);
+}
 
 /* ==========================================================================
-   1. THÈMES : variables de couleur animables
+   THÈMES : variables de couleur animables
    ========================================================================== */
-
 /* @property déclare chaque variable comme une vraie couleur (<color>) :
    sans ça, le navigateur ne peut pas animer le passage d'un thème à l'autre. */
 @property --color-bg {
@@ -12,74 +186,63 @@
   inherits: true;
   initial-value: black;
 }
-
 @property --color-bg-elevated {
   syntax: "<color>";
   inherits: true;
   initial-value: black;
 }
-
 @property --color-surface {
   syntax: "<color>";
   inherits: true;
   initial-value: dimgray;
 }
-
 @property --color-border {
   syntax: "<color>";
   inherits: true;
   initial-value: dimgray;
 }
-
 @property --color-text {
   syntax: "<color>";
   inherits: true;
   initial-value: whitesmoke;
 }
-
 @property --color-text-muted {
   syntax: "<color>";
   inherits: true;
   initial-value: darkgray;
 }
-
 @property --color-primary {
   syntax: "<color>";
   inherits: true;
   initial-value: crimson;
 }
-
 @property --color-accent {
   syntax: "<color>";
   inherits: true;
   initial-value: gold;
 }
-
 @property --color-header-bg {
   syntax: "<color>";
   inherits: true;
   initial-value: black;
 }
-
 @property --color-panel {
   syntax: "<color>";
   inherits: true;
   initial-value: black;
 }
-
 /* ==========================================================================
-   2. CHARTE GRAPHIQUE (thème sombre par défaut)
+   CHARTE GRAPHIQUE (thème sombre par défaut)
    ========================================================================== */
-
 /* Couleurs : fond, surfaces, textes, rouge principal, or des notes */
 :root {
   --color-bg: black;
-  --color-bg-elevated: black;
+  --color-bg-elevated: #221f1f;
   --color-surface: dimgray;
   --color-border: dimgray;
   --color-text: whitesmoke;
-  --color-text-muted: darkgray;
-  --color-primary: crimson;
+  --color-text-muted: #999999;
+  --color-primary: #e50914;
   --color-primary-hover: red;
   --color-accent: gold;
   --color-header-bg: black;
@@ -87,20 +250,17 @@
   --color-skeleton: gray;
   --color-shadow: black;
   --color-focus: white;
-  --color-hero-text: whitesmoke;
+  --color-hero-text: #ffffff;
   --color-hero-muted: lightgray;
-
   /* Typographies et tailles de texte fluides avec clamp(min, idéal, max) */
-  --font-body: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
-  --font-title: Impact, "Arial Narrow Bold", "Arial Black", var(--font-body);
-
+  --font-body: Netflix Sans, Helvetica Neue, sans-serif;
+  --font-title: Impact, Arial Narrow Bold, Arial Black, Arial, sans-serif;
   --fs-xs: 0.75rem;
-  --fs-sm: 0.875rem;
-  --fs-base: 1rem;
-  --fs-lg: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --fs-sm: 14px;
+  --fs-base: 16px;
+  --fs-lg: clamp(1.125rem, 1rem + 0.5vw, 24px);
   --fs-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
   --fs-hero: clamp(2.75rem, 1.5rem + 6vw, 6rem);
-
   /* Espacements réutilisés partout */
   --space-2xs: 0.25rem;
   --space-xs: 0.5rem;
@@ -109,33 +269,28 @@
   --space-lg: 1.5rem;
   --space-xl: 2.5rem;
   --space-2xl: 4rem;
-
   /* Mise en page : marge latérale fluide, largeur max, hauteur du header (mise à jour en JS) */
   --gutter: clamp(1rem, 4vw, 3.5rem);
   --content-max: 90rem;
   --header-height: 10rem;
-
   /* Arrondis et ombres */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
   --radius-pill: 999px;
-
   --shadow-card: 0 0.5rem 1.5rem var(--color-shadow);
   --shadow-card-hover: 0 1rem 2.5rem var(--color-shadow);
-
   /* Courbe et durées des animations */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-fast: 150ms;
   --duration-base: 300ms;
   --duration-slow: 600ms;
   --duration-theme: 600ms;
-
   color-scheme: dark;
 }
 
 /* Thème clair : activé par le bouton radio (:has) ou par data-theme posé en JS */
-:is(:root[data-theme="clair"], :root:has(#theme-clair:checked)) {
+:is(:root[data-theme=clair], :root:has(#theme-clair:checked)) {
   --color-bg: whitesmoke;
   --color-bg-elevated: white;
   --color-surface: gainsboro;
@@ -150,12 +305,11 @@
   --color-skeleton: whitesmoke;
   --color-shadow: darkgray;
   --color-focus: black;
-
   color-scheme: light;
 }
 
 /* Thème cinéma (sépia) : tons papier ancien et bruns */
-:is(:root[data-theme="sepia"], :root:has(#theme-sepia:checked)) {
+:is(:root[data-theme=sepia], :root:has(#theme-sepia:checked)) {
   --color-bg: antiquewhite;
   --color-bg-elevated: oldlace;
   --color-surface: wheat;
@@ -170,29 +324,17 @@
   --color-skeleton: antiquewhite;
   --color-shadow: tan;
   --color-focus: maroon;
-
   color-scheme: light;
 }
 
 /* Transition douce entre thèmes, activée après le chargement pour éviter une animation à l'ouverture */
 :root.theme-ready {
-  transition:
-    --color-bg var(--duration-theme) ease,
-    --color-bg-elevated var(--duration-theme) ease,
-    --color-surface var(--duration-theme) ease,
-    --color-border var(--duration-theme) ease,
-    --color-text var(--duration-theme) ease,
-    --color-text-muted var(--duration-theme) ease,
-    --color-primary var(--duration-theme) ease,
-    --color-accent var(--duration-theme) ease,
-    --color-header-bg var(--duration-theme) ease,
-    --color-panel var(--duration-theme) ease;
+  transition: --color-bg var(--duration-theme) ease, --color-bg-elevated var(--duration-theme) ease, --color-surface var(--duration-theme) ease, --color-border var(--duration-theme) ease, --color-text var(--duration-theme) ease, --color-text-muted var(--duration-theme) ease, --color-primary var(--duration-theme) ease, --color-accent var(--duration-theme) ease, --color-header-bg var(--duration-theme) ease, --color-panel var(--duration-theme) ease;
 }
 
 /* ==========================================================================
-   3. BASE ET RESET
+   BASE ET RESET
    ========================================================================== */
-
 *,
 *::before,
 *::after {
@@ -281,9 +423,8 @@ a:hover {
 }
 
 /* ==========================================================================
-   4. ACCESSIBILITÉ
+   ACCESSIBILITÉ
    ========================================================================== */
-
 /* Masque visuellement un élément tout en le laissant lisible par les lecteurs d'écran */
 .visually-hidden,
 .hero__meta dt,
@@ -325,81 +466,61 @@ a:hover {
   background-color: var(--color-primary-hover);
 }
 
-/* ==========================================================================
-   5. BOUTONS
-   ========================================================================== */
+main:focus {
+  outline: none;
+}
 
-/* Les boutons sont des .btn Bootstrap (tailles btn-sm / btn-lg dans le HTML).
-   On garde seulement nos réglages en plus : icône alignée, gras, animation */
-.btn {
-  display: inline-flex;
+/* Animations coupées si l'utilisateur les a désactivées dans son système */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+.film-section__title {
+  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
+  font-size: var(--fs-xl);
   font-weight: 700;
-  white-space: nowrap;
-  transition:
-    background-color var(--duration-fast) ease,
-    border-color var(--duration-fast) ease,
-    color var(--duration-fast) ease,
-    transform var(--duration-fast) ease;
+  line-height: 1.2;
 }
 
-.btn:active {
-  transform: scale(0.97);
+.film-section__title::before {
+  content: "";
+  width: 4px;
+  height: 1em;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
 }
 
-/* Bootstrap lit les couleurs d'un bouton dans des variables --bs-btn-… :
-   on leur donne les couleurs du thème StreamFlix (bleu par défaut dans Bootstrap) */
-.btn-primary {
-  --bs-btn-bg: var(--color-primary);
-  --bs-btn-border-color: var(--color-primary);
-  --bs-btn-color: white;
-  --bs-btn-hover-bg: var(--color-primary-hover);
-  --bs-btn-hover-border-color: var(--color-primary-hover);
-  --bs-btn-hover-color: white;
-  --bs-btn-active-bg: var(--color-primary-hover);
-  --bs-btn-active-border-color: var(--color-primary-hover);
-  --bs-btn-active-color: white;
+.film-section__intro {
+  margin-top: var(--space-2xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
 }
 
-.btn-secondary {
-  --bs-btn-bg: dimgray;
-  --bs-btn-border-color: dimgray;
-  --bs-btn-color: white;
-  --bs-btn-hover-bg: dimgray;
-  --bs-btn-hover-border-color: var(--color-text);
-  --bs-btn-hover-color: white;
-  --bs-btn-active-bg: gray;
-  --bs-btn-active-border-color: var(--color-text);
-  --bs-btn-active-color: white;
+.signup__title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.2;
 }
 
-.btn-primary:hover,
-.btn-secondary:hover {
-  transform: translateY(-2px);
-}
-
-/* Bouton « Ma liste » : un + quand le film n'est pas ajouté, une coche quand il l'est */
-.btn[aria-pressed]::before {
-  content: "+";
-  font-size: 1.25em;
-  line-height: 1;
-}
-
-.btn[aria-pressed="true"] {
-  background-color: var(--color-text);
-  color: var(--color-bg);
-}
-
-.btn[aria-pressed="true"]::before {
-  content: "✓";
+.signup__intro {
+  margin-top: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
 }
 
 /* ==========================================================================
-   6. HEADER (sticky, se réduit au scroll)
+   HEADER (sticky, se réduit au scroll)
    ========================================================================== */
-
 /* Le header contient la navbar Bootstrap (logo, bouton hamburger, menu) puis la ligne des sections */
 .site-header {
   position: sticky;
@@ -408,9 +529,7 @@ a:hover {
   padding: var(--space-sm) var(--gutter) 0;
   background-color: var(--color-header-bg);
   border-bottom: 1px solid var(--color-border);
-  transition:
-    padding var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) ease;
+  transition: padding var(--duration-base) var(--ease-out), box-shadow var(--duration-base) ease;
 }
 
 /* Classe ajoutée en JS après 120px de défilement : header plus compact */
@@ -439,68 +558,6 @@ a:hover {
   width: 6rem;
 }
 
-/* Bouton hamburger de la navbar : bordure aux couleurs du thème */
-.navbar-toggler {
-  border-color: var(--color-border);
-}
-
-.navbar-toggler:focus {
-  box-shadow: 0 0 0 2px var(--color-primary);
-}
-
-/* Menu déplié sur mobile : liens les uns sous les autres, puis recherche, thèmes et profil */
-.navbar-collapse {
-  min-width: 0;
-  padding-bottom: var(--space-sm);
-}
-
-.section-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.main-nav__list {
-  gap: var(--space-xs);
-}
-
-.main-nav__list a {
-  position: relative;
-  display: inline-block;
-  padding-block: var(--space-xs);
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-/* Soulignement rouge qui se déploie de gauche à droite au survol */
-.main-nav__list a::after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.main-nav__list a:hover,
-.main-nav__list a[aria-current="page"] {
-  color: var(--color-text);
-}
-
-.main-nav__list a:hover::after,
-.main-nav__list a[aria-current="page"]::after {
-  transform: scaleX(1);
-}
-
-.main-nav__list a[aria-current="page"] {
-  font-weight: 700;
-}
-
 /* Sur mobile, recherche, thèmes et profil sont empilés dans le menu déplié */
 .site-header__user {
   display: flex;
@@ -510,253 +567,9 @@ a:hover {
   padding-top: var(--space-sm);
 }
 
-/* Barre de recherche */
-.search-form {
-  display: flex;
-  width: 100%;
-}
-
-.search-form__input {
-  flex: 1;
-  min-width: 0;
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-right: 0;
-  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
-  transition:
-    border-color var(--duration-fast) ease,
-    background-color var(--duration-fast) ease;
-}
-
-.search-form__input::placeholder {
-  color: var(--color-text-muted);
-}
-
-.search-form__input:hover {
-  border-color: var(--color-text-muted);
-}
-
-.search-form__input:focus {
-  background-color: var(--color-bg);
-  border-color: var(--color-text);
-}
-
-.search-form__input:focus-visible {
-  outline-offset: 0;
-}
-
-/* Bouton Bootstrap btn-secondary collé au champ (coins droits arrondis seulement) */
-.search-form__button {
-  min-height: 2.5rem;
-  padding-inline: var(--space-md);
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-  font-size: var(--fs-sm);
-}
-
-.search-form__button:hover {
-  --bs-btn-hover-bg: var(--color-primary);
-  --bs-btn-hover-border-color: var(--color-primary);
-
-  transform: none;
-}
-
 /* ==========================================================================
-   7. SÉLECTEUR DE THÈME
+   SECONDE LIGNE DU HEADER (fil d'Ariane + onglets)
    ========================================================================== */
-
-/* Les boutons radio sont cachés : on clique sur les pastilles de couleur (labels) */
-.theme-switcher {
-  display: flex;
-  gap: 2px;
-  min-width: 0;
-  padding: 3px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-}
-
-.theme-switcher input {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-}
-
-.theme-switcher label {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: 0.3rem;
-  border-radius: var(--radius-pill);
-  color: var(--color-text-muted);
-  font-size: var(--fs-xs);
-  font-weight: 700;
-  cursor: pointer;
-  transition:
-    background-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
-}
-
-/* Pastille ronde : sa couleur vient de la variable --swatch */
-.theme-switcher label::before {
-  content: "";
-  width: 1.125rem;
-  height: 1.125rem;
-  flex-shrink: 0;
-  border: 1px solid gray;
-  border-radius: 50%;
-  background: var(--swatch);
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.theme-switcher label[for="theme-sombre"] {
-  --swatch: linear-gradient(135deg, black 50%, crimson 50%);
-}
-
-.theme-switcher label[for="theme-clair"] {
-  --swatch: linear-gradient(135deg, white 50%, crimson 50%);
-}
-
-.theme-switcher label[for="theme-sepia"] {
-  --swatch: linear-gradient(135deg, antiquewhite 50%, sienna 50%);
-}
-
-.theme-switcher label:hover {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-}
-
-.theme-switcher label:hover::before {
-  transform: rotate(180deg);
-}
-
-.theme-switcher input:checked + label {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-}
-
-.theme-switcher input:checked + label::before {
-  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
-}
-
-.theme-switcher input:focus-visible + label {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 1px;
-}
-
-/* Nom du thème masqué visuellement, affiché sur très grand écran */
-.theme-switcher__name {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-}
-
-/* ==========================================================================
-   8. MENU PROFIL (details / summary, sans JavaScript)
-   ========================================================================== */
-
-.profile-menu {
-  position: relative;
-}
-
-.profile-menu summary {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-2xs) var(--space-xs);
-  border-radius: var(--radius-sm);
-  font-size: 0;
-  font-weight: 500;
-  list-style: none;
-  transition: background-color var(--duration-fast) ease;
-}
-
-.profile-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.profile-menu summary::before {
-  content: "";
-  width: 2rem;
-  height: 2rem;
-  flex-shrink: 0;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, royalblue, deepskyblue);
-}
-
-/* Chevron dessiné en CSS, qui pivote à l'ouverture */
-.profile-menu summary::after {
-  content: "";
-  width: 0.5rem;
-  height: 0.5rem;
-  border-right: 2px solid currentColor;
-  border-bottom: 2px solid currentColor;
-  transform: translateY(-25%) rotate(45deg);
-  transition: transform var(--duration-base) var(--ease-out);
-}
-
-.profile-menu summary:hover {
-  background-color: var(--color-surface);
-}
-
-.profile-menu details[open] summary::after {
-  transform: translateY(25%) rotate(-135deg);
-}
-
-.profile-menu__list {
-  position: absolute;
-  top: calc(100% + var(--space-xs));
-  right: 0;
-  z-index: 10;
-  min-width: 12rem;
-  padding: var(--space-xs) 0;
-  background-color: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  animation: menu-in var(--duration-base) var(--ease-out);
-}
-
-.profile-menu__list a {
-  display: block;
-  padding: var(--space-xs) var(--space-md);
-  font-size: var(--fs-sm);
-  text-decoration: none;
-  transition:
-    background-color var(--duration-fast) ease,
-    padding-left var(--duration-fast) ease;
-}
-
-.profile-menu__list a:hover {
-  padding-left: calc(var(--space-md) + var(--space-2xs));
-  background-color: var(--color-surface);
-  color: var(--color-text);
-}
-
-.profile-menu__list li:last-child {
-  margin-top: var(--space-xs);
-  padding-top: var(--space-xs);
-  border-top: 1px solid var(--color-border);
-}
-
-@keyframes menu-in {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ==========================================================================
-   9. FIL D'ARIANE ET ONGLETS DE SECTIONS
-   ========================================================================== */
-
 .site-header__sub {
   display: flex;
   flex-wrap: wrap;
@@ -766,127 +579,27 @@ a:hover {
   width: 100%;
 }
 
-/* Bootstrap a aussi une classe .breadcrumb (avec une marge) : on garde la nôtre */
-.breadcrumb {
-  display: none;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumb__list {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-xs);
-  color: var(--color-text-muted);
-  font-size: var(--fs-xs);
-}
-
-.breadcrumb__list li {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  animation: crumb-in var(--duration-base) var(--ease-out);
-}
-
-/* Séparateur › entre les niveaux du fil d'Ariane */
-.breadcrumb__list li + li::before {
-  content: "›";
-  font-size: 1.2em;
-}
-
-.breadcrumb__list a {
-  text-decoration: none;
-}
-
-.breadcrumb__list a:hover {
-  color: var(--color-text);
-  text-decoration: underline;
-}
-
-.breadcrumb__list [aria-current] {
-  color: var(--color-text);
-  font-weight: 700;
-}
-
-@keyframes crumb-in {
-  from {
-    opacity: 0;
-    transform: translateX(-0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
+/* Navbar dépliée (992px) : recherche, thèmes et profil sur la même ligne que les liens */
+@media (min-width: 992px) {
+  .site-header__user {
+    flex-wrap: nowrap;
+    margin-left: auto;
+    padding-top: 0;
   }
 }
-
-.section-nav {
-  max-width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
+/* Petit ordinateur : logo plus grand */
+@media (min-width: 1024px) {
+  .site-header__logo img {
+    width: 9rem;
+  }
 }
-
-.section-nav__list {
-  position: relative;
-  display: flex;
-  gap: var(--space-2xs);
-  width: max-content;
-  padding-bottom: 3px;
-}
-
-/* Indicateur animé : le JS lui donne la position (--indicator-x) et la largeur (--indicator-width) de l'onglet actif */
-.section-nav__list::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: var(--indicator-width, 0px);
-  height: 3px;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-pill);
-  transform: translateX(var(--indicator-x, 0px));
-  transition:
-    transform var(--duration-base) var(--ease-out),
-    width var(--duration-base) var(--ease-out);
-}
-
-.section-nav__link {
-  display: block;
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
-  font-weight: 500;
-  text-decoration: none;
-  white-space: nowrap;
-  transition:
-    background-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
-}
-
-.section-nav__link:hover {
-  background-color: var(--color-surface);
-  color: var(--color-text);
-}
-
-.section-nav__link[aria-current="true"] {
-  color: var(--color-text);
-  font-weight: 700;
-}
-
-main:focus {
-  outline: none;
-}
-
 /* ==========================================================================
-   10. HERO (parallax multi-couches)
+   HERO (parallax multi-couches)
    ========================================================================== */
-
 /* Le Hero garde un texte clair quel que soit le thème, car il est posé sur une image sombre */
 .hero {
   --color-text: var(--color-hero-text);
   --color-text-muted: var(--color-hero-muted);
-
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -921,9 +634,7 @@ main:focus {
   position: absolute;
   inset: 0;
   z-index: -2;
-  background:
-    linear-gradient(to top, var(--color-bg) 0%, transparent 12%),
-    linear-gradient(to right, black 0%, transparent 90%);
+  background: linear-gradient(to top, var(--color-bg) 0%, transparent 12%), linear-gradient(to right, black 0%, transparent 90%);
 }
 
 /* Couche 2 : halo rouge qui se déplace à 20 % de la vitesse du scroll */
@@ -1020,7 +731,7 @@ main:focus {
   border-left: 0.75em solid currentColor;
 }
 
-.hero__actions .btn[aria-pressed="true"] {
+.hero__actions .btn[aria-pressed=true] {
   background-color: white;
   color: black;
 }
@@ -1033,7 +744,6 @@ main:focus {
     transform: scale(1);
   }
 }
-
 @keyframes fade-up {
   from {
     opacity: 0;
@@ -1044,446 +754,41 @@ main:focus {
     transform: translateY(0);
   }
 }
-
-/* ==========================================================================
-   11. SECTIONS DE FILMS
-   ========================================================================== */
-
-.film-section {
-  max-width: var(--content-max);
-  margin-inline: auto;
-  padding: var(--space-xl) var(--gutter) 0;
-}
-
-.film-section__title {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: var(--fs-xl);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.film-section__title::before {
-  content: "";
-  width: 4px;
-  height: 1em;
-  background-color: var(--color-primary);
-  border-radius: var(--radius-pill);
-}
-
-.film-section__intro {
-  margin-top: var(--space-2xs);
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
-}
-
-/* Grille Bootstrap : .row + colonnes col-9 (mobile), col-sm-6, col-md-4 (3 par ligne).
-   Mobile : flex-nowrap garde les cartes sur une ligne = carrousel horizontal avec scroll-snap */
-.film-grid {
-  margin-top: var(--space-xs);
-  padding-bottom: var(--space-lg);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: var(--gutter);
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-border) transparent;
-}
-
-/* Chaque carte est un conteneur (container queries) avec une perspective pour la 3D */
-.film-grid__item,
-/* Glissement des cartes vers leur nouvelle place au redimensionnement (technique FLIP en JS) */
-.masonry__item {
-  container-type: inline-size;
-  perspective: 62.5rem;
-}
-
-.film-grid__item {
-  display: flex;
-  scroll-snap-align: start;
-}
-
-/* Apparition en cascade : cartes cachées jusqu'à ce que la grille soit visible (classe .is-visible en JS),
-   chacune décalée de 90ms selon sa position --i */
-.js .film-grid__item,
-.js .masonry__item {
-  opacity: 0;
-}
-
-.js .is-visible > .film-grid__item,
-.js .is-visible > .masonry__item {
-  opacity: 1;
-  animation: reveal var(--duration-slow) var(--ease-out) backwards;
-  animation-delay: calc(var(--i, 0) * 90ms);
-}
-
-@keyframes reveal {
-  from {
-    opacity: 0;
-    transform: translateY(2rem) scale(0.96);
+/* Grand mobile : boutons plus larges */
+@media (min-width: 480px) {
+  .hero__actions .btn {
+    padding-inline: var(--space-xl);
   }
-  to {
+}
+/* Tablette : texte centré verticalement */
+@media (min-width: 768px) {
+  .hero {
+    align-items: center;
+    min-height: 70vh;
+  }
+}
+@media (min-width: 1024px) {
+  .hero {
+    min-height: 85vh;
+  }
+}
+@media (min-width: 1600px) {
+  .hero__content {
+    max-width: 46rem;
+  }
+}
+/* Animations coupées : les couches de la parallaxe restent fixes */
+@media (prefers-reduced-motion: reduce) {
+  .hero__background,
+  .hero::before,
+  .hero__content {
+    transform: none;
     opacity: 1;
-    transform: translateY(0) scale(1);
   }
 }
-
 /* ==========================================================================
-   12. CARTE DE FILM
+   FOOTER
    ========================================================================== */
-
-/* Base : le composant .card de Bootstrap. Nos règles passent après et gardent le style StreamFlix */
-.film-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  overflow: hidden;
-  background-color: var(--color-bg-elevated);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
-  transform-origin: center;
-  transition:
-    transform var(--duration-base) var(--ease-out),
-    box-shadow var(--duration-base) var(--ease-out);
-}
-
-/* Reflet lumineux qui traverse la carte au survol */
-.film-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  background: linear-gradient(105deg, transparent 40%, white 50%, transparent 60%);
-  background-size: 250% 100%;
-  background-position: 100% 0;
-  opacity: 0;
-  pointer-events: none;
-  transition:
-    opacity var(--duration-base) ease,
-    background-position var(--duration-slow) var(--ease-out);
-}
-
-/* Rotation 3D au survol ou au focus clavier */
-.film-card:hover,
-.film-card:focus-within {
-  transform: translateY(-0.375rem) rotateY(-8deg) rotateX(3deg) scale(1.02);
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--color-border);
-}
-
-.film-card:hover::after {
-  opacity: 0.18;
-  background-position: 0 0;
-}
-
-/* Skeleton : dégradé animé en fond tant que l'affiche n'est pas chargée */
-.film-card__poster {
-  width: 100%;
-  aspect-ratio: 2 / 3;
-  object-fit: cover;
-  background-color: var(--color-surface);
-  background-image: linear-gradient(100deg, var(--color-surface) 30%, var(--color-skeleton) 50%, var(--color-surface) 70%);
-  background-size: 250% 100%;
-  animation: skeleton 1.4s linear infinite;
-  transition:
-    transform var(--duration-slow) var(--ease-out),
-    filter var(--duration-base) ease;
-}
-
-/* Affiche chargée (classe ajoutée en JS) : on arrête l'animation */
-.film-card__poster.is-loaded {
-  animation: none;
-  background-image: none;
-}
-
-.film-card:hover .film-card__poster {
-  transform: scale(1.05);
-  filter: brightness(1.1);
-}
-
-@keyframes skeleton {
-  from {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: -150% 0;
-  }
-}
-
-.film-card__body {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background-color: var(--color-bg-elevated);
-}
-
-.film-card__title {
-  font-size: var(--fs-lg);
-  font-weight: 700;
-  line-height: 1.25;
-}
-
-.film-card__title a {
-  text-decoration: none;
-}
-
-.film-card__title a:hover {
-  color: var(--color-primary);
-}
-
-.film-card__synopsis {
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
-}
-
-.film-card__meta {
-  gap: var(--space-xs) var(--space-sm);
-}
-
-.film-card__meta div:nth-child(4) {
-  width: 100%;
-}
-
-.film-card__genres {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2xs);
-}
-
-.film-card__genres li {
-  padding: 0.125rem var(--space-xs);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  font-size: var(--fs-xs);
-  transition:
-    border-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
-}
-
-.film-card__genres li:hover {
-  border-color: var(--color-text-muted);
-  color: var(--color-text);
-}
-
-.film-card__body .btn {
-  align-self: flex-start;
-  margin-top: auto;
-}
-
-/* Container query : si la carte elle-même fait plus de 22rem, l'affiche passe à gauche */
-@container (min-width: 22rem) {
-  .film-card {
-    flex-direction: row;
-  }
-
-  .film-card__poster {
-    width: 42%;
-    flex-shrink: 0;
-  }
-
-  .film-card__body {
-    padding: var(--space-lg);
-  }
-}
-
-/* Container query : carte très étroite, contenu plus compact */
-@container (max-width: 12rem) {
-  .film-card__body {
-    gap: var(--space-xs);
-    padding: var(--space-sm);
-  }
-
-  .film-card__title {
-    font-size: var(--fs-base);
-  }
-
-  .film-card__synopsis {
-    font-size: var(--fs-xs);
-  }
-
-  .film-card__meta {
-    font-size: var(--fs-xs);
-  }
-}
-
-/* ==========================================================================
-   13. GRILLE MASONRY (section catalogue)
-   ========================================================================== */
-
-.masonry {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-  padding-bottom: var(--space-lg);
-}
-
-/* Simulation : rangées de 8px, le JS calcule combien de rangées chaque carte occupe (grid-row-end: span N) */
-.masonry--js {
-  grid-auto-rows: 0.5rem;
-}
-
-.masonry__item {
-  transition: transform 500ms var(--ease-out);
-}
-
-/* Masonry natif pour les navigateurs qui le gèrent déjà */
-@supports (grid-template-rows: masonry) {
-  .masonry {
-    grid-template-rows: masonry;
-  }
-}
-
-/* ==========================================================================
-   14. FORMULAIRE D'INSCRIPTION
-   ========================================================================== */
-
-.signup {
-  max-width: 40rem;
-  margin: var(--space-2xl) auto 0;
-  padding: var(--space-xl) var(--gutter);
-  background-color: var(--color-panel);
-  border-block: 1px solid var(--color-border);
-}
-
-.signup__title {
-  font-size: var(--fs-xl);
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-.signup__intro {
-  margin-top: var(--space-xs);
-  color: var(--color-text-muted);
-  font-size: var(--fs-sm);
-}
-
-.signup-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  margin-top: var(--space-lg);
-}
-
-.signup-form fieldset {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  min-width: 0;
-  padding: 0;
-  border: 0;
-}
-
-.signup-form legend {
-  float: none;
-  margin-bottom: var(--space-md);
-  padding: 0;
-  font-size: var(--fs-lg);
-  font-weight: 700;
-}
-
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2xs);
-}
-
-.form-group label {
-  font-size: var(--fs-sm);
-  font-weight: 500;
-}
-
-.form-group input {
-  min-height: 3rem;
-  padding: var(--space-sm) var(--space-md);
-  background-color: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  transition:
-    border-color var(--duration-fast) ease,
-    background-color var(--duration-fast) ease,
-    box-shadow var(--duration-fast) ease;
-}
-
-.form-group input:hover {
-  border-color: var(--color-text-muted);
-}
-
-.form-group input:focus {
-  background-color: var(--color-bg-elevated);
-  border-color: var(--color-text);
-}
-
-/* Champ invalide signalé seulement après que l'utilisateur l'a modifié */
-.form-group input:user-invalid {
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 1px var(--color-primary);
-}
-
-.form-help {
-  color: var(--color-text-muted);
-  font-size: var(--fs-xs);
-}
-
-.form-choice {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  font-size: var(--fs-sm);
-}
-
-.form-choice input {
-  width: 1.25rem;
-  height: 1.25rem;
-  flex-shrink: 0;
-  accent-color: var(--color-primary);
-  cursor: pointer;
-}
-
-.form-choice label {
-  cursor: pointer;
-  transition: color var(--duration-fast) ease;
-}
-
-.form-choice:hover label {
-  color: var(--color-text-muted);
-}
-
-.signup-form fieldset:last-of-type .form-choice {
-  padding: var(--space-sm) var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  transition:
-    border-color var(--duration-fast) ease,
-    background-color var(--duration-fast) ease;
-}
-
-.signup-form fieldset:last-of-type .form-choice:hover {
-  background-color: var(--color-bg-elevated);
-  border-color: var(--color-text-muted);
-}
-
-/* Formule cochée mise en valeur grâce à :has() */
-.signup-form fieldset:last-of-type .form-choice:has(input:checked) {
-  background-color: var(--color-surface);
-  border-color: var(--color-primary);
-}
-
-.signup-form > .btn {
-  min-height: 3rem;
-}
-
-/* ==========================================================================
-   15. FOOTER
-   ========================================================================== */
-
 .site-footer {
   display: grid;
   gap: var(--space-xl);
@@ -1534,35 +839,683 @@ main:focus {
   color: var(--color-text);
 }
 
-/* ==========================================================================
-   16. RESPONSIVE (mobile-first : chaque media query ajoute des styles pour les écrans plus larges)
-   ========================================================================== */
-
-/* Grand mobile : 2 cartes visibles dans le carrousel */
-@media (min-width: 480px) {
-  .hero__actions .btn {
-    padding-inline: var(--space-xl);
+/* Tablette : 2 colonnes, mentions légales en dessous */
+@media (min-width: 768px) {
+  .site-footer {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .site-footer__legal {
+    grid-column: 1/-1;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--color-border);
   }
 }
+/* Petit ordinateur : footer en 3 colonnes */
+@media (min-width: 1024px) {
+  .site-footer {
+    grid-template-columns: 1fr 1fr 2fr;
+    align-items: start;
+  }
+  .site-footer__legal {
+    grid-column: auto;
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+/* ==========================================================================
+   BOUTONS
+   ========================================================================== */
+/* Les boutons sont des .btn Bootstrap (tailles btn-sm / btn-lg dans le HTML).
+   On garde seulement nos réglages en plus : icône alignée, gras, animation */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-weight: 700;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) ease, border-color var(--duration-fast) ease, color var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
 
-/* Tablette : recherche, thèmes et profil sur une ligne, grilles de 3 colonnes */
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Bootstrap lit les couleurs d'un bouton dans des variables --bs-btn-… :
+   on leur donne les couleurs du thème StreamFlix (bleu par défaut dans Bootstrap) */
+.btn-primary {
+  --bs-btn-bg: var(--color-primary);
+  --bs-btn-border-color: var(--color-primary);
+  --bs-btn-color: white;
+  --bs-btn-hover-bg: var(--color-primary-hover);
+  --bs-btn-hover-border-color: var(--color-primary-hover);
+  --bs-btn-hover-color: white;
+  --bs-btn-active-bg: var(--color-primary-hover);
+  --bs-btn-active-border-color: var(--color-primary-hover);
+  --bs-btn-active-color: white;
+}
+
+.btn-secondary {
+  --bs-btn-bg: #564d4d;
+  --bs-btn-border-color: #564d4d;
+  --bs-btn-color: white;
+  --bs-btn-hover-bg: #564d4d;
+  --bs-btn-hover-border-color: var(--color-text);
+  --bs-btn-hover-color: white;
+  --bs-btn-active-bg: #564d4d;
+  --bs-btn-active-border-color: var(--color-text);
+  --bs-btn-active-color: white;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Bouton « Ma liste » : un + quand le film n'est pas ajouté, une coche quand il l'est */
+.btn[aria-pressed]::before {
+  content: "+";
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.btn[aria-pressed=true] {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.btn[aria-pressed=true]::before {
+  content: "✓";
+}
+
+/* ==========================================================================
+   CARTE DE FILM
+   ========================================================================== */
+/* Base : le composant .card de Bootstrap. Nos règles passent après et gardent le style StreamFlix */
+.film-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transform-origin: center;
+  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* Reflet lumineux qui traverse la carte au survol */
+.film-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(105deg, transparent 40%, white 50%, transparent 60%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) ease, background-position var(--duration-slow) var(--ease-out);
+}
+
+/* Rotation 3D au survol ou au focus clavier */
+.film-card:hover,
+.film-card:focus-within {
+  transform: translateY(-0.375rem) rotateY(-8deg) rotateX(3deg) scale(1.02);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--color-border);
+}
+
+.film-card:hover::after {
+  opacity: 0.18;
+  background-position: 0 0;
+}
+
+/* Skeleton : dégradé animé en fond tant que l'affiche n'est pas chargée */
+.film-card__poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  background-color: var(--color-surface);
+  background-image: linear-gradient(100deg, var(--color-surface) 30%, var(--color-skeleton) 50%, var(--color-surface) 70%);
+  background-size: 250% 100%;
+  animation: skeleton 1.4s linear infinite;
+  transition: transform var(--duration-slow) var(--ease-out), filter var(--duration-base) ease;
+}
+
+/* Affiche chargée (classe ajoutée en JS) : on arrête l'animation */
+.film-card__poster.is-loaded {
+  animation: none;
+  background-image: none;
+}
+
+.film-card:hover .film-card__poster {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+@keyframes skeleton {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+.film-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--color-bg-elevated);
+}
+
+.film-card__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.film-card__title a {
+  text-decoration: none;
+}
+
+.film-card__title a:hover {
+  color: var(--color-primary);
+}
+
+.film-card__synopsis {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.film-card__meta {
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.film-card__meta div:nth-child(4) {
+  width: 100%;
+}
+
+.film-card__genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.film-card__genres li {
+  padding: 0.125rem var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.film-card__genres li:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
+}
+
+.film-card__body .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Container query : si la carte elle-même fait plus de 22rem, l'affiche passe à gauche */
+@container (min-width: 22rem) {
+  .film-card {
+    flex-direction: row;
+  }
+  .film-card__poster {
+    width: 42%;
+    flex-shrink: 0;
+  }
+  .film-card__body {
+    padding: var(--space-lg);
+  }
+}
+/* Container query : carte très étroite, contenu plus compact */
+@container (max-width: 12rem) {
+  .film-card__body {
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+  }
+  .film-card__title {
+    font-size: var(--fs-base);
+  }
+  .film-card__synopsis {
+    font-size: var(--fs-xs);
+  }
+  .film-card__meta {
+    font-size: var(--fs-xs);
+  }
+}
+/* Écrans tactiles : pas d'effet de survol bloqué après un tap */
+@media (hover: none) {
+  .film-card:hover {
+    transform: none;
+  }
+}
+/* Bouton hamburger de la navbar : bordure aux couleurs du thème */
+.navbar-toggler {
+  border-color: var(--color-border);
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+/* Menu déplié sur mobile : liens les uns sous les autres, puis recherche, thèmes et profil */
+.navbar-collapse {
+  min-width: 0;
+  padding-bottom: var(--space-sm);
+}
+
+.main-nav__list {
+  gap: var(--space-xs);
+}
+
+.main-nav__list a {
+  position: relative;
+  display: inline-block;
+  padding-block: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Soulignement rouge qui se déploie de gauche à droite au survol */
+.main-nav__list a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.main-nav__list a:hover,
+.main-nav__list a[aria-current=page] {
+  color: var(--color-text);
+}
+
+.main-nav__list a:hover::after,
+.main-nav__list a[aria-current=page]::after {
+  transform: scaleX(1);
+}
+
+.main-nav__list a[aria-current=page] {
+  font-weight: 700;
+}
+
+/* Barre de recherche */
+.search-form {
+  display: flex;
+  width: 100%;
+}
+
+.search-form__input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-right: 0;
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.search-form__input::placeholder {
+  color: var(--color-text-muted);
+}
+
+.search-form__input:hover {
+  border-color: var(--color-text-muted);
+}
+
+.search-form__input:focus {
+  background-color: var(--color-bg);
+  border-color: var(--color-text);
+}
+
+.search-form__input:focus-visible {
+  outline-offset: 0;
+}
+
+/* Bouton Bootstrap btn-secondary collé au champ (coins droits arrondis seulement) */
+.search-form__button {
+  min-height: 2.5rem;
+  padding-inline: var(--space-md);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: var(--fs-sm);
+}
+
+.search-form__button:hover {
+  --bs-btn-hover-bg: var(--color-primary);
+  --bs-btn-hover-border-color: var(--color-primary);
+  transform: none;
+}
+
+/* ==========================================================================
+   SÉLECTEUR DE THÈME
+   ========================================================================== */
+/* Les boutons radio sont cachés : on clique sur les pastilles de couleur (labels) */
+.theme-switcher {
+  display: flex;
+  gap: 2px;
+  min-width: 0;
+  padding: 3px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+}
+
+.theme-switcher input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.theme-switcher label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.3rem;
+  border-radius: var(--radius-pill);
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+/* Pastille ronde : sa couleur vient de la variable --swatch */
+.theme-switcher label::before {
+  content: "";
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  border: 1px solid gray;
+  border-radius: 50%;
+  background: var(--swatch);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.theme-switcher label[for=theme-sombre] {
+  --swatch: linear-gradient(135deg, black 50%, crimson 50%);
+}
+
+.theme-switcher label[for=theme-clair] {
+  --swatch: linear-gradient(135deg, white 50%, crimson 50%);
+}
+
+.theme-switcher label[for=theme-sepia] {
+  --swatch: linear-gradient(135deg, antiquewhite 50%, sienna 50%);
+}
+
+.theme-switcher label:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.theme-switcher label:hover::before {
+  transform: rotate(180deg);
+}
+
+.theme-switcher input:checked + label {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.theme-switcher input:checked + label::before {
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
+}
+
+.theme-switcher input:focus-visible + label {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+/* Nom du thème masqué visuellement, affiché sur très grand écran */
+.theme-switcher__name {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   MENU PROFIL (details / summary, sans JavaScript)
+   ========================================================================== */
+.profile-menu {
+  position: relative;
+}
+
+.profile-menu summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-2xs) var(--space-xs);
+  border-radius: var(--radius-sm);
+  font-size: 0;
+  font-weight: 500;
+  list-style: none;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.profile-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.profile-menu summary::before {
+  content: "";
+  width: 2rem;
+  height: 2rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, royalblue, deepskyblue);
+}
+
+/* Chevron dessiné en CSS, qui pivote à l'ouverture */
+.profile-menu summary::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-25%) rotate(45deg);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.profile-menu summary:hover {
+  background-color: var(--color-surface);
+}
+
+.profile-menu details[open] summary::after {
+  transform: translateY(25%) rotate(-135deg);
+}
+
+.profile-menu__list {
+  position: absolute;
+  top: calc(100% + var(--space-xs));
+  right: 0;
+  z-index: 10;
+  min-width: 12rem;
+  padding: var(--space-xs) 0;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  animation: menu-in var(--duration-base) var(--ease-out);
+}
+
+.profile-menu__list a {
+  display: block;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--fs-sm);
+  text-decoration: none;
+  transition: background-color var(--duration-fast) ease, padding-left var(--duration-fast) ease;
+}
+
+.profile-menu__list a:hover {
+  padding-left: calc(var(--space-md) + var(--space-2xs));
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.profile-menu__list li:last-child {
+  margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border);
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ==========================================================================
+   FIL D'ARIANE ET ONGLETS DE SECTIONS
+   ========================================================================== */
+/* Bootstrap a aussi une classe .breadcrumb (avec une marge) : on garde la nôtre */
+.breadcrumb {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.breadcrumb__list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  animation: crumb-in var(--duration-base) var(--ease-out);
+}
+
+/* Séparateur › entre les niveaux du fil d'Ariane */
+.breadcrumb__list li + li::before {
+  content: "›";
+  font-size: 1.2em;
+}
+
+.breadcrumb__list a {
+  text-decoration: none;
+}
+
+.breadcrumb__list a:hover {
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+.breadcrumb__list [aria-current] {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+@keyframes crumb-in {
+  from {
+    opacity: 0;
+    transform: translateX(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.section-nav {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.section-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.section-nav__list {
+  position: relative;
+  display: flex;
+  gap: var(--space-2xs);
+  width: max-content;
+  padding-bottom: 3px;
+}
+
+/* Indicateur animé : le JS lui donne la position (--indicator-x) et la largeur (--indicator-width) de l'onglet actif */
+.section-nav__list::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: var(--indicator-width, 0px);
+  height: 3px;
+  background-color: var(--color-primary);
+  border-radius: var(--radius-pill);
+  transform: translateX(var(--indicator-x, 0px));
+  transition: transform var(--duration-base) var(--ease-out), width var(--duration-base) var(--ease-out);
+}
+
+.section-nav__link {
+  display: block;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+.section-nav__link:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+.section-nav__link[aria-current=true] {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* Tablette : recherche réduite, bouton loupe, fil d'Ariane visible */
 @media (min-width: 768px) {
   .search-form {
     width: auto;
   }
-
   .search-form__input {
     width: 9rem;
-    transition:
-      width var(--duration-base) var(--ease-out),
-      border-color var(--duration-fast) ease,
-      background-color var(--duration-fast) ease;
+    transition: width var(--duration-base) var(--ease-out), border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
   }
-
   .search-form__input:focus {
     width: 13rem;
   }
-
   /* Bouton de recherche réduit à une loupe dessinée en CSS */
   .search-form__button {
     position: relative;
@@ -1570,7 +1523,6 @@ main:focus {
     padding: 0;
     font-size: 0;
   }
-
   .search-form__button::before {
     content: "";
     width: 0.75rem;
@@ -1579,7 +1531,6 @@ main:focus {
     border-radius: 50%;
     transform: translate(-2px, -2px);
   }
-
   .search-form__button::after {
     content: "";
     position: absolute;
@@ -1590,140 +1541,54 @@ main:focus {
     background-color: currentColor;
     transform: rotate(-45deg);
   }
-
-
   .breadcrumb:not([hidden]) {
     display: block;
   }
-
-  .hero {
-    align-items: center;
-    min-height: 70vh;
-  }
-
-  .film-grid {
-    overflow: visible;
-  }
-
-  .masonry {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-lg);
-  }
-
-  .signup {
-    padding: var(--space-xl);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-  }
-
-  .site-footer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .site-footer__legal {
-    grid-column: 1 / -1;
-    padding-top: var(--space-lg);
-    border-top: 1px solid var(--color-border);
-  }
 }
-
-/* Navbar dépliée (992px, classe navbar-expand-lg) : tout le header sur une ligne */
+/* Navbar dépliée (992px, classe navbar-expand-lg) */
 @media (min-width: 992px) {
   .navbar-collapse {
     padding-bottom: 0;
   }
-
   .main-nav__list {
     gap: var(--space-lg);
   }
-
-  .site-header__user {
-    flex-wrap: nowrap;
-    margin-left: auto;
-    padding-top: 0;
-  }
 }
-
-/* Petit ordinateur : footer en 3 colonnes */
+/* Petit ordinateur : liens un peu plus grands */
 @media (min-width: 1024px) {
-  .site-header__logo img {
-    width: 9rem;
-  }
-
   .main-nav__list a {
     font-size: var(--fs-base);
   }
-
-  .hero {
-    min-height: 85vh;
-  }
-
-  .film-section {
-    padding-top: var(--space-2xl);
-  }
-
-  .signup {
-    max-width: 48rem;
-  }
-
-  .signup-form fieldset:last-of-type {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-sm);
-  }
-
-  .site-footer {
-    grid-template-columns: 1fr 1fr 2fr;
-    align-items: start;
-  }
-
-  .site-footer__legal {
-    grid-column: auto;
-    padding-top: 0;
-    border-top: 0;
-  }
 }
-
-/* Ordinateur : bouton de recherche en texte, catalogue en 4 colonnes */
+/* Ordinateur : bouton de recherche en texte */
 @media (min-width: 1280px) {
   .main-nav__list {
     gap: var(--space-xl);
   }
-
   .search-form__input {
     width: 12rem;
   }
-
   .search-form__input:focus {
     width: 16rem;
   }
-
   .search-form__button {
     width: auto;
     padding-inline: var(--space-md);
     font-size: var(--fs-sm);
   }
-
   .search-form__button::before,
   .search-form__button::after {
     content: none;
   }
-
   .profile-menu summary {
     font-size: var(--fs-sm);
   }
-
-  .masonry {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
-
-/* Grand écran : noms des thèmes visibles, catalogue en 5 colonnes */
+/* Grand écran : noms des thèmes visibles */
 @media (min-width: 1600px) {
   .theme-switcher label {
     padding-right: var(--space-sm);
   }
-
   .theme-switcher__name {
     position: static;
     width: auto;
@@ -1731,45 +1596,253 @@ main:focus {
     overflow: visible;
     clip-path: none;
   }
+}
+/* ==========================================================================
+   SECTIONS DE FILMS
+   ========================================================================== */
+.film-section {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--gutter) 0;
+}
 
-  .hero__content {
-    max-width: 46rem;
+/* Grille Bootstrap : .row + colonnes col-9 (mobile), col-sm-6, col-md-4 (3 par ligne).
+   Mobile : flex-nowrap garde les cartes sur une ligne = carrousel horizontal avec scroll-snap */
+.film-grid {
+  margin-top: var(--space-xs);
+  padding-bottom: var(--space-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Chaque carte est un conteneur (container queries) avec une perspective pour la 3D */
+.film-grid__item,
+.masonry__item {
+  container-type: inline-size;
+  perspective: 62.5rem;
+}
+
+.film-grid__item {
+  display: flex;
+  scroll-snap-align: start;
+}
+
+/* Apparition en cascade : cartes cachées jusqu'à ce que la grille soit visible (classe .is-visible en JS),
+   chacune décalée de 90ms selon sa position --i */
+.js .film-grid__item,
+.js .masonry__item {
+  opacity: 0;
+}
+
+.js .is-visible > .film-grid__item,
+.js .is-visible > .masonry__item {
+  opacity: 1;
+  animation: reveal var(--duration-slow) var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.96);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* ==========================================================================
+   GRILLE MASONRY (section catalogue)
+   ========================================================================== */
+.masonry {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+}
 
+/* Simulation : rangées de 8px, le JS calcule combien de rangées chaque carte occupe (grid-row-end: span N) */
+.masonry--js {
+  grid-auto-rows: 0.5rem;
+}
+
+.masonry__item {
+  transition: transform 500ms var(--ease-out);
+}
+
+/* Masonry natif pour les navigateurs qui le gèrent déjà */
+@supports (grid-template-rows: masonry) {
+  .masonry {
+    grid-template-rows: masonry;
+  }
+}
+/* ==========================================================================
+   FORMULAIRE D'INSCRIPTION
+   ========================================================================== */
+.signup {
+  max-width: 40rem;
+  margin: var(--space-2xl) auto 0;
+  padding: var(--space-xl) var(--gutter);
+  background-color: var(--color-panel);
+  border-block: 1px solid var(--color-border);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.signup-form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.signup-form legend {
+  float: none;
+  margin-bottom: var(--space-md);
+  padding: 0;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.form-group label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.form-group input {
+  min-height: 3rem;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease, box-shadow var(--duration-fast) ease;
+}
+
+.form-group input:hover {
+  border-color: var(--color-text-muted);
+}
+
+.form-group input:focus {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-text);
+}
+
+/* Champ invalide signalé seulement après que l'utilisateur l'a modifié */
+.form-group input:user-invalid {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.form-help {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.form-choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-sm);
+}
+
+.form-choice input {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-choice label {
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+
+.form-choice:hover label {
+  color: var(--color-text-muted);
+}
+
+.signup-form fieldset:last-of-type .form-choice {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) ease, background-color var(--duration-fast) ease;
+}
+
+.signup-form fieldset:last-of-type .form-choice:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-text-muted);
+}
+
+/* Formule cochée mise en valeur grâce à :has() */
+.signup-form fieldset:last-of-type .form-choice:has(input:checked) {
+  background-color: var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+.signup-form > .btn {
+  min-height: 3rem;
+}
+
+/* Tablette : grille de 3 cartes, catalogue en 3 colonnes, formulaire encadré */
+@media (min-width: 768px) {
+  .film-grid {
+    overflow: visible;
+  }
+  .masonry {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+  .signup {
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+}
+/* Petit ordinateur : plus d'espace, formules sur une ligne */
+@media (min-width: 1024px) {
+  .film-section {
+    padding-top: var(--space-2xl);
+  }
+  .signup {
+    max-width: 48rem;
+  }
+  .signup-form fieldset:last-of-type {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+}
+/* Ordinateur : catalogue en 4 colonnes */
+@media (min-width: 1280px) {
+  .masonry {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+/* Grand écran : catalogue en 5 colonnes */
+@media (min-width: 1600px) {
   .masonry {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
-/* ==========================================================================
-   17. PRÉFÉRENCES DE L'UTILISATEUR
-   ========================================================================== */
-
-/* Écrans tactiles : pas d'effet de survol bloqué après un tap */
-@media (hover: none) {
-  .film-card:hover {
-    transform: none;
-  }
-}
-
-/* Animations coupées si l'utilisateur les a désactivées dans son système */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-
-  .hero__background,
-  .hero::before,
-  .hero__content {
-    transform: none;
-    opacity: 1;
-  }
-}
+/*# sourceMappingURL=style.css.map */

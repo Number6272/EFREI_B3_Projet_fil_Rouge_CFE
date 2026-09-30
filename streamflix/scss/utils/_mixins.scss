@@ -1,0 +1,75 @@
+// ==========================================================================
+// UTILS / MIXINS
+// Blocs de code réutilisables. Ce fichier ne génère aucun CSS
+// tant qu'un mixin n'est pas appelé avec @include.
+// ==========================================================================
+
+@use "sass:map";
+@use "variables" as *;
+
+// --------------------------------------------------------------------------
+// Media query mobile-first à partir d'un nom de la map $breakpoints
+// Exemple : @include respond-to(tablette) { ... }  →  @media (min-width: 768px)
+// --------------------------------------------------------------------------
+@mixin respond-to($name) {
+  $width: map.get($breakpoints, $name);
+
+  @if $width == null {
+    @error "Breakpoint inconnu : #{$name}. Choix possibles : #{map.keys($breakpoints)}";
+  }
+
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+// --------------------------------------------------------------------------
+// Couleurs d'un bouton Bootstrap : Bootstrap lit ses couleurs dans des
+// variables --bs-btn-…, ce mixin les remplit en une ligne.
+// --------------------------------------------------------------------------
+@mixin bootstrap-button($background, $hover-background, $color: white, $hover-border: $hover-background) {
+  --bs-btn-bg: #{$background};
+  --bs-btn-border-color: #{$background};
+  --bs-btn-color: #{$color};
+  --bs-btn-hover-bg: #{$hover-background};
+  --bs-btn-hover-border-color: #{$hover-border};
+  --bs-btn-hover-color: #{$color};
+  --bs-btn-active-bg: #{$hover-background};
+  --bs-btn-active-border-color: #{$hover-border};
+  --bs-btn-active-color: #{$color};
+}
+
+// --------------------------------------------------------------------------
+// Masque un élément à l'écran tout en le laissant lisible par les lecteurs d'écran
+// $important: true ajoute !important (pour la classe utilitaire .visually-hidden)
+// --------------------------------------------------------------------------
+@mixin visually-hidden($important: false) {
+  $flag: null;
+
+  @if $important {
+    $flag: !important;
+  }
+
+  position: absolute $flag;
+  width: 1px $flag;
+  height: 1px $flag;
+  padding: 0 $flag;
+  margin: -1px $flag;
+  overflow: hidden $flag;
+  clip: rect(0 0 0 0) $flag;
+  clip-path: inset(50%) $flag;
+  white-space: nowrap $flag;
+  border: 0 $flag;
+}
+
+// --------------------------------------------------------------------------
+// Défilement horizontal sans barre visible (onglets de sections)
+// --------------------------------------------------------------------------
+@mixin hide-scrollbar {
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

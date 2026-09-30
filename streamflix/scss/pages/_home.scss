@@ -1,0 +1,273 @@
+// ==========================================================================
+// PAGES / ACCUEIL
+// Sections de films (grille Bootstrap), catalogue masonry, formulaire d'inscription.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   SECTIONS DE FILMS
+   ========================================================================== */
+
+.film-section {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding: var(--space-xl) var(--gutter) 0;
+}
+
+/* Grille Bootstrap : .row + colonnes col-9 (mobile), col-sm-6, col-md-4 (3 par ligne).
+   Mobile : flex-nowrap garde les cartes sur une ligne = carrousel horizontal avec scroll-snap */
+.film-grid {
+  margin-top: var(--space-xs);
+  padding-bottom: var(--space-lg);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+/* Chaque carte est un conteneur (container queries) avec une perspective pour la 3D */
+.film-grid__item,
+/* Glissement des cartes vers leur nouvelle place au redimensionnement (technique FLIP en JS) */
+.masonry__item {
+  container-type: inline-size;
+  perspective: 62.5rem;
+}
+
+.film-grid__item {
+  display: flex;
+  scroll-snap-align: start;
+}
+
+/* Apparition en cascade : cartes cachées jusqu'à ce que la grille soit visible (classe .is-visible en JS),
+   chacune décalée de 90ms selon sa position --i */
+.js .film-grid__item,
+.js .masonry__item {
+  opacity: 0;
+}
+
+.js .is-visible > .film-grid__item,
+.js .is-visible > .masonry__item {
+  opacity: 1;
+  animation: reveal var(--duration-slow) var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 90ms);
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(2rem) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   GRILLE MASONRY (section catalogue)
+   ========================================================================== */
+
+.masonry {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-bottom: var(--space-lg);
+}
+
+/* Simulation : rangées de 8px, le JS calcule combien de rangées chaque carte occupe (grid-row-end: span N) */
+.masonry--js {
+  grid-auto-rows: 0.5rem;
+}
+
+.masonry__item {
+  transition: transform 500ms var(--ease-out);
+}
+
+/* Masonry natif pour les navigateurs qui le gèrent déjà */
+@supports (grid-template-rows: masonry) {
+  .masonry {
+    grid-template-rows: masonry;
+  }
+}
+
+/* ==========================================================================
+   FORMULAIRE D'INSCRIPTION
+   ========================================================================== */
+
+.signup {
+  max-width: 40rem;
+  margin: var(--space-2xl) auto 0;
+  padding: var(--space-xl) var(--gutter);
+  background-color: var(--color-panel);
+  border-block: 1px solid var(--color-border);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.signup-form fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+}
+
+.signup-form legend {
+  float: none;
+  margin-bottom: var(--space-md);
+  padding: 0;
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.form-group label {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+}
+
+.form-group input {
+  min-height: 3rem;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease,
+    box-shadow var(--duration-fast) ease;
+}
+
+.form-group input:hover {
+  border-color: var(--color-text-muted);
+}
+
+.form-group input:focus {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-text);
+}
+
+/* Champ invalide signalé seulement après que l'utilisateur l'a modifié */
+.form-group input:user-invalid {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.form-help {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.form-choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--fs-sm);
+}
+
+.form-choice input {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  accent-color: var(--color-primary);
+  cursor: pointer;
+}
+
+.form-choice label {
+  cursor: pointer;
+  transition: color var(--duration-fast) ease;
+}
+
+.form-choice:hover label {
+  color: var(--color-text-muted);
+}
+
+.signup-form fieldset:last-of-type .form-choice {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition:
+    border-color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.signup-form fieldset:last-of-type .form-choice:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-text-muted);
+}
+
+/* Formule cochée mise en valeur grâce à :has() */
+.signup-form fieldset:last-of-type .form-choice:has(input:checked) {
+  background-color: var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+.signup-form > .btn {
+  min-height: 3rem;
+}
+
+/* Tablette : grille de 3 cartes, catalogue en 3 colonnes, formulaire encadré */
+@include respond-to(tablette) {
+  .film-grid {
+    overflow: visible;
+  }
+
+  .masonry {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-lg);
+  }
+
+  .signup {
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+}
+
+/* Petit ordinateur : plus d'espace, formules sur une ligne */
+@include respond-to(petit-ordi) {
+  .film-section {
+    padding-top: var(--space-2xl);
+  }
+
+  .signup {
+    max-width: 48rem;
+  }
+
+  .signup-form fieldset:last-of-type {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+/* Ordinateur : catalogue en 4 colonnes */
+@include respond-to(ordi) {
+  .masonry {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Grand écran : catalogue en 5 colonnes */
+@include respond-to(grand-ecran) {
+  .masonry {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}

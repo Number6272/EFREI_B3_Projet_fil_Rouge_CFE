@@ -1,0 +1,341 @@
+// ==========================================================================
+// BASE / RESET
+// Thèmes (variables CSS), reset, accessibilité. Complète le « Reboot » de Bootstrap.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   THÈMES : variables de couleur animables
+   ========================================================================== */
+
+/* @property déclare chaque variable comme une vraie couleur (<color>) :
+   sans ça, le navigateur ne peut pas animer le passage d'un thème à l'autre. */
+@property --color-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+
+@property --color-bg-elevated {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+
+@property --color-surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: dimgray;
+}
+
+@property --color-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: dimgray;
+}
+
+@property --color-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: whitesmoke;
+}
+
+@property --color-text-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: darkgray;
+}
+
+@property --color-primary {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: crimson;
+}
+
+@property --color-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: gold;
+}
+
+@property --color-header-bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+
+@property --color-panel {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+
+/* ==========================================================================
+   CHARTE GRAPHIQUE (thème sombre par défaut)
+   ========================================================================== */
+
+/* Couleurs : fond, surfaces, textes, rouge principal, or des notes */
+:root {
+  --color-bg: #{$bg-dark};
+  --color-bg-elevated: #{$primary-dark};
+  --color-surface: dimgray;
+  --color-border: dimgray;
+  --color-text: #{$text-dark-theme};
+  --color-text-muted: #{$text-muted};
+  --color-primary: #{$primary-red};
+  --color-primary-hover: #{$primary-red-hover};
+  --color-accent: #{$accent-gold};
+  --color-header-bg: black;
+  --color-panel: black;
+  --color-skeleton: gray;
+  --color-shadow: black;
+  --color-focus: white;
+  --color-hero-text: #{$text-light};
+  --color-hero-muted: lightgray;
+
+  /* Typographies et tailles de texte fluides avec clamp(min, idéal, max) */
+  --font-body: #{$font-primary};
+  --font-title: #{$font-title};
+
+  --fs-xs: 0.75rem;
+  --fs-sm: #{$font-size-small};
+  --fs-base: #{$font-size-base};
+  --fs-lg: clamp(1.125rem, 1rem + 0.5vw, #{$font-size-large});
+  --fs-xl: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  --fs-hero: clamp(2.75rem, 1.5rem + 6vw, 6rem);
+
+  /* Espacements réutilisés partout */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+
+  /* Mise en page : marge latérale fluide, largeur max, hauteur du header (mise à jour en JS) */
+  --gutter: clamp(1rem, 4vw, 3.5rem);
+  --content-max: 90rem;
+  --header-height: 10rem;
+
+  /* Arrondis et ombres */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 0.5rem 1.5rem var(--color-shadow);
+  --shadow-card-hover: 0 1rem 2.5rem var(--color-shadow);
+
+  /* Courbe et durées des animations */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-theme: 600ms;
+
+  color-scheme: dark;
+}
+
+/* Thème clair : activé par le bouton radio (:has) ou par data-theme posé en JS */
+:is(:root[data-theme="clair"], :root:has(#theme-clair:checked)) {
+  --color-bg: whitesmoke;
+  --color-bg-elevated: white;
+  --color-surface: gainsboro;
+  --color-border: lightgray;
+  --color-text: black;
+  --color-text-muted: dimgray;
+  --color-primary: crimson;
+  --color-primary-hover: darkred;
+  --color-accent: darkgoldenrod;
+  --color-header-bg: whitesmoke;
+  --color-panel: white;
+  --color-skeleton: whitesmoke;
+  --color-shadow: darkgray;
+  --color-focus: black;
+
+  color-scheme: light;
+}
+
+/* Thème cinéma (sépia) : tons papier ancien et bruns */
+:is(:root[data-theme="sepia"], :root:has(#theme-sepia:checked)) {
+  --color-bg: antiquewhite;
+  --color-bg-elevated: oldlace;
+  --color-surface: wheat;
+  --color-border: tan;
+  --color-text: maroon;
+  --color-text-muted: saddlebrown;
+  --color-primary: sienna;
+  --color-primary-hover: brown;
+  --color-accent: darkgoldenrod;
+  --color-header-bg: antiquewhite;
+  --color-panel: oldlace;
+  --color-skeleton: antiquewhite;
+  --color-shadow: tan;
+  --color-focus: maroon;
+
+  color-scheme: light;
+}
+
+/* Transition douce entre thèmes, activée après le chargement pour éviter une animation à l'ouverture */
+:root.theme-ready {
+  transition:
+    --color-bg var(--duration-theme) ease,
+    --color-bg-elevated var(--duration-theme) ease,
+    --color-surface var(--duration-theme) ease,
+    --color-border var(--duration-theme) ease,
+    --color-text var(--duration-theme) ease,
+    --color-text-muted var(--duration-theme) ease,
+    --color-primary var(--duration-theme) ease,
+    --color-accent var(--duration-theme) ease,
+    --color-header-bg var(--duration-theme) ease,
+    --color-panel var(--duration-theme) ease;
+}
+
+/* ==========================================================================
+   BASE ET RESET
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+/* Bootstrap (Reboot) ajoute des marges aux titres, paragraphes et listes : on les remet à zéro */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+dl,
+dd,
+address {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button {
+  font: inherit;
+  color: inherit;
+}
+
+button,
+summary {
+  cursor: pointer;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: color var(--duration-fast) ease;
+}
+
+a:hover {
+  color: var(--color-text-muted);
+}
+
+/* Contour visible uniquement à la navigation clavier */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   ACCESSIBILITÉ
+   ========================================================================== */
+
+/* Masque visuellement un élément tout en le laissant lisible par les lecteurs d'écran */
+.visually-hidden,
+.hero__meta dt,
+.film-card__meta dt {
+  @include visually-hidden(true);
+}
+
+/* Lien d'évitement : caché au-dessus de l'écran, il descend quand il reçoit le focus (touche Tab) */
+.skip-link {
+  position: absolute;
+  top: var(--space-xs);
+  left: var(--space-xs);
+  z-index: 1000;
+  padding: var(--space-sm) var(--space-md);
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  transform: translateY(-200%);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.skip-link:hover {
+  color: white;
+  background-color: var(--color-primary-hover);
+}
+
+main:focus {
+  outline: none;
+}
+
+/* Animations coupées si l'utilisateur les a désactivées dans son système */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,31 @@
+// ==========================================================================
+// STREAMFLIX : FICHIER PRINCIPAL SASS (architecture 7-1)
+//
+// Il ne contient aucun style : il charge les partials dans l'ordre.
+// Compilation : npm run sass (automatique à chaque sauvegarde)
+// Résultat : css/style.css + css/style.css.map
+// Le CSS de Bootstrap est chargé par le CDN AVANT css/style.css (voir index.html).
+// ==========================================================================
+
+// 1. Vendors : personnalisation de Bootstrap
+@use "vendors/bootstrap-custom";
+
+// 2. Base : thèmes, reset, accessibilité, typographie
+@use "base/reset";
+@use "base/typography";
+
+// 3. Layout : grandes zones de la page
+@use "layout/header";
+@use "layout/hero";
+@use "layout/footer";
+
+// 4. Components : éléments réutilisables
+@use "components/buttons";
+@use "components/cards";
+@use "components/navigation";
+
+// 5. Pages : styles propres à la page d'accueil
+@use "pages/home";
+
+// utils/ (variables et mixins) n'est pas listé ici : chaque partial
+// le charge lui-même avec @use, car il ne produit aucun CSS.

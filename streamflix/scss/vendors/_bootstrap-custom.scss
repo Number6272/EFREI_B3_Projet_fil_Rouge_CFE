@@ -1,0 +1,34 @@
+// ==========================================================================
+// VENDORS / PERSONNALISATION DE BOOTSTRAP
+//
+// Le CSS complet de Bootstrap 5.3 est chargé par le CDN (index.html).
+// Ici on change les variables SASS de Bootstrap avec la charte StreamFlix,
+// puis on importe seulement ses outils (aucun CSS généré) et son fichier
+// « root » : il réécrit les variables CSS --bs-* avec nos couleurs,
+// ce qui écrase celles du CDN.
+// ==========================================================================
+
+@use "../utils/variables" as sf;
+
+// 1. Variables Bootstrap personnalisées (Bootstrap utilise !default : nos valeurs passent avant)
+$primary: sf.$primary-red;
+$secondary: sf.$secondary-gray;
+$info: sf.$accent-blue;
+$dark: sf.$primary-dark;
+$link-color: sf.$primary-red;
+$font-family-sans-serif: sf.$font-primary;
+$body-bg-dark: sf.$bg-dark;
+$body-color-dark: sf.$text-dark-theme;
+$body-tertiary-bg-dark: sf.$primary-dark;
+$link-color-dark: sf.$primary-red;
+$focus-ring-color: rgba(sf.$primary-red, 0.35);
+
+// 2. Outils de Bootstrap (fonctions, variables, mixins : aucun CSS généré)
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+// 3. Variables CSS de Bootstrap (--bs-primary, --bs-link-color…) régénérées avec nos couleurs
+@import "bootstrap/scss/root";

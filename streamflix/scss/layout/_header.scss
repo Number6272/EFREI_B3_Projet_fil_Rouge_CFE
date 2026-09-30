@@ -1,0 +1,88 @@
+// ==========================================================================
+// LAYOUT / HEADER
+// En-tête collant qui se compacte au défilement, et sa seconde ligne.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   HEADER (sticky, se réduit au scroll)
+   ========================================================================== */
+
+/* Le header contient la navbar Bootstrap (logo, bouton hamburger, menu) puis la ligne des sections */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  padding: var(--space-sm) var(--gutter) 0;
+  background-color: var(--color-header-bg);
+  border-bottom: 1px solid var(--color-border);
+  transition:
+    padding var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) ease;
+}
+
+/* Classe ajoutée en JS après 120px de défilement : header plus compact */
+.site-header.is-scrolled {
+  padding-top: var(--space-xs);
+  box-shadow: 0 0.5rem 1.5rem var(--color-shadow);
+}
+
+.site-header__logo {
+  display: block;
+  flex-shrink: 0;
+  margin-right: var(--space-lg);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.site-header__logo:hover {
+  transform: scale(1.05);
+}
+
+.site-header__logo img {
+  width: 7.5rem;
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.site-header.is-scrolled .site-header__logo img {
+  width: 6rem;
+}
+
+/* Sur mobile, recherche, thèmes et profil sont empilés dans le menu déplié */
+.site-header__user {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm) var(--space-md);
+  padding-top: var(--space-sm);
+}
+
+/* ==========================================================================
+   SECONDE LIGNE DU HEADER (fil d'Ariane + onglets)
+   ========================================================================== */
+
+.site-header__sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 var(--space-lg);
+  width: 100%;
+}
+
+/* Navbar dépliée (992px) : recherche, thèmes et profil sur la même ligne que les liens */
+@include respond-to(navbar) {
+  .site-header__user {
+    flex-wrap: nowrap;
+    margin-left: auto;
+    padding-top: 0;
+  }
+}
+
+/* Petit ordinateur : logo plus grand */
+@include respond-to(petit-ordi) {
+  .site-header__logo img {
+    width: 9rem;
+  }
+}

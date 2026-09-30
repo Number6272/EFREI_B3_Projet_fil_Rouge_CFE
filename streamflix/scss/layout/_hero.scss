@@ -1,0 +1,211 @@
+// ==========================================================================
+// LAYOUT / HERO
+// Film à la une : image en parallaxe, dégradés, texte.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   HERO (parallax multi-couches)
+   ========================================================================== */
+
+/* Le Hero garde un texte clair quel que soit le thème, car il est posé sur une image sombre */
+.hero {
+  --color-text: var(--color-hero-text);
+  --color-text-muted: var(--color-hero-muted);
+
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 75vh;
+  min-height: 75svh;
+  padding: var(--space-2xl) var(--gutter);
+  overflow: hidden;
+  color: var(--color-text);
+  isolation: isolate;
+}
+
+/* Couche 1 : l'image, avec un léger zoom à l'arrivée */
+.hero picture {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  animation: hero-zoom 20s ease-out both;
+}
+
+/* --parallax = défilement en px (JS) : l'image descend à 45 % de la vitesse du scroll */
+.hero__background {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transform: translate3d(0, calc(var(--parallax, 0) * 0.45px), 0);
+  will-change: transform;
+}
+
+/* Couche fixe : dégradés pour rendre le texte lisible */
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(to top, var(--color-bg) 0%, transparent 12%),
+    linear-gradient(to right, black 0%, transparent 90%);
+}
+
+/* Couche 2 : halo rouge qui se déplace à 20 % de la vitesse du scroll */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: -20%;
+  right: -15%;
+  z-index: -1;
+  width: 80%;
+  aspect-ratio: 1;
+  background: radial-gradient(circle, crimson 0%, transparent 60%);
+  opacity: 0.3;
+  pointer-events: none;
+  transform: translate3d(0, calc(var(--parallax, 0) * 0.2px), 0);
+}
+
+/* Couche 3 : le texte remonte légèrement et s'efface en défilant */
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  max-width: 40rem;
+  opacity: calc(1 - var(--parallax, 0) / 600);
+  transform: translate3d(0, calc(var(--parallax, 0) * -0.15px), 0);
+  animation: fade-up var(--duration-slow) var(--ease-out) backwards;
+}
+
+.hero__label {
+  align-self: flex-start;
+  padding: var(--space-2xs) var(--space-xs);
+  background-color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  color: white;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-family: var(--font-title);
+  font-size: var(--fs-hero);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-shadow: 0 0.25rem 1.5rem black;
+}
+
+/* Infos du film (année, durée, note) alignées en ligne */
+.hero__meta,
+.film-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs) var(--space-md);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* La 3e info est la note : en couleur, précédée d'une étoile */
+.hero__meta div:nth-child(3) dd,
+.film-card__meta div:nth-child(3) dd {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.hero__meta div:nth-child(3) dd {
+  color: gold;
+}
+
+.hero__meta div:nth-child(3) dd::before,
+.film-card__meta div:nth-child(3) dd::before {
+  content: "★ ";
+}
+
+.hero__description {
+  max-width: 36rem;
+  font-size: var(--fs-lg);
+  text-shadow: 0 1px 4px black;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.hero__actions .btn-light::before {
+  content: "";
+  border-top: 0.45em solid transparent;
+  border-bottom: 0.45em solid transparent;
+  border-left: 0.75em solid currentColor;
+}
+
+.hero__actions .btn[aria-pressed="true"] {
+  background-color: white;
+  color: black;
+}
+
+@keyframes hero-zoom {
+  from {
+    transform: scale(1.15);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Grand mobile : boutons plus larges */
+@include respond-to(grand-mobile) {
+  .hero__actions .btn {
+    padding-inline: var(--space-xl);
+  }
+}
+
+/* Tablette : texte centré verticalement */
+@include respond-to(tablette) {
+  .hero {
+    align-items: center;
+    min-height: 70vh;
+  }
+}
+
+@include respond-to(petit-ordi) {
+  .hero {
+    min-height: 85vh;
+  }
+}
+
+@include respond-to(grand-ecran) {
+  .hero__content {
+    max-width: 46rem;
+  }
+}
+
+/* Animations coupées : les couches de la parallaxe restent fixes */
+@media (prefers-reduced-motion: reduce) {
+  .hero__background,
+  .hero::before,
+  .hero__content {
+    transform: none;
+    opacity: 1;
+  }
+}

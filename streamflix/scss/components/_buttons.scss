@@ -1,0 +1,62 @@
+// ==========================================================================
+// COMPONENTS / BOUTONS
+// Boutons Bootstrap (.btn-primary, .btn-secondary, .btn-light) aux couleurs StreamFlix.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   BOUTONS
+   ========================================================================== */
+
+/* Les boutons sont des .btn Bootstrap (tailles btn-sm / btn-lg dans le HTML).
+   On garde seulement nos réglages en plus : icône alignée, gras, animation */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  font-weight: 700;
+  white-space: nowrap;
+  transition:
+    background-color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Bootstrap lit les couleurs d'un bouton dans des variables --bs-btn-… :
+   on leur donne les couleurs du thème StreamFlix (bleu par défaut dans Bootstrap) */
+.btn-primary {
+  @include bootstrap-button(var(--color-primary), var(--color-primary-hover));
+}
+
+.btn-secondary {
+  @include bootstrap-button($secondary-gray, $secondary-gray, $hover-border: var(--color-text));
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* Bouton « Ma liste » : un + quand le film n'est pas ajouté, une coche quand il l'est */
+.btn[aria-pressed]::before {
+  content: "+";
+  font-size: 1.25em;
+  line-height: 1;
+}
+
+.btn[aria-pressed="true"] {
+  background-color: var(--color-text);
+  color: var(--color-bg);
+}
+
+.btn[aria-pressed="true"]::before {
+  content: "✓";
+}

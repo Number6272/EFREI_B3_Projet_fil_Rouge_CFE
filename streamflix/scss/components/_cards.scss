@@ -1,0 +1,197 @@
+// ==========================================================================
+// COMPONENTS / CARTES DE FILMS
+// Composant .card de Bootstrap avec le style StreamFlix (survol 3D, skeleton, container queries).
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   CARTE DE FILM
+   ========================================================================== */
+
+/* Base : le composant .card de Bootstrap. Nos règles passent après et gardent le style StreamFlix */
+.film-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transform-origin: center;
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out);
+}
+
+/* Reflet lumineux qui traverse la carte au survol */
+.film-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(105deg, transparent 40%, white 50%, transparent 60%);
+  background-size: 250% 100%;
+  background-position: 100% 0;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity var(--duration-base) ease,
+    background-position var(--duration-slow) var(--ease-out);
+}
+
+/* Rotation 3D au survol ou au focus clavier */
+.film-card:hover,
+.film-card:focus-within {
+  transform: translateY(-0.375rem) rotateY(-8deg) rotateX(3deg) scale(1.02);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--color-border);
+}
+
+.film-card:hover::after {
+  opacity: 0.18;
+  background-position: 0 0;
+}
+
+/* Skeleton : dégradé animé en fond tant que l'affiche n'est pas chargée */
+.film-card__poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background-color: var(--color-surface);
+  background-image: linear-gradient(100deg, var(--color-surface) 30%, var(--color-skeleton) 50%, var(--color-surface) 70%);
+  background-size: 250% 100%;
+  animation: skeleton 1.4s linear infinite;
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    filter var(--duration-base) ease;
+}
+
+/* Affiche chargée (classe ajoutée en JS) : on arrête l'animation */
+.film-card__poster.is-loaded {
+  animation: none;
+  background-image: none;
+}
+
+.film-card:hover .film-card__poster {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+@keyframes skeleton {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: -150% 0;
+  }
+}
+
+.film-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--color-bg-elevated);
+}
+
+.film-card__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.film-card__title a {
+  text-decoration: none;
+}
+
+.film-card__title a:hover {
+  color: var(--color-primary);
+}
+
+.film-card__synopsis {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.film-card__meta {
+  gap: var(--space-xs) var(--space-sm);
+}
+
+.film-card__meta div:nth-child(4) {
+  width: 100%;
+}
+
+.film-card__genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.film-card__genres li {
+  padding: 0.125rem var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+  transition:
+    border-color var(--duration-fast) ease,
+    color var(--duration-fast) ease;
+}
+
+.film-card__genres li:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
+}
+
+.film-card__body .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* Container query : si la carte elle-même fait plus de 22rem, l'affiche passe à gauche */
+@container (min-width: 22rem) {
+  .film-card {
+    flex-direction: row;
+  }
+
+  .film-card__poster {
+    width: 42%;
+    flex-shrink: 0;
+  }
+
+  .film-card__body {
+    padding: var(--space-lg);
+  }
+}
+
+/* Container query : carte très étroite, contenu plus compact */
+@container (max-width: 12rem) {
+  .film-card__body {
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+  }
+
+  .film-card__title {
+    font-size: var(--fs-base);
+  }
+
+  .film-card__synopsis {
+    font-size: var(--fs-xs);
+  }
+
+  .film-card__meta {
+    font-size: var(--fs-xs);
+  }
+}
+
+/* Écrans tactiles : pas d'effet de survol bloqué après un tap */
+@media (hover: none) {
+  .film-card:hover {
+    transform: none;
+  }
+}

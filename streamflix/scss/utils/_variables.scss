@@ -1,0 +1,45 @@
+// ==========================================================================
+// UTILS / VARIABLES
+// Charte graphique StreamFlix. Ce fichier ne génère aucun CSS :
+// les autres fichiers le chargent avec @use pour utiliser ces valeurs.
+// ==========================================================================
+
+// --------------------------------------------------------------------------
+// Palette StreamFlix (imposée par la charte)
+// --------------------------------------------------------------------------
+$primary-red: #e50914;
+$primary-dark: #221f1f;
+$secondary-gray: #564d4d;
+$text-light: #ffffff;
+$text-muted: #999999;
+$accent-blue: #0071eb;
+
+// Couleurs complémentaires du thème sombre (couleurs nommées)
+$primary-red-hover: red;
+$bg-dark: black;
+$text-dark-theme: whitesmoke;
+$accent-gold: gold;
+
+// --------------------------------------------------------------------------
+// Typographie (imposée par la charte)
+// --------------------------------------------------------------------------
+$font-primary: 'Netflix Sans', 'Helvetica Neue', sans-serif;
+$font-secondary: 'Arial', sans-serif;
+$font-size-base: 16px;
+$font-size-large: 24px;
+$font-size-small: 14px;
+
+// Police des grands titres (titre du film à la une)
+$font-title: Impact, 'Arial Narrow Bold', 'Arial Black', $font-secondary;
+
+// --------------------------------------------------------------------------
+// Points de rupture (les mêmes qu'au jour 2, plus 992px pour la navbar Bootstrap)
+// --------------------------------------------------------------------------
+$breakpoints: (
+  grand-mobile: 480px,
+  tablette: 768px,
+  navbar: 992px,
+  petit-ordi: 1024px,
+  ordi: 1280px,
+  grand-ecran: 1600px
+);
