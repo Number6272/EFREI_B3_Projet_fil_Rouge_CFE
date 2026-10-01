@@ -73,3 +73,38 @@
     display: none;
   }
 }
+
+// --------------------------------------------------------------------------
+// Phase 3 : couleurs d'un badge de genre
+// Remplit les variables --bs-badge-… du composant .badge de Bootstrap
+// --------------------------------------------------------------------------
+@mixin genre-badge($color) {
+  --bs-badge-color: white;
+  background-color: $color;
+  border-color: $color;
+}
+
+// --------------------------------------------------------------------------
+// Phase 3 : ruban posé dans un coin d'une affiche
+// $color : couleur du fond, $corner : left ou right
+// --------------------------------------------------------------------------
+@mixin ribbon($color, $corner: left) {
+  position: absolute;
+  top: var(--space-sm);
+  #{$corner}: 0;
+  z-index: 3;
+  padding: var(--space-2xs) var(--space-sm);
+  background-color: $color;
+  color: white;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 0.25rem 0.75rem black;
+
+  @if $corner == left {
+    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+  } @else {
+    border-radius: var(--bs-border-radius) 0 0 var(--bs-border-radius);
+  }
+}

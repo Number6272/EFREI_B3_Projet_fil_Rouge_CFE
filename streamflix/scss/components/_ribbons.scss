@@ -1,0 +1,24 @@
+// ==========================================================================
+// COMPONENTS / RUBANS DES AFFICHES (Phase 3)
+// Composant SASS personnalisé : petite étiquette « Top 10 » ou « Nouveau »
+// posée dans le coin de l'affiche, générée avec le mixin ribbon().
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   RUBANS
+   ========================================================================== */
+
+/* Une classe par ruban : .film-ribbon--top, .film-ribbon--new */
+@each $name, $color in $ribbon-colors {
+  .film-ribbon--#{$name} {
+    @include ribbon($color);
+  }
+}
+
+/* Ombre plus marquée quand la carte se soulève au survol */
+.film-card:hover .film-ribbon {
+  box-shadow: 0 0.5rem 1rem black;
+}

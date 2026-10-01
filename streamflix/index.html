@@ -45,7 +45,7 @@
           <li class="nav-item"><a class="nav-link" href="#">Ma Liste</a></li>
         </ul>
 
-        <div class="site-header__user">
+        <div class="site-header__user ms-lg-auto">
           <form class="search-form" role="search" action="#" method="get">
             <label class="visually-hidden" for="recherche">Rechercher un film ou une série</label>
             <input class="search-form__input" type="search" id="recherche" name="q" placeholder="Titre, genre…" required minlength="2" maxlength="100" autocomplete="off">
@@ -117,7 +117,7 @@
 
         <p class="hero__description">Un voleur qui s'infiltre dans les rêves des autres pour voler leurs secrets découvre qu'il doit réaliser l'impossible : planter une idée plutôt que de la voler.</p>
 
-        <div class="hero__actions">
+        <div class="hero__actions d-flex flex-column flex-sm-row">
           <button class="btn btn-light btn-lg" type="button" aria-describedby="hero-titre">Lecture</button>
           <a class="btn btn-secondary btn-lg" href="#" aria-describedby="hero-titre">Plus d'infos</a>
           <button class="btn btn-secondary btn-lg" type="button" aria-pressed="false" aria-describedby="hero-titre">Ma liste</button>
@@ -132,6 +132,7 @@
       <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="tendances-dark-knight">
+            <span class="film-ribbon film-ribbon--top">Top 10</span>
             <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
             <div class="card-body film-card__body">
               <h3 class="card-title film-card__title" id="tendances-dark-knight">
@@ -145,9 +146,9 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Action</li>
-                      <li>Crime</li>
-                      <li>Drame</li>
+                      <li class="badge badge-genre badge-genre--action">Action</li>
+                      <li class="badge badge-genre badge-genre--crime">Crime</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
                     </ul>
                   </dd>
                 </div>
@@ -158,6 +159,7 @@
         </li>
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="tendances-interstellar">
+            <span class="film-ribbon film-ribbon--top">Top 10</span>
             <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
             <div class="card-body film-card__body">
               <h3 class="card-title film-card__title" id="tendances-interstellar">
@@ -171,8 +173,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Science-fiction</li>
-                      <li>Drame</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
                     </ul>
                   </dd>
                 </div>
@@ -183,6 +185,7 @@
         </li>
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="tendances-pulp-fiction">
+            <span class="film-ribbon film-ribbon--top">Top 10</span>
             <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
             <div class="card-body film-card__body">
               <h3 class="card-title film-card__title" id="tendances-pulp-fiction">
@@ -196,8 +199,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Crime</li>
-                      <li>Drame</li>
+                      <li class="badge badge-genre badge-genre--crime">Crime</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
                     </ul>
                   </dd>
                 </div>
@@ -229,8 +232,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Science-fiction</li>
-                      <li>Thriller</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--thriller">Thriller</li>
                     </ul>
                   </dd>
                 </div>
@@ -254,8 +257,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Action</li>
-                      <li>Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--action">Action</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
                     </ul>
                   </dd>
                 </div>
@@ -279,8 +282,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Drame</li>
-                      <li>Romance</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      <li class="badge badge-genre badge-genre--romance">Romance</li>
                     </ul>
                   </dd>
                 </div>
@@ -299,6 +302,7 @@
       <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="nouveautes-interstellar">
+            <span class="film-ribbon film-ribbon--new">Nouveau</span>
             <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
             <div class="card-body film-card__body">
               <h3 class="card-title film-card__title" id="nouveautes-interstellar">
@@ -312,8 +316,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Science-fiction</li>
-                      <li>Drame</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
                     </ul>
                   </dd>
                 </div>
@@ -324,6 +328,7 @@
         </li>
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="nouveautes-dark-knight">
+            <span class="film-ribbon film-ribbon--new">Nouveau</span>
             <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
             <div class="card-body film-card__body">
               <h3 class="card-title film-card__title" id="nouveautes-dark-knight">
@@ -337,9 +342,9 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Action</li>
-                      <li>Crime</li>
-                      <li>Drame</li>
+                      <li class="badge badge-genre badge-genre--action">Action</li>
+                      <li class="badge badge-genre badge-genre--crime">Crime</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
                     </ul>
                   </dd>
                 </div>
@@ -350,6 +355,7 @@
         </li>
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="nouveautes-inception">
+            <span class="film-ribbon film-ribbon--new">Nouveau</span>
             <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
             <div class="card-body film-card__body">
               <h3 class="card-title film-card__title" id="nouveautes-inception">
@@ -363,8 +369,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Science-fiction</li>
-                      <li>Thriller</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--thriller">Thriller</li>
                     </ul>
                   </dd>
                 </div>
@@ -397,8 +403,8 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Action</li>
-                      <li>Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--action">Action</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
                     </ul>
                   </dd>
                 </div>
@@ -422,9 +428,9 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Drame</li>
-                      <li>Romance</li>
-                      <li>Comédie</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      <li class="badge badge-genre badge-genre--romance">Romance</li>
+                      <li class="badge badge-genre badge-genre--comedie">Comédie</li>
                     </ul>
                   </dd>
                 </div>
@@ -464,7 +470,7 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Crime</li>
+                      <li class="badge badge-genre badge-genre--crime">Crime</li>
                     </ul>
                   </dd>
                 </div>
@@ -488,9 +494,9 @@
                   <dt>Genres</dt>
                   <dd>
                     <ul class="film-card__genres">
-                      <li>Action</li>
-                      <li>Crime</li>
-                      <li>Drame</li>
+                      <li class="badge badge-genre badge-genre--action">Action</li>
+                      <li class="badge badge-genre badge-genre--crime">Crime</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
                     </ul>
                   </dd>
                 </div>
@@ -578,8 +584,8 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <nav class="site-footer__links" aria-labelledby="footer-liens-titre">
+  <footer class="site-footer row g-4">
+    <nav class="site-footer__links col-12 col-md-6 col-lg-3" aria-labelledby="footer-liens-titre">
       <h2 id="footer-liens-titre">Liens utiles</h2>
       <ul>
         <li><a href="#">Aide</a></li>
@@ -589,7 +595,7 @@
       </ul>
     </nav>
 
-    <nav class="site-footer__social" aria-labelledby="footer-social-titre">
+    <nav class="site-footer__social col-12 col-md-6 col-lg-3" aria-labelledby="footer-social-titre">
       <h2 id="footer-social-titre">Suivez-nous</h2>
       <ul>
         <li><a href="#">Facebook</a></li>
@@ -599,7 +605,7 @@
       </ul>
     </nav>
 
-    <div class="site-footer__legal">
+    <div class="site-footer__legal col-12 col-lg-6">
       <address>
         StreamFlix SAS, 10 rue du Cinéma, 75000 Paris.
         Contact : <a href="mailto:contact@streamflix.example">contact@streamflix.example</a>

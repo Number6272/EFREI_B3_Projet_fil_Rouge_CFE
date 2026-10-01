@@ -75,7 +75,6 @@
 @include respond-to(navbar) {
   .site-header__user {
     flex-wrap: nowrap;
-    margin-left: auto;
     padding-top: 0;
   }
 }

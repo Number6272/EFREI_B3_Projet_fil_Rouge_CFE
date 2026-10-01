@@ -43,3 +43,25 @@ $breakpoints: (
   ordi: 1280px,
   grand-ecran: 1600px
 );
+
+// --------------------------------------------------------------------------
+// Phase 3 : couleurs des composants personnalisés
+// Couleurs nommées assez foncées pour un texte blanc lisible (contraste ≥ 4.5:1)
+// --------------------------------------------------------------------------
+
+// Badges de genre (une couleur par genre, voir components/_badges.scss)
+$genre-colors: (
+  action: firebrick,
+  comedie: sienna,
+  crime: dimgray,
+  drame: darkslateblue,
+  romance: mediumvioletred,
+  science-fiction: teal,
+  thriller: indigo
+);
+
+// Rubans posés sur les affiches (voir components/_ribbons.scss)
+$ribbon-colors: (
+  top: $primary-red,
+  new: $accent-blue
+);

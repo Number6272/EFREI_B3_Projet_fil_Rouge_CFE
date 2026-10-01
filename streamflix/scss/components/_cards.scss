@@ -133,21 +133,6 @@
   gap: var(--space-2xs);
 }
 
-.film-card__genres li {
-  padding: 0.125rem var(--space-xs);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  font-size: var(--fs-xs);
-  transition:
-    border-color var(--duration-fast) ease,
-    color var(--duration-fast) ease;
-}
-
-.film-card__genres li:hover {
-  border-color: var(--color-text-muted);
-  color: var(--color-text);
-}
-
 .film-card__body .btn {
   align-self: flex-start;
   margin-top: auto;

@@ -28,40 +28,40 @@
   --bs-secondary: #564d4d;
   --bs-success: #198754;
   --bs-info: #0071eb;
-  --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
+  --bs-warning: gold;
+  --bs-danger: #e50914;
   --bs-light: #f8f9fa;
   --bs-dark: #221f1f;
   --bs-primary-rgb: 229, 9, 20;
   --bs-secondary-rgb: 86, 77, 77;
   --bs-success-rgb: 25, 135, 84;
   --bs-info-rgb: 0, 113, 235;
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-danger-rgb: 220, 53, 69;
+  --bs-warning-rgb: 255, 215, 0;
+  --bs-danger-rgb: 229, 9, 20;
   --bs-light-rgb: 248, 249, 250;
   --bs-dark-rgb: 34, 31, 31;
   --bs-primary-text-emphasis: rgb(35.9215686275%, 1.4117647059%, 3.137254902%);
   --bs-secondary-text-emphasis: rgb(13.4901960784%, 12.0784313725%, 12.0784313725%);
   --bs-success-text-emphasis: rgb(3.9215686275%, 21.1764705882%, 13.1764705882%);
   --bs-info-text-emphasis: rgb(0%, 17.7254901961%, 36.862745098%);
-  --bs-warning-text-emphasis: rgb(40%, 30.2745098039%, 1.0980392157%);
-  --bs-danger-text-emphasis: rgb(34.5098039216%, 8.3137254902%, 10.8235294118%);
+  --bs-warning-text-emphasis: #665600;
+  --bs-danger-text-emphasis: rgb(35.9215686275%, 1.4117647059%, 3.137254902%);
   --bs-light-text-emphasis: #495057;
   --bs-dark-text-emphasis: #495057;
   --bs-primary-bg-subtle: rgb(97.9607843137%, 80.7058823529%, 81.568627451%);
   --bs-secondary-bg-subtle: rgb(86.7450980392%, 86.0392156863%, 86.0392156863%);
   --bs-success-bg-subtle: rgb(81.9607843137%, 90.5882352941%, 86.5882352941%);
   --bs-info-bg-subtle: rgb(80%, 88.862745098%, 98.431372549%);
-  --bs-warning-bg-subtle: rgb(100%, 95.137254902%, 80.5490196078%);
-  --bs-danger-bg-subtle: rgb(97.2549019608%, 84.1568627451%, 85.4117647059%);
+  --bs-warning-bg-subtle: #fff7cc;
+  --bs-danger-bg-subtle: rgb(97.9607843137%, 80.7058823529%, 81.568627451%);
   --bs-light-bg-subtle: rgb(98.6274509804%, 98.8235294118%, 99.0196078431%);
   --bs-dark-bg-subtle: #ced4da;
   --bs-primary-border-subtle: rgb(95.9215686275%, 61.4117647059%, 63.137254902%);
   --bs-secondary-border-subtle: rgb(73.4901960784%, 72.0784313725%, 72.0784313725%);
   --bs-success-border-subtle: rgb(63.9215686275%, 81.1764705882%, 73.1764705882%);
   --bs-info-border-subtle: rgb(60%, 77.7254901961%, 96.862745098%);
-  --bs-warning-border-subtle: rgb(100%, 90.2745098039%, 61.0980392157%);
-  --bs-danger-border-subtle: rgb(94.5098039216%, 68.3137254902%, 70.8235294118%);
+  --bs-warning-border-subtle: #ffef99;
+  --bs-danger-border-subtle: rgb(95.9215686275%, 61.4117647059%, 63.137254902%);
   --bs-light-border-subtle: #e9ecef;
   --bs-dark-border-subtle: #adb5bd;
   --bs-white-rgb: 255, 255, 255;
@@ -100,8 +100,8 @@
   --bs-border-style: solid;
   --bs-border-color: #dee2e6;
   --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
-  --bs-border-radius: 0.375rem;
-  --bs-border-radius-sm: 0.25rem;
+  --bs-border-radius: 0.25rem;
+  --bs-border-radius-sm: 0.125rem;
   --bs-border-radius-lg: 0.5rem;
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-xxl: 2rem;
@@ -116,8 +116,8 @@
   --bs-focus-ring-color: rgba(229, 9, 20, 0.35);
   --bs-form-valid-color: #198754;
   --bs-form-valid-border-color: #198754;
-  --bs-form-invalid-color: #dc3545;
-  --bs-form-invalid-border-color: #dc3545;
+  --bs-form-invalid-color: #e50914;
+  --bs-form-invalid-border-color: #e50914;
 }
 
 [data-bs-theme=dark] {
@@ -128,8 +128,8 @@
   --bs-body-bg-rgb: 0, 0, 0;
   --bs-emphasis-color: #fff;
   --bs-emphasis-color-rgb: 255, 255, 255;
-  --bs-secondary-color: rgba(245, 245, 245, 0.75);
-  --bs-secondary-color-rgb: 245, 245, 245;
+  --bs-secondary-color: #999999;
+  --bs-secondary-color-rgb: 153, 153, 153;
   --bs-secondary-bg: #343a40;
   --bs-secondary-bg-rgb: 52, 58, 64;
   --bs-tertiary-color: rgba(245, 245, 245, 0.5);
@@ -140,24 +140,24 @@
   --bs-secondary-text-emphasis: rgb(60.2352941176%, 58.1176470588%, 58.1176470588%);
   --bs-success-text-emphasis: rgb(45.8823529412%, 71.7647058824%, 59.7647058824%);
   --bs-info-text-emphasis: rgb(40%, 66.5882352941%, 95.2941176471%);
-  --bs-warning-text-emphasis: rgb(100%, 85.4117647059%, 41.6470588235%);
-  --bs-danger-text-emphasis: rgb(91.7647058824%, 52.4705882353%, 56.2352941176%);
+  --bs-warning-text-emphasis: #ffe766;
+  --bs-danger-text-emphasis: rgb(93.8823529412%, 42.1176470588%, 44.7058823529%);
   --bs-light-text-emphasis: #f8f9fa;
   --bs-dark-text-emphasis: #dee2e6;
   --bs-primary-bg-subtle: rgb(17.9607843137%, 0.7058823529%, 1.568627451%);
   --bs-secondary-bg-subtle: rgb(6.7450980392%, 6.0392156863%, 6.0392156863%);
   --bs-success-bg-subtle: rgb(1.9607843137%, 10.5882352941%, 6.5882352941%);
   --bs-info-bg-subtle: rgb(0%, 8.862745098%, 18.431372549%);
-  --bs-warning-bg-subtle: rgb(20%, 15.137254902%, 0.5490196078%);
-  --bs-danger-bg-subtle: rgb(17.2549019608%, 4.1568627451%, 5.4117647059%);
+  --bs-warning-bg-subtle: #332b00;
+  --bs-danger-bg-subtle: rgb(17.9607843137%, 0.7058823529%, 1.568627451%);
   --bs-light-bg-subtle: #343a40;
   --bs-dark-bg-subtle: #1a1d20;
   --bs-primary-border-subtle: rgb(53.8823529412%, 2.1176470588%, 4.7058823529%);
   --bs-secondary-border-subtle: rgb(20.2352941176%, 18.1176470588%, 18.1176470588%);
   --bs-success-border-subtle: rgb(5.8823529412%, 31.7647058824%, 19.7647058824%);
   --bs-info-border-subtle: rgb(0%, 26.5882352941%, 55.2941176471%);
-  --bs-warning-border-subtle: rgb(60%, 45.4117647059%, 1.6470588235%);
-  --bs-danger-border-subtle: rgb(51.7647058824%, 12.4705882353%, 16.2352941176%);
+  --bs-warning-border-subtle: #998100;
+  --bs-danger-border-subtle: rgb(53.8823529412%, 2.1176470588%, 4.7058823529%);
   --bs-light-border-subtle: #495057;
   --bs-dark-border-subtle: #343a40;
   --bs-heading-color: inherit;
@@ -168,7 +168,7 @@
   --bs-code-color: rgb(90.3529411765%, 52%, 71.0588235294%);
   --bs-highlight-color: whitesmoke;
   --bs-highlight-bg: rgb(40%, 30.2745098039%, 1.0980392157%);
-  --bs-border-color: #495057;
+  --bs-border-color: #564d4d;
   --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
   --bs-form-valid-color: rgb(45.8823529412%, 71.7647058824%, 59.7647058824%);
   --bs-form-valid-border-color: rgb(45.8823529412%, 71.7647058824%, 59.7647058824%);
@@ -583,7 +583,6 @@ main:focus {
 @media (min-width: 992px) {
   .site-header__user {
     flex-wrap: nowrap;
-    margin-left: auto;
     padding-top: 0;
   }
 }
@@ -789,9 +788,9 @@ main:focus {
 /* ==========================================================================
    FOOTER
    ========================================================================== */
+/* La grille du footer est faite avec Bootstrap dans le HTML :
+   row g-4, puis col-12 col-md-6 col-lg-3 (liens, réseaux) et col-12 col-lg-6 (mentions) */
 .site-footer {
-  display: grid;
-  gap: var(--space-xl);
   max-width: var(--content-max);
   margin: var(--space-2xl) auto 0;
   padding: var(--space-xl) var(--gutter);
@@ -827,6 +826,7 @@ main:focus {
 
 .site-footer__legal {
   display: grid;
+  align-content: start;
   gap: var(--space-sm);
   font-size: var(--fs-xs);
 }
@@ -839,25 +839,16 @@ main:focus {
   color: var(--color-text);
 }
 
-/* Tablette : 2 colonnes, mentions légales en dessous */
+/* Tablette : les mentions légales passent sous les 2 colonnes, séparées par un trait */
 @media (min-width: 768px) {
-  .site-footer {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .site-footer__legal {
-    grid-column: 1/-1;
     padding-top: var(--space-lg);
     border-top: 1px solid var(--color-border);
   }
 }
-/* Petit ordinateur : footer en 3 colonnes */
-@media (min-width: 1024px) {
-  .site-footer {
-    grid-template-columns: 1fr 1fr 2fr;
-    align-items: start;
-  }
+/* Navbar (992px, comme col-lg) : footer en 3 colonnes, plus de trait */
+@media (min-width: 992px) {
   .site-footer__legal {
-    grid-column: auto;
     padding-top: 0;
     border-top: 0;
   }
@@ -1045,19 +1036,6 @@ main:focus {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2xs);
-}
-
-.film-card__genres li {
-  padding: 0.125rem var(--space-xs);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-pill);
-  font-size: var(--fs-xs);
-  transition: border-color var(--duration-fast) ease, color var(--duration-fast) ease;
-}
-
-.film-card__genres li:hover {
-  border-color: var(--color-text-muted);
-  color: var(--color-text);
 }
 
 .film-card__body .btn {
@@ -1597,6 +1575,110 @@ main:focus {
     clip-path: none;
   }
 }
+/* ==========================================================================
+   BADGES DE GENRE
+   ========================================================================== */
+/* Base commune : tailles reprises des variables Bootstrap personnalisées */
+.badge-genre {
+  --bs-badge-padding-x: 0.75em;
+  --bs-badge-padding-y: 0.4em;
+  --bs-badge-font-size: 0.75em;
+  --bs-badge-font-weight: 700;
+  --bs-badge-border-radius: var(--bs-border-radius-pill);
+  border: 1px solid transparent;
+  letter-spacing: 0.02em;
+  transition: filter var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.badge-genre:hover {
+  filter: brightness(1.25);
+  transform: translateY(-1px);
+}
+
+/* Une classe par genre : .badge-genre--action, .badge-genre--drame… */
+.badge-genre--action {
+  --bs-badge-color: white;
+  background-color: firebrick;
+  border-color: firebrick;
+}
+
+.badge-genre--comedie {
+  --bs-badge-color: white;
+  background-color: sienna;
+  border-color: sienna;
+}
+
+.badge-genre--crime {
+  --bs-badge-color: white;
+  background-color: dimgray;
+  border-color: dimgray;
+}
+
+.badge-genre--drame {
+  --bs-badge-color: white;
+  background-color: darkslateblue;
+  border-color: darkslateblue;
+}
+
+.badge-genre--romance {
+  --bs-badge-color: white;
+  background-color: mediumvioletred;
+  border-color: mediumvioletred;
+}
+
+.badge-genre--science-fiction {
+  --bs-badge-color: white;
+  background-color: teal;
+  border-color: teal;
+}
+
+.badge-genre--thriller {
+  --bs-badge-color: white;
+  background-color: indigo;
+  border-color: indigo;
+}
+
+/* ==========================================================================
+   RUBANS
+   ========================================================================== */
+/* Une classe par ruban : .film-ribbon--top, .film-ribbon--new */
+.film-ribbon--top {
+  position: absolute;
+  top: var(--space-sm);
+  left: 0;
+  z-index: 3;
+  padding: var(--space-2xs) var(--space-sm);
+  background-color: #e50914;
+  color: white;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 0.25rem 0.75rem black;
+  border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+}
+
+.film-ribbon--new {
+  position: absolute;
+  top: var(--space-sm);
+  left: 0;
+  z-index: 3;
+  padding: var(--space-2xs) var(--space-sm);
+  background-color: #0071eb;
+  color: white;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  box-shadow: 0 0.25rem 0.75rem black;
+  border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+}
+
+/* Ombre plus marquée quand la carte se soulève au survol */
+.film-card:hover .film-ribbon {
+  box-shadow: 0 0.5rem 1rem black;
+}
+
 /* ==========================================================================
    SECTIONS DE FILMS
    ========================================================================== */

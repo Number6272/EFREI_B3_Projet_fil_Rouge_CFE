@@ -10,9 +10,9 @@
    FOOTER
    ========================================================================== */
 
+/* La grille du footer est faite avec Bootstrap dans le HTML :
+   row g-4, puis col-12 col-md-6 col-lg-3 (liens, réseaux) et col-12 col-lg-6 (mentions) */
 .site-footer {
-  display: grid;
-  gap: var(--space-xl);
   max-width: var(--content-max);
   margin: var(--space-2xl) auto 0;
   padding: var(--space-xl) var(--gutter);
@@ -48,6 +48,7 @@
 
 .site-footer__legal {
   display: grid;
+  align-content: start;
   gap: var(--space-sm);
   font-size: var(--fs-xs);
 }
@@ -60,28 +61,17 @@
   color: var(--color-text);
 }
 
-/* Tablette : 2 colonnes, mentions légales en dessous */
+/* Tablette : les mentions légales passent sous les 2 colonnes, séparées par un trait */
 @include respond-to(tablette) {
-  .site-footer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .site-footer__legal {
-    grid-column: 1 / -1;
     padding-top: var(--space-lg);
     border-top: 1px solid var(--color-border);
   }
 }
 
-/* Petit ordinateur : footer en 3 colonnes */
-@include respond-to(petit-ordi) {
-  .site-footer {
-    grid-template-columns: 1fr 1fr 2fr;
-    align-items: start;
-  }
-
+/* Navbar (992px, comme col-lg) : footer en 3 colonnes, plus de trait */
+@include respond-to(navbar) {
   .site-footer__legal {
-    grid-column: auto;
     padding-top: 0;
     border-top: 0;
   }

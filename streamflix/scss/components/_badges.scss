@@ -1,0 +1,40 @@
+// ==========================================================================
+// COMPONENTS / BADGES DE GENRE (Phase 3)
+// Composant SASS personnalisé construit sur le .badge de Bootstrap :
+// une couleur par genre, générée avec une boucle @each sur $genre-colors.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+@use "../vendors/bootstrap-custom" as bs;
+
+/* ==========================================================================
+   BADGES DE GENRE
+   ========================================================================== */
+
+/* Base commune : tailles reprises des variables Bootstrap personnalisées */
+.badge-genre {
+  --bs-badge-padding-x: #{bs.$badge-padding-x};
+  --bs-badge-padding-y: #{bs.$badge-padding-y};
+  --bs-badge-font-size: #{bs.$badge-font-size};
+  --bs-badge-font-weight: #{bs.$badge-font-weight};
+  --bs-badge-border-radius: var(--bs-border-radius-pill);
+
+  border: 1px solid transparent;
+  letter-spacing: 0.02em;
+  transition:
+    filter var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.badge-genre:hover {
+  filter: brightness(1.25);
+  transform: translateY(-1px);
+}
+
+/* Une classe par genre : .badge-genre--action, .badge-genre--drame… */
+@each $genre, $color in $genre-colors {
+  .badge-genre--#{$genre} {
+    @include genre-badge($color);
+  }
+}
