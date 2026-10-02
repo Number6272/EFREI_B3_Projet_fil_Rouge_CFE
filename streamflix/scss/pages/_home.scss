@@ -17,10 +17,9 @@
 }
 
 /* Grille Bootstrap : .row + colonnes col-9 (mobile), col-sm-6, col-md-4 (3 par ligne).
-   Mobile : flex-nowrap garde les cartes sur une ligne = carrousel horizontal avec scroll-snap */
+   Mobile : flex-nowrap garde les cartes sur une ligne = carrousel horizontal avec scroll-snap.
+   Espacements avec les utilitaires Bootstrap dans le HTML : mt-2 (haut) et pb-4 (bas) */
 .film-grid {
-  margin-top: var(--space-xs);
-  padding-bottom: var(--space-lg);
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-padding-inline: var(--gutter);
@@ -67,33 +66,19 @@
 }
 
 /* ==========================================================================
-   GRILLE MASONRY (section catalogue)
+   CATALOGUE (section « Tout le catalogue »)
    ========================================================================== */
 
+/* Grille Bootstrap dans le HTML (contrainte « grilles Bootstrap exclusivement ») :
+   row-cols-2 (mobile), row-cols-md-3, row-cols-xl-4, row-cols-xxl-5, espacement g-3 / g-md-4.
+   align-items-start : chaque carte garde sa hauteur naturelle */
 .masonry {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  align-items: start;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-  padding-bottom: var(--space-lg);
 }
 
-/* Simulation : rangées de 8px, le JS calcule combien de rangées chaque carte occupe (grid-row-end: span N) */
-.masonry--js {
-  grid-auto-rows: 0.5rem;
-}
-
+/* Les cartes glissent vers leur nouvelle place quand on redimensionne (technique FLIP en JS) */
 .masonry__item {
   transition: transform 500ms var(--ease-out);
-}
-
-/* Masonry natif pour les navigateurs qui le gèrent déjà */
-@supports (grid-template-rows: masonry) {
-  .masonry {
-    grid-template-rows: masonry;
-  }
 }
 
 /* ==========================================================================
@@ -108,11 +93,11 @@
   border-block: 1px solid var(--color-border);
 }
 
+/* Marge du haut : utilitaire Bootstrap mt-4 dans le HTML */
 .signup-form {
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  margin-top: var(--space-lg);
 }
 
 .signup-form fieldset {
@@ -223,15 +208,10 @@
   min-height: 3rem;
 }
 
-/* Tablette : grille de 3 cartes, catalogue en 3 colonnes, formulaire encadré */
+/* Tablette : grille de 3 cartes, formulaire encadré */
 @include respond-to(tablette) {
   .film-grid {
     overflow: visible;
-  }
-
-  .masonry {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: var(--space-lg);
   }
 
   .signup {
@@ -241,7 +221,7 @@
   }
 }
 
-/* Petit ordinateur : plus d'espace, formules sur une ligne */
+/* Petit ordinateur : plus d'espace (les formules passent sur une ligne grâce à col-lg-4 dans le HTML) */
 @include respond-to(petit-ordi) {
   .film-section {
     padding-top: var(--space-2xl);
@@ -249,25 +229,5 @@
 
   .signup {
     max-width: 48rem;
-  }
-
-  .signup-form fieldset:last-of-type {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-sm);
-  }
-}
-
-/* Ordinateur : catalogue en 4 colonnes */
-@include respond-to(ordi) {
-  .masonry {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
-}
-
-/* Grand écran : catalogue en 5 colonnes */
-@include respond-to(grand-ecran) {
-  .masonry {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }

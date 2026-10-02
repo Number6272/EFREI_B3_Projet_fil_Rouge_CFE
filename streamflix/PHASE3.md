@@ -1,12 +1,13 @@
 # Phase 3 : optimisation et personnalisation (sur le résultat de la Phase 2)
 
-Seules les 4 consignes de la Phase 3 ont été appliquées. `js/script.js`, `package.json` et `.gitignore` ne changent pas.
+Les 4 consignes de la Phase 3 sont appliquées, plus une mise en conformité avec les contraintes techniques obligatoires (section 5). `js/script.js` et `.gitignore` ne changent pas.
 
 Fichiers modifiés ou ajoutés :
 
 | Fichier | Changement |
 |---|---|
-| `index.html` | classes des badges de genre, rubans, utilitaires responsives |
+| `index.html` | badges de genre, rubans, utilitaires responsives et d'espacement, catalogue, formules et footer en grille Bootstrap |
+| `package.json` | `npm run build` produit un CSS compressé |
 | `scss/vendors/_bootstrap-custom.scss` | nouvelles variables Bootstrap |
 | `scss/utils/_variables.scss` | maps `$genre-colors` et `$ribbon-colors` |
 | `scss/utils/_mixins.scss` | mixins `genre-badge()` et `ribbon()` |
@@ -14,8 +15,8 @@ Fichiers modifiés ou ajoutés :
 | `scss/components/_ribbons.scss` | **nouveau** |
 | `scss/style.scss` | 2 lignes `@use` en plus |
 | `scss/components/_cards.scss` | ancien style des genres retiré (remplacé par les badges) |
-| `scss/layout/_header.scss`, `scss/layout/_footer.scss` | règles remplacées par des utilitaires Bootstrap |
-| `css/style.css`, `css/style.css.map` | recompilés (50 Ko, limite 150 Ko) |
+| `scss/layout/_header.scss`, `_footer.scss`, `_hero.scss`, `scss/pages/_home.scss` | règles de grille CSS et d'espacement remplacées par la grille et les utilitaires Bootstrap |
+| `css/style.css`, `css/style.css.map` | recompilés (35 Ko compressé, limite 150 Ko) |
 
 ## 1. Personnaliser les variables Bootstrap : `vendors/_bootstrap-custom.scss`
 
@@ -109,3 +110,90 @@ Testé dans Chromium (Playwright), page entière, après défilement complet :
 - Les badges et rubans passent le contraste AA (texte blanc sur couleur foncée).
 
 Pour tester toi-même : ouvre `index.html` dans Chrome, puis F12 et l'icône téléphone/tablette (mode responsive). Choisis iPhone SE, iPad, puis élargis la fenêtre.
+
+## 5. Vérification des contraintes techniques obligatoires
+
+| Contrainte | État | Où |
+|---|---|---|
+| CDN Bootstrap 5.3+ | ✅ | 5.3.8 dans le `<head>` de `index.html` |
+| Navigation avec collapse responsive | ✅ | `navbar-expand-lg`, bouton `navbar-toggler`, `collapse navbar-collapse` |
+| Grilles Bootstrap exclusivement | ✅ (corrigé) | voir ci-dessous |
+| Minimum 5 composants Bootstrap | ✅ 6 | Navbar, Collapse, Nav, Buttons, Cards, Badges |
+| Utilitaires Bootstrap pour l'espacement | ✅ (complété) | `p-0`, `m-0`, `mt-2`, `mt-4`, `pb-4`, `ms-lg-auto`, `g-2`, `g-3`, `g-4`, `gap-2`, `gap-3` |
+| Architecture 7-1 | ✅ | `base`, `components`, `layout`, `pages`, `utils`, `vendors` + `style.scss` |
+| Minimum 8 variables SASS | ✅ 20+ | `utils/_variables.scss` |
+| Au moins 2 mixins créés et utilisés | ✅ 6 | `utils/_mixins.scss` |
+| Variables Bootstrap personnalisées | ✅ | `vendors/_bootstrap-custom.scss` |
+| Compilation automatique | ✅ | `npm run sass` (mode `--watch`) |
+| Branche `cssNatif` | à faire chez toi | voir « Étape 1 » |
+| Branche `bootstrap-sass` | ✅ | Phases 2 et 3 |
+| Résultat visuel identique ou amélioré | ✅ | même design, plus badges, rubans, boutons pleine largeur sur mobile |
+| Performance maintenue ou améliorée | ✅ | CSS compressé : 35 Ko (le CSS natif du jour 2 fait 40 Ko) |
+| Structure de fichiers attendue | ✅ | tous les fichiers demandés existent, plus `_badges.scss` et `_ribbons.scss` |
+
+### Ce qui a été corrigé pour « grilles Bootstrap exclusivement »
+
+Trois endroits utilisaient encore `display: grid` :
+
+1. **Catalogue** (`<ul class="masonry">`) : il devient
+   `row row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 g-3 g-md-4 mt-2 pb-4 align-items-start`.
+   Il y a donc 2, 3, 4 puis 5 colonnes selon l'écran. La grille masonry CSS est supprimée de `_home.scss`. Les cartes gardent leur hauteur naturelle (`align-items-start`), mais elles ne s'emboîtent plus comme dans un mur de briques. Le glissement animé des cartes au redimensionnement marche toujours. Le JS n'a pas été modifié.
+2. **Formules d'abonnement** : les 3 choix sont dans `<div class="row g-3">` avec `<div class="col-12 col-lg-4">`. Ils sont empilés sur mobile et sur une ligne dès 992px, ce qui remplace la grille de 3 colonnes de `_home.scss`.
+3. **Footer** : liens en `d-flex flex-column gap-2`, réseaux sociaux en `row row-cols-2 g-2`, mentions légales en `d-flex flex-column gap-2`.
+
+### Espacements passés en utilitaires Bootstrap
+
+| Élément | Avant (SCSS) | Après (classe HTML) |
+|---|---|---|
+| Grilles de films | `margin-top`, `padding-bottom` | `mt-2 pb-4` |
+| Catalogue | `margin-top`, `padding-bottom`, `gap` | `mt-2 pb-4 g-3 g-md-4` |
+| Boutons du Hero | `gap` | `gap-3` |
+| Formulaire | `margin-top` | `mt-4` |
+| Footer | `gap` | `gap-2`, `g-2` |
+
+### Performance
+
+`npm run build` compile maintenant en mode compressé (`--style=compressed`) : 35 Ko au lieu de 50 Ko, avec la source map. `npm run sass` (le mode automatique pendant que tu travailles) reste lisible.
+
+## Étape 1 : préparation (branches git)
+
+Ce qu'il faut obtenir :
+
+| Branche | Contenu |
+|---|---|
+| `cssNatif` | le site du jour 2, en CSS natif (avant Bootstrap) |
+| `bootstrap-sass` | la migration : Phases 1, 2 et 3 |
+| `main` | Phase 1 aujourd'hui (tu pourras y fusionner `bootstrap-sass` à la fin si ton prof le demande) |
+
+**1. Voir si `cssNatif` existe déjà**
+```bash
+git branch -a
+```
+Si tu vois `cssNatif` (ou `remotes/origin/cssNatif`), c'est déjà fait : passe au point 3.
+
+**2. Créer `cssNatif` sur le dernier commit du jour 2** (celui juste avant « Phase 1 »)
+```bash
+git log --oneline main
+```
+Repère le commit juste **en dessous** de celui de la Phase 1 (par exemple `a1b2c3d Jour 2 …`), puis :
+```bash
+git branch cssNatif a1b2c3d
+git push -u origin cssNatif
+```
+Remplace `a1b2c3d` par ton vrai numéro de commit. La branche est créée sans changer de branche ni toucher à tes fichiers.
+
+**3. Envoyer la Phase 3 sur `bootstrap-sass`**
+```bash
+git checkout bootstrap-sass
+git branch            # l'étoile doit être devant bootstrap-sass
+rm -rf scss css/style.css css/style.css.map
+unzip -o ~/Downloads/streamflix-phase3.zip
+npm run build
+open index.html
+git add -A
+git status            # node_modules/ ne doit PAS apparaître
+git commit -m "Phase 3 : optimisation, personnalisation et contraintes"
+git push -u origin bootstrap-sass
+```
+
+**4. Vérifier sur GitHub** : le menu des branches doit montrer `main`, `cssNatif` et `bootstrap-sass`.

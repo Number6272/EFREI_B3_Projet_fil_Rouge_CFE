@@ -117,7 +117,7 @@
 
         <p class="hero__description">Un voleur qui s'infiltre dans les rêves des autres pour voler leurs secrets découvre qu'il doit réaliser l'impossible : planter une idée plutôt que de la voler.</p>
 
-        <div class="hero__actions d-flex flex-column flex-sm-row">
+        <div class="hero__actions d-flex flex-column flex-sm-row gap-3">
           <button class="btn btn-light btn-lg" type="button" aria-describedby="hero-titre">Lecture</button>
           <a class="btn btn-secondary btn-lg" href="#" aria-describedby="hero-titre">Plus d'infos</a>
           <button class="btn btn-secondary btn-lg" type="button" aria-pressed="false" aria-describedby="hero-titre">Ma liste</button>
@@ -129,7 +129,7 @@
       <h2 class="film-section__title" id="tendances-titre">Tendances actuelles</h2>
       <p class="film-section__intro">Les films les mieux notés du moment.</p>
 
-      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
+      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="tendances-dark-knight">
             <span class="film-ribbon film-ribbon--top">Top 10</span>
@@ -216,7 +216,7 @@
       <h2 class="film-section__title" id="recommandes-titre">Recommandés pour vous</h2>
       <p class="film-section__intro">Une sélection variée choisie pour vous.</p>
 
-      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
+      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="recommandes-inception">
             <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
@@ -299,7 +299,7 @@
       <h2 class="film-section__title" id="nouveautes-titre">Nouveautés</h2>
       <p class="film-section__intro">Les derniers films ajoutés au catalogue.</p>
 
-      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap">
+      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
         <li class="film-grid__item col-9 col-sm-6 col-md-4">
           <article class="card film-card" aria-labelledby="nouveautes-interstellar">
             <span class="film-ribbon film-ribbon--new">Nouveau</span>
@@ -386,7 +386,7 @@
       <h2 class="film-section__title" id="catalogue-titre">Tout le catalogue</h2>
       <p class="film-section__intro">Tous nos films, du plus court résumé au plus long.</p>
 
-      <ul class="masonry">
+      <ul class="masonry row row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 g-3 g-md-4 mt-2 pb-4 align-items-start">
         <li class="masonry__item">
           <article class="card film-card" aria-labelledby="catalogue-matrix">
             <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
@@ -527,7 +527,7 @@
       <h2 class="signup__title" id="inscription-titre">Inscrivez-vous à StreamFlix</h2>
       <p class="signup__intro">Créez votre compte en une minute. Les champs marqués d'un astérisque (*) sont obligatoires.</p>
 
-      <form class="signup-form" action="#" method="post">
+      <form class="signup-form mt-4" action="#" method="post">
         <fieldset>
           <legend>Vos informations</legend>
 
@@ -556,17 +556,25 @@
 
         <fieldset>
           <legend>Choisissez votre formule *</legend>
-          <div class="form-choice">
-            <input type="radio" id="formule-essentiel" name="formule" value="essentiel" required>
-            <label for="formule-essentiel">Essentiel : 8,99 € par mois</label>
-          </div>
-          <div class="form-choice">
-            <input type="radio" id="formule-standard" name="formule" value="standard" checked>
-            <label for="formule-standard">Standard : 13,49 € par mois</label>
-          </div>
-          <div class="form-choice">
-            <input type="radio" id="formule-premium" name="formule" value="premium">
-            <label for="formule-premium">Premium : 19,99 € par mois</label>
+          <div class="row g-3">
+            <div class="col-12 col-lg-4">
+              <div class="form-choice">
+                <input type="radio" id="formule-essentiel" name="formule" value="essentiel" required>
+                <label for="formule-essentiel">Essentiel : 8,99 € par mois</label>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="form-choice">
+                <input type="radio" id="formule-standard" name="formule" value="standard" checked>
+                <label for="formule-standard">Standard : 13,49 € par mois</label>
+              </div>
+            </div>
+            <div class="col-12 col-lg-4">
+              <div class="form-choice">
+                <input type="radio" id="formule-premium" name="formule" value="premium">
+                <label for="formule-premium">Premium : 19,99 € par mois</label>
+              </div>
+            </div>
           </div>
         </fieldset>
 
@@ -587,7 +595,7 @@
   <footer class="site-footer row g-4">
     <nav class="site-footer__links col-12 col-md-6 col-lg-3" aria-labelledby="footer-liens-titre">
       <h2 id="footer-liens-titre">Liens utiles</h2>
-      <ul>
+      <ul class="d-flex flex-column gap-2">
         <li><a href="#">Aide</a></li>
         <li><a href="#">Contact</a></li>
         <li><a href="#">Mentions légales</a></li>
@@ -597,7 +605,7 @@
 
     <nav class="site-footer__social col-12 col-md-6 col-lg-3" aria-labelledby="footer-social-titre">
       <h2 id="footer-social-titre">Suivez-nous</h2>
-      <ul>
+      <ul class="row row-cols-2 g-2">
         <li><a href="#">Facebook</a></li>
         <li><a href="#">Instagram</a></li>
         <li><a href="#">X (Twitter)</a></li>
@@ -605,7 +613,7 @@
       </ul>
     </nav>
 
-    <div class="site-footer__legal col-12 col-lg-6">
+    <div class="site-footer__legal col-12 col-lg-6 d-flex flex-column gap-2">
       <address>
         StreamFlix SAS, 10 rue du Cinéma, 75000 Paris.
         Contact : <a href="mailto:contact@streamflix.example">contact@streamflix.example</a>

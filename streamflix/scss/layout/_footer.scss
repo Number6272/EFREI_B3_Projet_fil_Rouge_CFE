@@ -27,11 +27,7 @@
   font-size: var(--fs-base);
 }
 
-.site-footer ul {
-  display: grid;
-  gap: var(--space-xs);
-}
-
+/* Listes : d-flex flex-column gap-2 (liens) et row row-cols-2 g-2 (réseaux) dans le HTML */
 .site-footer ul a {
   text-decoration: none;
 }
@@ -41,15 +37,8 @@
   text-decoration: underline;
 }
 
-.site-footer__social ul {
-  grid-template-columns: repeat(2, max-content);
-  column-gap: var(--space-xl);
-}
-
+/* Mentions légales empilées avec d-flex flex-column gap-2 dans le HTML */
 .site-footer__legal {
-  display: grid;
-  align-content: start;
-  gap: var(--space-sm);
   font-size: var(--fs-xs);
 }
 
