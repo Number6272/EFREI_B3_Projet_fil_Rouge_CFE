@@ -118,7 +118,7 @@ Pour tester toi-même : ouvre `index.html` dans Chrome, puis F12 et l'icône té
 | CDN Bootstrap 5.3+ | ✅ | 5.3.8 dans le `<head>` de `index.html` |
 | Navigation avec collapse responsive | ✅ | `navbar-expand-lg`, bouton `navbar-toggler`, `collapse navbar-collapse` |
 | Grilles Bootstrap exclusivement | ✅ (corrigé) | voir ci-dessous |
-| Minimum 5 composants Bootstrap | ✅ 6 | Navbar, Collapse, Nav, Buttons, Cards, Badges |
+| Minimum 5 composants Bootstrap | ✅ 7 | Navbar, Collapse, Nav, Buttons, Cards, Badges, Modal |
 | Utilitaires Bootstrap pour l'espacement | ✅ (complété) | `p-0`, `m-0`, `mt-2`, `mt-4`, `pb-4`, `ms-lg-auto`, `g-2`, `g-3`, `g-4`, `gap-2`, `gap-3` |
 | Architecture 7-1 | ✅ | `base`, `components`, `layout`, `pages`, `utils`, `vendors` + `style.scss` |
 | Minimum 8 variables SASS | ✅ 20+ | `utils/_variables.scss` |
@@ -197,3 +197,27 @@ git push -u origin bootstrap-sass
 ```
 
 **4. Vérifier sur GitHub** : le menu des branches doit montrer `main`, `cssNatif` et `bootstrap-sass`.
+
+## Étape 4 : composants Bootstrap
+
+| Consigne | État | Où |
+|---|---|---|
+| Boutons en `btn` Bootstrap | ✅ (Phase 1) | `btn btn-light btn-lg`, `btn btn-secondary btn-lg / btn-sm`, `btn btn-primary btn-lg w-100` |
+| Badges pour les genres | ✅ (Phase 3) | `badge badge-genre badge-genre--…` dans toutes les cartes |
+| Tooltips ou modals | ✅ **ajouté** | modal « Plus d'infos » du Hero |
+| Utilitaires d'espacement | ✅ (Phase 3) | `mt-2`, `mt-4`, `pb-4`, `mb-3`, `gap-2`, `gap-3`, `g-*`, `ms-lg-auto` |
+
+### Modal « Plus d'infos »
+
+**index.html**
+- Le lien « Plus d'infos » du Hero devient un bouton qui ouvre la modal :
+  `<button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#infos-film" …>`
+- La modal est ajoutée juste avant `</body>` : `<div class="modal fade film-modal" id="infos-film">`, avec
+  `modal-dialog modal-dialog-centered modal-lg`, `modal-header` (titre + `btn-close`), `modal-body` et `modal-footer` (Fermer / Lecture).
+- Le contenu est mis en page avec la grille Bootstrap (`row g-4`, affiche en `col-5 col-sm-4`, texte en `col-12 col-sm-8`). Il reprend les badges de genre et des utilitaires (`img-fluid`, `rounded`, `mb-3`, `mx-auto`, `fs-4`).
+
+Aucun JavaScript à écrire : `bootstrap.bundle.min.js` (déjà chargé) gère l'ouverture, la fermeture (croix, bouton Fermer, touche Échap, clic à côté) et le focus clavier.
+
+**scss/components/_modal.scss** (nouveau, ajouté dans `style.scss`) : il donne à la modal les couleurs du thème avec les variables `--bs-modal-…`, et le titre dans la police d'affiche du Hero. La croix passe en blanc toute seule en thème sombre grâce à `data-bs-theme="dark"`.
+
+Testé à 375 et 1440px, thèmes sombre et clair : la modal s'ouvre et se ferme avec Échap, sans erreur.

@@ -119,7 +119,7 @@
 
         <div class="hero__actions d-flex flex-column flex-sm-row gap-3">
           <button class="btn btn-light btn-lg" type="button" aria-describedby="hero-titre">Lecture</button>
-          <a class="btn btn-secondary btn-lg" href="#" aria-describedby="hero-titre">Plus d'infos</a>
+          <button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#infos-film" aria-describedby="hero-titre">Plus d'infos</button>
           <button class="btn btn-secondary btn-lg" type="button" aria-pressed="false" aria-describedby="hero-titre">Ma liste</button>
         </div>
       </div>
@@ -621,5 +621,39 @@
       <p><small>&copy; <time datetime="2026">2026</time> StreamFlix. Tous droits réservés. Site réalisé dans le cadre d'un projet pédagogique.</small></p>
     </div>
   </footer>
+  <div class="modal fade film-modal" id="infos-film" tabindex="-1" aria-labelledby="infos-film-titre" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title fs-4" id="infos-film-titre">Inception</h2>
+          <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <div class="row g-4">
+            <div class="col-5 col-sm-4 mx-auto">
+              <img class="img-fluid rounded film-modal__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+            </div>
+            <div class="col-12 col-sm-8">
+              <dl class="film-card__meta mb-3">
+                <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
+                <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
+                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+              </dl>
+              <ul class="film-card__genres mb-3">
+                <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                <li class="badge badge-genre badge-genre--thriller">Thriller</li>
+              </ul>
+              <p class="mb-3">Dom Cobb est un voleur d'un genre unique : il s'infiltre dans les rêves pour dérober les secrets enfouis dans l'inconscient. Pour retrouver sa vie d'avant, il accepte une dernière mission, l'inception : implanter une idée dans l'esprit d'un héritier au lieu de la voler.</p>
+              <p class="film-modal__credits mb-0"><strong>Réalisation :</strong> Christopher Nolan<br><strong>Avec :</strong> Leonardo DiCaprio, Marion Cotillard, Elliot Page</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Fermer</button>
+          <button class="btn btn-primary" type="button">Lecture</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

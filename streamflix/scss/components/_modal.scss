@@ -1,0 +1,42 @@
+// ==========================================================================
+// COMPONENTS / MODAL « PLUS D'INFOS » (Étape 4)
+// Composant .modal de Bootstrap, ouvert par le bouton « Plus d'infos » du Hero
+// (data-bs-toggle="modal"). Bootstrap gère l'ouverture, la fermeture et le focus.
+// On lui donne seulement les couleurs du thème StreamFlix.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   MODAL
+   ========================================================================== */
+
+/* Bootstrap lit les couleurs de la modal dans des variables --bs-modal-… */
+.film-modal {
+  --bs-modal-bg: var(--color-bg-elevated);
+  --bs-modal-color: var(--color-text);
+  --bs-modal-border-color: var(--color-border);
+  --bs-modal-header-border-color: var(--color-border);
+  --bs-modal-footer-border-color: var(--color-border);
+  --bs-modal-border-radius: var(--radius-md);
+}
+
+/* Titre du film dans la police d'affiche, comme le Hero */
+.film-modal .modal-title {
+  font-family: var(--font-title);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Affiche : ombre portée pour la détacher du fond */
+.film-modal__poster {
+  box-shadow: var(--shadow-card);
+}
+
+.film-modal__credits {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
