@@ -26,6 +26,9 @@
 @use "components/badges";
 @use "components/ribbons";
 @use "components/modal";
+@use "components/carousel";
+@use "components/rating";
+@use "components/search";
 
 // 5. Pages : styles propres à la page d'accueil
 @use "pages/home";

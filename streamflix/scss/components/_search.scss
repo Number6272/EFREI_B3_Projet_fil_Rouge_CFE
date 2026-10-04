@@ -1,0 +1,86 @@
+// ==========================================================================
+// COMPONENTS / SUGGESTIONS DE RECHERCHE (bonus challenge 2)
+// Liste .list-group de Bootstrap remplie en JS pendant la frappe
+// (titres et genres du catalogue). Flèches haut/bas, Entrée et Échap au clavier.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   SUGGESTIONS
+   ========================================================================== */
+
+/* Le formulaire sert de repère pour placer la liste juste en dessous */
+.search-form {
+  position: relative;
+}
+
+.search-suggestions {
+  @include floating-panel;
+
+  --bs-list-group-bg: transparent;
+  --bs-list-group-color: var(--color-text);
+  --bs-list-group-border-color: var(--color-border);
+  --bs-list-group-action-hover-bg: var(--color-surface);
+  --bs-list-group-action-hover-color: var(--color-text);
+  --bs-list-group-active-bg: var(--color-primary);
+  --bs-list-group-active-border-color: var(--color-primary);
+  --bs-list-group-active-color: white;
+
+  position: absolute;
+  top: calc(100% + var(--space-2xs));
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  max-height: $suggestions-max-height;
+  overflow-y: auto;
+}
+
+.search-suggestions__item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.search-suggestions__title {
+  font-weight: 700;
+}
+
+/* Partie du titre qui correspond à la recherche */
+.search-suggestions__title mark {
+  padding: 0;
+  background-color: transparent;
+  color: var(--color-primary);
+}
+
+.search-suggestions__item.active .search-suggestions__title mark {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.search-suggestions__genres {
+  color: var(--color-text-muted);
+  font-size: var(--fs-xs);
+}
+
+.search-suggestions__item.active .search-suggestions__genres {
+  color: inherit;
+}
+
+.search-suggestions__empty {
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* Carte trouvée : halo rouge pendant quelques secondes (classe ajoutée en JS) */
+.film-card.is-found {
+  box-shadow: 0 0 0 3px var(--color-primary), var(--shadow-card-hover);
+}
+
+/* Tablette et plus : le champ est étroit, la liste garde une largeur lisible */
+@include respond-to(tablette) {
+  .search-suggestions {
+    width: 18rem;
+  }
+}

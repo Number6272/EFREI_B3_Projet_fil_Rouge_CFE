@@ -1,0 +1,82 @@
+// ==========================================================================
+// COMPONENTS / NOTATION PAR ÉTOILES (bonus challenge 2)
+// 5 boutons radio cachés + 5 labels dessinés en étoiles, sans JavaScript.
+// Dans le HTML les étoiles sont dans l'ordre 5 → 1 ; flex-direction: row-reverse
+// les affiche 1 → 5. Le sélecteur « ~ » colore alors l'étoile choisie
+// et toutes celles à sa gauche.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* ==========================================================================
+   NOTATION
+   ========================================================================== */
+
+.star-rating {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.star-rating__legend {
+  float: none;
+  margin-bottom: var(--space-2xs);
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+.star-rating__stars {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  gap: var(--space-2xs);
+}
+
+/* Chaque label est une étoile vide */
+.star-rating__stars label {
+  color: $star-empty-color;
+  font-size: $star-size;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    color var(--duration-fast) ease,
+    transform var(--duration-fast) ease;
+}
+
+.star-rating__stars label::before {
+  content: "★";
+}
+
+/* Note choisie : l'étoile cochée et celles avant elle (sauf pendant le survol) */
+.star-rating__stars:not(:hover) input:checked ~ label {
+  color: $star-color;
+}
+
+/* Survol : on prévisualise la note, quelle que soit la note déjà choisie */
+.star-rating__stars label:hover,
+.star-rating__stars label:hover ~ label {
+  color: $star-color;
+}
+
+.star-rating__stars label:hover {
+  transform: scale(1.15);
+}
+
+/* Navigation au clavier (flèches) : contour visible sur l'étoile active */
+.star-rating__stars input:focus-visible + label {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Message de remerciement, affiché dès qu'une note est cochée (:has) */
+.star-rating__thanks {
+  display: none;
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+}
+
+.star-rating:has(input:checked) .star-rating__thanks {
+  display: block;
+}

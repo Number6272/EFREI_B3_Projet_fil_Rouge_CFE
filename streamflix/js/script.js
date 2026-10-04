@@ -300,6 +300,150 @@ function initHeroFallback() {
   }
 }
 
+function initSearch() {
+  const form = document.querySelector(".search-form");
+  const input = document.querySelector("#recherche");
+  const list = document.querySelector("#suggestions");
+  if (!form || !input || !list) return;
+
+  const normalize = (text) => text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+  const films = [...document.querySelectorAll("#catalogue .film-card")].map((card) => {
+    const title = card.querySelector(".film-card__title");
+    const genres = [...card.querySelectorAll(".film-card__genres li")].map((item) => item.textContent.trim());
+    return { title: title.textContent.trim(), genres, heading: title, card };
+  });
+
+  let matches = [];
+  let active = -1;
+
+  function close() {
+    list.hidden = true;
+    list.replaceChildren();
+    input.setAttribute("aria-expanded", "false");
+    input.removeAttribute("aria-activedescendant");
+    matches = [];
+    active = -1;
+  }
+
+  function highlight(index) {
+    [...list.children].forEach((option, i) => {
+      option.classList.toggle("active", i === index);
+      option.setAttribute("aria-selected", String(i === index));
+    });
+    active = index;
+    input.setAttribute("aria-activedescendant", `suggestion-${index}`);
+  }
+
+  function markTitle(title, query) {
+    const span = document.createElement("span");
+    span.className = "search-suggestions__title";
+    const start = normalize(title).indexOf(query);
+
+    if (start === -1) {
+      span.textContent = title;
+      return span;
+    }
+
+    const mark = document.createElement("mark");
+    mark.textContent = title.slice(start, start + query.length);
+    span.append(title.slice(0, start), mark, title.slice(start + query.length));
+    return span;
+  }
+
+  function option(film, index, query) {
+    const item = document.createElement("li");
+    item.id = `suggestion-${index}`;
+    item.className = "list-group-item list-group-item-action search-suggestions__item";
+    item.setAttribute("role", "option");
+    item.setAttribute("aria-selected", "false");
+
+    const genres = document.createElement("span");
+    genres.className = "search-suggestions__genres";
+    genres.textContent = film.genres.join(", ");
+
+    item.append(markTitle(film.title, query), genres);
+    item.addEventListener("mousedown", (event) => {
+      event.preventDefault();
+      choose(film);
+    });
+    return item;
+  }
+
+  function render() {
+    const query = normalize(input.value.trim());
+    if (!query) {
+      close();
+      return;
+    }
+
+    matches = films.filter(
+      (film) => normalize(film.title).includes(query) || film.genres.some((genre) => normalize(genre).includes(query))
+    );
+    active = -1;
+    input.removeAttribute("aria-activedescendant");
+
+    if (matches.length) {
+      list.replaceChildren(...matches.map((film, index) => option(film, index, query)));
+    } else {
+      const empty = document.createElement("li");
+      empty.className = "list-group-item search-suggestions__empty";
+      empty.setAttribute("role", "option");
+      empty.setAttribute("aria-disabled", "true");
+      empty.setAttribute("aria-selected", "false");
+      empty.textContent = "Aucun film trouvé";
+      list.replaceChildren(empty);
+    }
+
+    list.hidden = false;
+    input.setAttribute("aria-expanded", "true");
+  }
+
+  function choose(film) {
+    close();
+    input.value = film.title;
+
+    const menu = form.closest(".navbar-collapse");
+    if (menu && menu.classList.contains("show") && window.bootstrap) {
+      bootstrap.Collapse.getOrCreateInstance(menu).hide();
+    }
+
+    film.card.scrollIntoView({ behavior: reduceMotion.matches ? "auto" : "smooth", block: "center" });
+    film.heading.querySelector("a").focus({ preventScroll: true });
+    film.card.classList.add("is-found");
+    setTimeout(() => film.card.classList.remove("is-found"), 2500);
+  }
+
+  input.addEventListener("input", render);
+  input.addEventListener("focus", render);
+  input.addEventListener("blur", close);
+
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      close();
+      return;
+    }
+    if (!matches.length) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      highlight((active + 1) % matches.length);
+    } else if (event.key === "ArrowUp") {
+      event.preventDefault();
+      highlight(active <= 0 ? matches.length - 1 : active - 1);
+    } else if (event.key === "Enter" && active >= 0) {
+      event.preventDefault();
+      choose(matches[active]);
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    render();
+    if (matches.length) choose(matches[0]);
+  });
+}
+
 initTheme();
 initHeader();
 initSectionNav();
@@ -307,3 +451,4 @@ initReveal();
 initSkeletons();
 initMasonry();
 initHeroFallback();
+initSearch();

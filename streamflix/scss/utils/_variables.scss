@@ -65,3 +65,13 @@ $ribbon-colors: (
   top: $primary-red,
   new: $accent-blue
 );
+
+// --------------------------------------------------------------------------
+// Bonus challenge 2 : carousel, notation, recherche
+// --------------------------------------------------------------------------
+$star-color: $accent-gold;
+$star-empty-color: dimgray;
+$star-size: 2rem;
+
+$carousel-indicator-color: $primary-red;
+$suggestions-max-height: 20rem;

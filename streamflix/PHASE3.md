@@ -1,6 +1,6 @@
 # Phase 3 : optimisation et personnalisation (sur le résultat de la Phase 2)
 
-Les 4 consignes de la Phase 3 sont appliquées, plus une mise en conformité avec les contraintes techniques obligatoires (section 5). `js/script.js` et `.gitignore` ne changent pas.
+Les 4 consignes de la Phase 3 sont appliquées, plus une mise en conformité avec les contraintes techniques obligatoires (section 5), l'étape 4 (modal) et le bonus challenge 2 (fin du document). `.gitignore` ne change pas.
 
 Fichiers modifiés ou ajoutés :
 
@@ -118,7 +118,7 @@ Pour tester toi-même : ouvre `index.html` dans Chrome, puis F12 et l'icône té
 | CDN Bootstrap 5.3+ | ✅ | 5.3.8 dans le `<head>` de `index.html` |
 | Navigation avec collapse responsive | ✅ | `navbar-expand-lg`, bouton `navbar-toggler`, `collapse navbar-collapse` |
 | Grilles Bootstrap exclusivement | ✅ (corrigé) | voir ci-dessous |
-| Minimum 5 composants Bootstrap | ✅ 7 | Navbar, Collapse, Nav, Buttons, Cards, Badges, Modal |
+| Minimum 5 composants Bootstrap | ✅ 9 | Navbar, Collapse, Nav, Buttons, Cards, Badges, Modal, Carousel, List group |
 | Utilitaires Bootstrap pour l'espacement | ✅ (complété) | `p-0`, `m-0`, `mt-2`, `mt-4`, `pb-4`, `ms-lg-auto`, `g-2`, `g-3`, `g-4`, `gap-2`, `gap-3` |
 | Architecture 7-1 | ✅ | `base`, `components`, `layout`, `pages`, `utils`, `vendors` + `style.scss` |
 | Minimum 8 variables SASS | ✅ 20+ | `utils/_variables.scss` |
@@ -128,7 +128,7 @@ Pour tester toi-même : ouvre `index.html` dans Chrome, puis F12 et l'icône té
 | Branche `cssNatif` | à faire chez toi | voir « Étape 1 » |
 | Branche `bootstrap-sass` | ✅ | Phases 2 et 3 |
 | Résultat visuel identique ou amélioré | ✅ | même design, plus badges, rubans, boutons pleine largeur sur mobile |
-| Performance maintenue ou améliorée | ✅ | CSS compressé : 35 Ko (le CSS natif du jour 2 fait 40 Ko) |
+| Performance maintenue ou améliorée | ✅ | CSS compressé : 38 Ko avec les bonus (le CSS natif du jour 2 fait 40 Ko) |
 | Structure de fichiers attendue | ✅ | tous les fichiers demandés existent, plus `_badges.scss` et `_ribbons.scss` |
 
 ### Ce qui a été corrigé pour « grilles Bootstrap exclusivement »
@@ -221,3 +221,46 @@ Aucun JavaScript à écrire : `bootstrap.bundle.min.js` (déjà chargé) gère l
 **scss/components/_modal.scss** (nouveau, ajouté dans `style.scss`) : il donne à la modal les couleurs du thème avec les variables `--bs-modal-…`, et le titre dans la police d'affiche du Hero. La croix passe en blanc toute seule en thème sombre grâce à `data-bs-theme="dark"`.
 
 Testé à 375 et 1440px, thèmes sombre et clair : la modal s'ouvre et se ferme avec Échap, sans erreur.
+
+## Bonus challenge 2 : composants personnalisés
+
+Fichiers : `index.html`, `js/script.js` (une fonction `initSearch` ajoutée), 3 nouveaux partials dans `scss/components/` (`_carousel.scss`, `_rating.scss`, `_search.scss`), des variables en plus dans `utils/_variables.scss`, et le mixin `floating-panel()` dans `utils/_mixins.scss`.
+
+### 1. Carousel Bootstrap custom : section « À ne pas manquer »
+
+- **HTML** : nouvelle section `#selection` entre le Hero et les Tendances, avec un lien « Sélection » dans les onglets de sections. Elle contient le composant `carousel slide` de Bootstrap, avec 3 films, des indicateurs et des flèches.
+  - `data-bs-ride="carousel"` + `data-bs-interval="6000"` : défilement automatique toutes les 6 secondes, avec pause au survol.
+  - Chaque diapositive est en grille Bootstrap : affiche en `col-4 col-md-3 col-xl-2`, texte en `col-8 col-md-9 col-xl-10`. Le résumé est caché sur petit mobile (`d-none d-sm-block`).
+  - Le bouton « Voir la fiche » mène à la carte du film dans le catalogue.
+- **`_carousel.scss`** : la personnalisation.
+  - fond en dégradé et coins arrondis ;
+  - titre dans la police d'affiche ;
+  - indicateurs en barres fines, la barre active est rouge (`$carousel-indicator-color`) et plus longue ;
+  - flèches rondes en bas à droite, rouges au survol.
+
+### 2. Notation avec étoiles : dans la modal « Plus d'infos »
+
+- **HTML** : `<fieldset class="star-rating">` avec 5 boutons radio cachés (`visually-hidden`) et 5 labels qui sont les étoiles. Chaque label a un texte caché (« 3 étoiles sur 5 ») pour les lecteurs d'écran.
+- **`_rating.scss`** : **aucun JavaScript**.
+  - Les étoiles sont écrites de 5 à 1 dans le HTML, et `flex-direction: row-reverse` les affiche de 1 à 5.
+  - Le sélecteur `input:checked ~ label` colore l'étoile choisie et toutes celles à sa gauche. Au survol, `label:hover ~ label` prévisualise la note.
+  - « Merci, votre note est enregistrée » s'affiche grâce à `:has(input:checked)`.
+  - Variables : `$star-color` (or de la charte), `$star-empty-color`, `$star-size`.
+- Au clavier : Tab pour arriver sur les étoiles, puis les flèches. Un contour indique l'étoile active.
+
+### 3. Searchbar avec suggestions
+
+- **HTML** : le champ de recherche reçoit `role="combobox"`, `aria-expanded`, `aria-controls="suggestions"`, et une liste vide `<ul class="search-suggestions list-group" id="suggestions" role="listbox">` est ajoutée juste en dessous. Le champ passe en `type="text"`, car le validateur W3C n'accepte pas `role="combobox"` sur `type="search"`.
+- **JS (`initSearch`)** :
+  - Le JS lit les films du catalogue (titres et genres).
+  - Pendant la frappe, il affiche ceux qui correspondent, en ignorant les accents et les majuscules (« dra » trouve tous les drames). La partie tapée est surlignée en rouge.
+  - **↑ / ↓** pour choisir, **Entrée** pour valider, **Échap** pour fermer, ou un clic sur la suggestion.
+  - Le bouton Rechercher choisit la première suggestion. Sans résultat, la liste affiche « Aucun film trouvé ».
+  - Au choix, la page défile jusqu'à la carte du film dans le catalogue, qui s'entoure d'un halo rouge. Sur mobile, le menu ☰ se referme.
+- **`_search.scss`** :
+  - le composant `list-group` de Bootstrap est recoloré avec ses variables `--bs-list-group-…` ;
+  - le mixin `floating-panel()` donne le fond, la bordure et l'ombre de la liste.
+
+### Tests
+
+À 375 et 1440px : le carousel passe bien au film suivant, et « in » propose Interstellar et Inception. ↓ ↓ Entrée mène à la carte d'Inception, « zzz » affiche « Aucun film trouvé ». Une note de 4 étoiles est bien retenue, et le survol de la 2e étoile la prévisualise. Aucun débordement de 320 à 1920px. HTML validé W3C : 0 erreur. CSS : 38 Ko.

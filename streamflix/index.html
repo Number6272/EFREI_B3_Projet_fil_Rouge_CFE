@@ -10,7 +10,6 @@
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#141414">
 
-  
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="StreamFlix">
   <meta property="og:title" content="StreamFlix : films et séries en streaming illimité">
@@ -49,7 +48,8 @@
         <div class="site-header__user ms-lg-auto">
           <form class="search-form" role="search" action="#" method="get">
             <label class="visually-hidden" for="recherche">Rechercher un film ou une série</label>
-            <input class="search-form__input" type="search" id="recherche" name="q" placeholder="Titre, genre…" required minlength="2" maxlength="100" autocomplete="off">
+            <input class="search-form__input" type="text" id="recherche" name="q" placeholder="Titre, genre…" required minlength="2" maxlength="100" autocomplete="off" enterkeyhint="search" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions">
+            <ul class="search-suggestions list-group" id="suggestions" role="listbox" aria-label="Suggestions" hidden></ul>
             <button class="btn btn-secondary search-form__button" type="submit">Rechercher</button>
           </form>
 
@@ -85,6 +85,7 @@
 
       <nav class="section-nav" aria-label="Sections de la page">
         <ul class="section-nav__list">
+          <li><a class="section-nav__link" href="#selection">Sélection</a></li>
           <li><a class="section-nav__link" href="#tendances">Tendances</a></li>
           <li><a class="section-nav__link" href="#recommandes">Recommandés</a></li>
           <li><a class="section-nav__link" href="#nouveautes">Nouveautés</a></li>
@@ -123,6 +124,100 @@
           <button class="btn btn-secondary btn-lg" type="button" data-bs-toggle="modal" data-bs-target="#infos-film" aria-describedby="hero-titre">Plus d'infos</button>
           <button class="btn btn-secondary btn-lg" type="button" aria-pressed="false" aria-describedby="hero-titre">Ma liste</button>
         </div>
+      </div>
+    </section>
+
+    <section class="film-section" id="selection" aria-labelledby="selection-titre">
+      <h2 class="film-section__title" id="selection-titre">À ne pas manquer</h2>
+      <p class="film-section__intro">Notre sélection de la semaine, qui défile toute seule (pause au survol).</p>
+
+      <div class="carousel slide film-carousel mt-3" id="carousel-selection" data-bs-ride="carousel" data-bs-interval="6000">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Film 1 : Interstellar"></button>
+          <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="1" aria-label="Film 2 : The Matrix"></button>
+          <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="2" aria-label="Film 3 : Pulp Fiction"></button>
+        </div>
+
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="row g-0 film-carousel__slide">
+              <div class="col-4 col-md-3 col-xl-2">
+                <img class="img-fluid film-carousel__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+              </div>
+              <div class="col-8 col-md-9 col-xl-10">
+                <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
+                  <h3 class="film-carousel__title mb-2">Interstellar</h3>
+                  <dl class="film-card__meta mb-2">
+                    <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
+                    <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
+                    <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
+                  </dl>
+                  <ul class="film-card__genres mb-3">
+                    <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                    <li class="badge badge-genre badge-genre--drame">Drame</li>
+                  </ul>
+                  <p class="film-carousel__text d-none d-sm-block mb-3">Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
+                  <a class="btn btn-primary" href="#catalogue-interstellar">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-0 film-carousel__slide">
+              <div class="col-4 col-md-3 col-xl-2">
+                <img class="img-fluid film-carousel__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+              </div>
+              <div class="col-8 col-md-9 col-xl-10">
+                <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
+                  <h3 class="film-carousel__title mb-2">The Matrix</h3>
+                  <dl class="film-card__meta mb-2">
+                    <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
+                    <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
+                    <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                  </dl>
+                  <ul class="film-card__genres mb-3">
+                    <li class="badge badge-genre badge-genre--action">Action</li>
+                    <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                  </ul>
+                  <p class="film-carousel__text d-none d-sm-block mb-3">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation, et qu'il est peut-être l'élu.</p>
+                  <a class="btn btn-primary" href="#catalogue-matrix">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="row g-0 film-carousel__slide">
+              <div class="col-4 col-md-3 col-xl-2">
+                <img class="img-fluid film-carousel__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+              </div>
+              <div class="col-8 col-md-9 col-xl-10">
+                <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
+                  <h3 class="film-carousel__title mb-2">Pulp Fiction</h3>
+                  <dl class="film-card__meta mb-2">
+                    <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                    <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
+                    <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
+                  </dl>
+                  <ul class="film-card__genres mb-3">
+                    <li class="badge badge-genre badge-genre--crime">Crime</li>
+                    <li class="badge badge-genre badge-genre--drame">Drame</li>
+                  </ul>
+                  <p class="film-carousel__text d-none d-sm-block mb-3">Plusieurs histoires de gangsters de Los Angeles s'entremêlent dans le chef-d'œuvre culte de Quentin Tarantino.</p>
+                  <a class="btn btn-primary" href="#catalogue-pulp-fiction">Voir la fiche</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-selection" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Film précédent</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel-selection" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Film suivant</span>
+        </button>
       </div>
     </section>
 
@@ -645,6 +740,22 @@
                 <li class="badge badge-genre badge-genre--thriller">Thriller</li>
               </ul>
               <p class="mb-3">Dom Cobb est un voleur d'un genre unique : il s'infiltre dans les rêves pour dérober les secrets enfouis dans l'inconscient. Pour retrouver sa vie d'avant, il accepte une dernière mission, l'inception : implanter une idée dans l'esprit d'un héritier au lieu de la voler.</p>
+              <fieldset class="star-rating mb-3">
+                <legend class="star-rating__legend">Votre note</legend>
+                <div class="star-rating__stars">
+                  <input class="visually-hidden" type="radio" id="note-5" name="note" value="5">
+                  <label for="note-5"><span class="visually-hidden">5 étoiles sur 5</span></label>
+                  <input class="visually-hidden" type="radio" id="note-4" name="note" value="4">
+                  <label for="note-4"><span class="visually-hidden">4 étoiles sur 5</span></label>
+                  <input class="visually-hidden" type="radio" id="note-3" name="note" value="3">
+                  <label for="note-3"><span class="visually-hidden">3 étoiles sur 5</span></label>
+                  <input class="visually-hidden" type="radio" id="note-2" name="note" value="2">
+                  <label for="note-2"><span class="visually-hidden">2 étoiles sur 5</span></label>
+                  <input class="visually-hidden" type="radio" id="note-1" name="note" value="1">
+                  <label for="note-1"><span class="visually-hidden">1 étoile sur 5</span></label>
+                </div>
+                <p class="star-rating__thanks mb-0">Merci, votre note est enregistrée.</p>
+              </fieldset>
               <p class="film-modal__credits mb-0"><strong>Réalisation :</strong> Christopher Nolan<br><strong>Avec :</strong> Leonardo DiCaprio, Marion Cotillard, Elliot Page</p>
             </div>
           </div>
