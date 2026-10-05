@@ -33,11 +33,11 @@ $warning: sf.$accent-gold;
 $body-secondary-color-dark: sf.$text-muted;
 $border-color-dark: sf.$secondary-gray;
 
-// Typographie : tailles de la charte converties en rem (16px = 1rem)
+// Typographie : tailles de la charte converties en rem (16px = 1rem).
+// $font-size-large (24px) n'est pas donnée à $font-size-lg : elle agrandirait
+// les boutons btn-lg du Bootstrap allégé (bootstrap-lite.scss) par rapport au CDN.
 $font-size-base: math.div(sf.$font-size-base, 16px) * 1rem;
 $font-size-sm: math.div(sf.$font-size-small, 16px) * 1rem;
-$font-size-lg: math.div(sf.$font-size-large, 16px) * 1rem;
-$headings-font-weight: 700;
 
 // Arrondis plus nets, comme les boutons Netflix (Bootstrap : 0.375rem)
 $border-radius: 0.25rem;

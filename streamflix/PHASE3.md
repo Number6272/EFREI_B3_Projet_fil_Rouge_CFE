@@ -28,8 +28,7 @@ En plus des variables de la Phase 2, on ajoute :
 | `$warning` | `$accent-gold` | l'or de la charte |
 | `$body-secondary-color-dark` | `$text-muted` | texte secondaire gris de la charte |
 | `$border-color-dark` | `$secondary-gray` | bordures grises de la charte |
-| `$font-size-base`, `$font-size-sm`, `$font-size-lg` | 16px, 14px, 24px convertis en rem | tailles de la charte |
-| `$headings-font-weight` | 700 | titres en gras |
+| `$font-size-base`, `$font-size-sm` | 16px, 14px convertis en rem | tailles de la charte |
 | `$border-radius`, `-sm`, `-lg` | 0.25rem, 0.125rem, 0.5rem | coins plus nets (boutons, bouton ☰…) |
 | `$badge-font-size`, `-font-weight`, `-padding-x`, `-padding-y` | 0.75em, 700, 0.75em, 0.4em | taille des badges de genre |
 
@@ -264,3 +263,62 @@ Fichiers : `index.html`, `js/script.js` (une fonction `initSearch` ajoutée), 3 
 ### Tests
 
 À 375 et 1440px : le carousel passe bien au film suivant, et « in » propose Interstellar et Inception. ↓ ↓ Entrée mène à la carte d'Inception, « zzz » affiche « Aucun film trouvé ». Une note de 4 étoiles est bien retenue, et le survol de la 2e étoile la prévisualise. Aucun débordement de 320 à 1920px. HTML validé W3C : 0 erreur. CSS : 38 Ko.
+
+## Bonus challenge 3 : optimisation avancée
+
+### 1. Tree-shaking Bootstrap : `scss/bootstrap-lite.scss` → `css/bootstrap-lite.css`
+
+Un 2e fichier SASS principal (à côté de `style.scss`) recompile Bootstrap avec **seulement ce qu'utilise `index.html`** :
+- **Imports sélectifs** : `reboot`, `images`, `helpers`, `grid`, `transitions`, `buttons`, `close`, `nav`, `navbar`, `card`, `badge`, `list-group`, `modal`, `carousel`. Les 16 autres modules (`forms`, `tables`, `dropdown`, `accordion`, `tooltip`…) ne sont pas importés.
+- **Utilitaires filtrés** : la map `$utilities` de Bootstrap est réduite à 15 familles utilisées (`display`, `gap`, `margin-top`…), avec une boucle `@each` et `map.get()`. Les familles utilisées sans point de rupture (`mt-2`, `gap-3`…) perdent leurs versions `-sm`, `-md`… (`"responsive": false`).
+- Les **variables Bootstrap personnalisées** (`vendors/_bootstrap-custom.scss`) s'appliquent directement : les couleurs StreamFlix sont compilées dans le CSS de Bootstrap.
+
+| | Bootstrap CDN complet | `bootstrap-lite.css` | Gain |
+|---|---|---|---|
+| Taille | 232 Ko | 96 Ko | **-58 %** |
+| Compressé gzip (ce qui transite) | 31 Ko | 15 Ko | **-53 %** |
+
+**Rendu vérifié identique au pixel près** (comparaison de captures CDN / allégé à 375, 768 et 1440px, et modal ouverte : 0 pixel différent).
+
+**Pourquoi le CDN reste dans `index.html`** : le brief impose « Utilisation du CDN Bootstrap 5.3+ ». La version allégée est donc fournie et prête, mais pas activée. Pour l'activer, il suffit de remplacer dans le `<head>` la ligne du CSS du CDN par :
+```html
+<link rel="stylesheet" href="css/bootstrap-lite.css">
+```
+(le JS `bootstrap.bundle.min.js` reste sur le CDN).
+
+Pour que `$font-size-lg` n'agrandisse pas les boutons `btn-lg` dans la version allégée (différence avec le CDN), cette variable n'est plus personnalisée, tout comme `$headings-font-weight`.
+
+### 2. Compilation SASS optimisée : `package.json`
+
+| Script | Rôle |
+|---|---|
+| `npm run sass` | **développement** : recompile `style.css` ET `bootstrap-lite.css` à chaque sauvegarde, CSS lisible + source maps |
+| `npm run build` | compilation unique **compressée** (`--style=compressed`) + source maps |
+| `npm run build:prod` | **mise en ligne** : compressé, sans source maps (`--no-source-map`) |
+
+Déjà en place : `@use` (chaque fichier n'est chargé et compilé qu'une fois), `--load-path=node_modules` (imports courts), `--quiet-deps` (pas d'avertissements venant de Bootstrap). `style.css` : 39 Ko, soit 8 Ko en gzip.
+
+### 3. Core Web Vitals
+
+**Optimisations dans `index.html`** :
+- `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>` : la connexion au CDN démarre plus tôt (meilleur LCP).
+- `fetchpriority="high"` sur l'image du Hero : c'est l'élément LCP (le plus grand affiché), le navigateur la télécharge en premier.
+
+**Déjà en place** :
+- `width` et `height` sur toutes les images (pas de décalage de mise en page, bon CLS) ;
+- `loading="lazy"` sur les affiches hors écran ;
+- scripts en `defer` ;
+- écouteur de défilement `passive` et `requestAnimationFrame` (bon INP) ;
+- aucune police web à télécharger.
+
+**Mesures** (Chromium, en local, donc sans le temps réseau réel) :
+
+| Critère | Seuil « bon » Google | Ordinateur | Mobile simulé (processeur 4× plus lent) |
+|---|---|---|---|
+| **LCP** (affichage du plus grand élément) | < 2,5 s | 0,35 s ✅ | 0,9 à 1,3 s ✅ |
+| **CLS** (stabilité de la mise en page) | < 0,1 | 0,02 ✅ | 0 ✅ |
+| **INP** (réactivité, mesurée sur le changement de thème) | < 200 ms | 52 ms ✅ | 160 à 260 ms ⚠️ |
+
+Seul point limite : sur un téléphone lent, le changement de thème recalcule les couleurs de toute la page (variables `@property` animées). Avec `bootstrap-lite.css`, le travail du navigateur au chargement baisse d'environ 25 % (moins de CSS à analyser).
+
+Pour mesurer toi-même : Chrome, F12, onglet **Lighthouse**, « Mobile », **Analyser le chargement de page**.

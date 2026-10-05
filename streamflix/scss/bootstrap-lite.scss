@@ -1,0 +1,81 @@
+// ==========================================================================
+// STREAMFLIX : BOOTSTRAP ALLÉGÉ (bonus challenge 3, tree-shaking)
+//
+// Au lieu des 232 Ko du bootstrap.min.css du CDN, on recompile Bootstrap
+// avec SEULEMENT les modules utilisés dans index.html, et seulement les
+// classes utilitaires utilisées. Résultat : css/bootstrap-lite.css.
+// Les variables Bootstrap personnalisées (vendors/_bootstrap-custom.scss)
+// s'appliquent aussi ici : couleurs StreamFlix compilées directement.
+//
+// Compilation : npm run build (avec style.scss)
+// ==========================================================================
+
+@use "sass:map";
+
+// 1. Variables personnalisées + outils de Bootstrap (+ variables CSS --bs-*)
+@use "vendors/bootstrap-custom" as *;
+
+// 2. Base : remise à zéro des navigateurs et aides (visually-hidden…)
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/helpers";
+
+// 3. Mise en page : la grille (row, col-*, row-cols-*, g-*)
+@import "bootstrap/scss/grid";
+
+// 4. Composants réellement utilisés dans index.html
+@import "bootstrap/scss/transitions";   // .fade, .collapse (menu ☰, modal, carousel)
+@import "bootstrap/scss/buttons";       // .btn, .btn-primary…
+@import "bootstrap/scss/close";         // .btn-close (modal)
+@import "bootstrap/scss/nav";           // .nav-link
+@import "bootstrap/scss/navbar";        // .navbar, .navbar-toggler, .navbar-collapse
+@import "bootstrap/scss/card";          // cartes de films
+@import "bootstrap/scss/badge";         // badges de genre
+@import "bootstrap/scss/list-group";    // suggestions de recherche
+@import "bootstrap/scss/modal";         // « Plus d'infos »
+@import "bootstrap/scss/carousel";      // « À ne pas manquer »
+
+// Modules NON importés (inutiles ici) : containers, type, tables, forms,
+// button-group, dropdown, accordion, breadcrumb, pagination, alert, progress,
+// toasts, tooltip, popover, spinners, offcanvas, placeholders.
+
+// 5. Utilitaires : on ne garde que les familles utilisées dans le HTML.
+//    Les familles utilisées avec un point de rupture (ms-lg-auto, d-sm-block…)
+//    gardent leurs versions responsives ; les autres n'en ont pas besoin.
+$utilities-responsive: (
+  "display",         // d-flex, d-none, d-sm-block
+  "flex-direction",  // flex-column, flex-sm-row
+  "flex-wrap",       // flex-nowrap, flex-md-wrap
+  "margin-start",    // ms-lg-auto
+  "padding"          // p-0, p-3, p-md-4, p-lg-5
+);
+
+$utilities-simple: (
+  "align-items",     // align-items-start
+  "gap",             // gap-2, gap-3
+  "margin",          // m-0
+  "margin-x",        // mx-auto
+  "margin-top",      // mt-2, mt-3, mt-4
+  "margin-bottom",   // mb-0, mb-2, mb-3
+  "padding-bottom",  // pb-4
+  "width",           // w-100
+  "rounded",         // rounded
+  "font-size"        // fs-4
+);
+
+@import "bootstrap/scss/utilities";
+
+$utilities-lite: ();
+
+@each $name in $utilities-responsive {
+  $utilities-lite: map.merge($utilities-lite, ($name: map.get($utilities, $name)));
+}
+
+@each $name in $utilities-simple {
+  $utility: map.merge(map.get($utilities, $name), ("responsive": false));
+  $utilities-lite: map.merge($utilities-lite, ($name: $utility));
+}
+
+$utilities: $utilities-lite;
+
+@import "bootstrap/scss/utilities/api";

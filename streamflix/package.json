@@ -4,8 +4,9 @@
   "description": "StreamFlix : plateforme de streaming (Bootstrap 5.3 + SASS, architecture 7-1)",
   "private": true,
   "scripts": {
-    "sass": "sass --watch scss/style.scss:css/style.css --load-path=node_modules --quiet-deps --silence-deprecation=import",
-    "build": "sass scss/style.scss:css/style.css --style=compressed --load-path=node_modules --quiet-deps --silence-deprecation=import"
+    "sass": "sass --watch scss/style.scss:css/style.css scss/bootstrap-lite.scss:css/bootstrap-lite.css --load-path=node_modules --quiet-deps --silence-deprecation=import",
+    "build": "sass scss/style.scss:css/style.css scss/bootstrap-lite.scss:css/bootstrap-lite.css --style=compressed --load-path=node_modules --quiet-deps --silence-deprecation=import",
+    "build:prod": "sass scss/style.scss:css/style.css scss/bootstrap-lite.scss:css/bootstrap-lite.css --style=compressed --no-source-map --load-path=node_modules --quiet-deps --silence-deprecation=import"
   },
   "devDependencies": {
     "bootstrap": "5.3.8",
