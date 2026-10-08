@@ -452,3 +452,55 @@ initSkeletons();
 initMasonry();
 initHeroFallback();
 initSearch();
+
+// ===================================
+// EXERCICE 1 : Afficher/masquer sections
+// ===================================
+
+// Tous les boutons « Masquer » (un au-dessus de chaque section de films)
+const sectionButtons = document.querySelectorAll(".section-toggle");
+
+sectionButtons.forEach(function (button) {
+  button.addEventListener("click", function () {
+    // On remonte jusqu'à la section du bouton, puis on cherche son contenu (intro + films).
+    // Le bouton n'est pas dans ce contenu : il reste visible pour pouvoir réafficher.
+    const section = button.closest(".film-section");
+    const content = section.querySelector(".film-section__content");
+
+    // toggle ajoute la classe .hidden si elle est absente, la retire sinon
+    content.classList.toggle("hidden");
+
+    // Le texte du bouton suit l'état de la section
+    if (content.classList.contains("hidden")) {
+      button.textContent = "Afficher";
+      button.setAttribute("aria-expanded", "false");
+    } else {
+      button.textContent = "Masquer";
+      button.setAttribute("aria-expanded", "true");
+    }
+  });
+});
+
+// ===================================
+// EXERCICE 2 : Compteur de films
+// ===================================
+
+// Votre code ici...
+
+// ===================================
+// EXERCICE 3 : Films vus
+// ===================================
+
+// Votre code ici...
+
+// ===================================
+// EXERCICE 4 : Recherche
+// ===================================
+
+// Votre code ici...
+
+// ===================================
+// EXERCICE 5 : Modal
+// ===================================
+
+// Votre code ici...

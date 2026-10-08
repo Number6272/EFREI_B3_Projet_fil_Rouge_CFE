@@ -129,495 +129,525 @@
     </section>
 
     <section class="film-section" id="selection" aria-labelledby="selection-titre">
-      <h2 class="film-section__title" id="selection-titre">À ne pas manquer</h2>
-      <p class="film-section__intro">Notre sélection de la semaine, qui défile toute seule (pause au survol).</p>
+      <div class="film-section__header d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h2 class="film-section__title" id="selection-titre">À ne pas manquer</h2>
+        <button class="btn btn-sm section-toggle" type="button" aria-expanded="true" aria-controls="contenu-selection" aria-describedby="selection-titre">Masquer</button>
+      </div>
 
-      <div class="carousel slide film-carousel mt-3" id="carousel-selection" data-bs-ride="carousel" data-bs-interval="6000">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Film 1 : Interstellar"></button>
-          <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="1" aria-label="Film 2 : The Matrix"></button>
-          <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="2" aria-label="Film 3 : Pulp Fiction"></button>
+      <div class="film-section__content" id="contenu-selection">
+        <p class="film-section__intro">Notre sélection de la semaine, qui défile toute seule (pause au survol).</p>
+
+        <div class="carousel slide film-carousel mt-3" id="carousel-selection" data-bs-ride="carousel" data-bs-interval="6000">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Film 1 : Interstellar"></button>
+            <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="1" aria-label="Film 2 : The Matrix"></button>
+            <button type="button" data-bs-target="#carousel-selection" data-bs-slide-to="2" aria-label="Film 3 : Pulp Fiction"></button>
+          </div>
+
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row g-0 film-carousel__slide">
+                <div class="col-4 col-md-3 col-xl-2">
+                  <img class="img-fluid film-carousel__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+                </div>
+                <div class="col-8 col-md-9 col-xl-10">
+                  <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
+                    <h3 class="film-carousel__title mb-2">Interstellar</h3>
+                    <dl class="film-card__meta mb-2">
+                      <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
+                      <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
+                      <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
+                    </dl>
+                    <ul class="film-card__genres mb-3">
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
+                    </ul>
+                    <p class="film-carousel__text d-none d-sm-block mb-3">Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
+                    <a class="btn btn-primary" href="#catalogue-interstellar">Voir la fiche</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-0 film-carousel__slide">
+                <div class="col-4 col-md-3 col-xl-2">
+                  <img class="img-fluid film-carousel__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+                </div>
+                <div class="col-8 col-md-9 col-xl-10">
+                  <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
+                    <h3 class="film-carousel__title mb-2">The Matrix</h3>
+                    <dl class="film-card__meta mb-2">
+                      <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
+                      <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
+                      <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                    </dl>
+                    <ul class="film-card__genres mb-3">
+                      <li class="badge badge-genre badge-genre--action">Action</li>
+                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                    </ul>
+                    <p class="film-carousel__text d-none d-sm-block mb-3">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation, et qu'il est peut-être l'élu.</p>
+                    <a class="btn btn-primary" href="#catalogue-matrix">Voir la fiche</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row g-0 film-carousel__slide">
+                <div class="col-4 col-md-3 col-xl-2">
+                  <img class="img-fluid film-carousel__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+                </div>
+                <div class="col-8 col-md-9 col-xl-10">
+                  <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
+                    <h3 class="film-carousel__title mb-2">Pulp Fiction</h3>
+                    <dl class="film-card__meta mb-2">
+                      <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                      <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
+                      <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
+                    </dl>
+                    <ul class="film-card__genres mb-3">
+                      <li class="badge badge-genre badge-genre--crime">Crime</li>
+                      <li class="badge badge-genre badge-genre--drame">Drame</li>
+                    </ul>
+                    <p class="film-carousel__text d-none d-sm-block mb-3">Plusieurs histoires de gangsters de Los Angeles s'entremêlent dans le chef-d'œuvre culte de Quentin Tarantino.</p>
+                    <a class="btn btn-primary" href="#catalogue-pulp-fiction">Voir la fiche</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="carousel-control-prev" type="button" data-bs-target="#carousel-selection" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Film précédent</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carousel-selection" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Film suivant</span>
+          </button>
         </div>
-
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="row g-0 film-carousel__slide">
-              <div class="col-4 col-md-3 col-xl-2">
-                <img class="img-fluid film-carousel__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-              </div>
-              <div class="col-8 col-md-9 col-xl-10">
-                <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
-                  <h3 class="film-carousel__title mb-2">Interstellar</h3>
-                  <dl class="film-card__meta mb-2">
-                    <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
-                    <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
-                    <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
-                  </dl>
-                  <ul class="film-card__genres mb-3">
-                    <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                    <li class="badge badge-genre badge-genre--drame">Drame</li>
-                  </ul>
-                  <p class="film-carousel__text d-none d-sm-block mb-3">Alors que la Terre se meurt, une équipe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
-                  <a class="btn btn-primary" href="#catalogue-interstellar">Voir la fiche</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row g-0 film-carousel__slide">
-              <div class="col-4 col-md-3 col-xl-2">
-                <img class="img-fluid film-carousel__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
-              </div>
-              <div class="col-8 col-md-9 col-xl-10">
-                <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
-                  <h3 class="film-carousel__title mb-2">The Matrix</h3>
-                  <dl class="film-card__meta mb-2">
-                    <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
-                    <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
-                    <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
-                  </dl>
-                  <ul class="film-card__genres mb-3">
-                    <li class="badge badge-genre badge-genre--action">Action</li>
-                    <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                  </ul>
-                  <p class="film-carousel__text d-none d-sm-block mb-3">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation, et qu'il est peut-être l'élu.</p>
-                  <a class="btn btn-primary" href="#catalogue-matrix">Voir la fiche</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="row g-0 film-carousel__slide">
-              <div class="col-4 col-md-3 col-xl-2">
-                <img class="img-fluid film-carousel__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
-              </div>
-              <div class="col-8 col-md-9 col-xl-10">
-                <div class="film-carousel__caption p-3 p-md-4 p-lg-5">
-                  <h3 class="film-carousel__title mb-2">Pulp Fiction</h3>
-                  <dl class="film-card__meta mb-2">
-                    <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
-                    <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
-                    <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
-                  </dl>
-                  <ul class="film-card__genres mb-3">
-                    <li class="badge badge-genre badge-genre--crime">Crime</li>
-                    <li class="badge badge-genre badge-genre--drame">Drame</li>
-                  </ul>
-                  <p class="film-carousel__text d-none d-sm-block mb-3">Plusieurs histoires de gangsters de Los Angeles s'entremêlent dans le chef-d'œuvre culte de Quentin Tarantino.</p>
-                  <a class="btn btn-primary" href="#catalogue-pulp-fiction">Voir la fiche</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button class="carousel-control-prev" type="button" data-bs-target="#carousel-selection" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Film précédent</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carousel-selection" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Film suivant</span>
-        </button>
       </div>
     </section>
 
     <section class="film-section" id="tendances" aria-labelledby="tendances-titre">
-      <h2 class="film-section__title" id="tendances-titre">Tendances actuelles</h2>
-      <p class="film-section__intro">Les films les mieux notés du moment.</p>
+      <div class="film-section__header d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h2 class="film-section__title" id="tendances-titre">Tendances actuelles</h2>
+        <button class="btn btn-sm section-toggle" type="button" aria-expanded="true" aria-controls="contenu-tendances" aria-describedby="tendances-titre">Masquer</button>
+      </div>
 
-      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="tendances-dark-knight">
-            <span class="film-ribbon film-ribbon--top">Top 10</span>
-            <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="tendances-dark-knight">
-                <a href="#">The Dark Knight</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--action">Action</li>
-                      <li class="badge badge-genre badge-genre--crime">Crime</li>
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-dark-knight">Ma liste</button>
-            </div>
-          </article>
-        </li>
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="tendances-interstellar">
-            <span class="film-ribbon film-ribbon--top">Top 10</span>
-            <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="tendances-interstellar">
-                <a href="#">Interstellar</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-interstellar">Ma liste</button>
-            </div>
-          </article>
-        </li>
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="tendances-pulp-fiction">
-            <span class="film-ribbon film-ribbon--top">Top 10</span>
-            <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="tendances-pulp-fiction">
-                <a href="#">Pulp Fiction</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--crime">Crime</li>
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-pulp-fiction">Ma liste</button>
-            </div>
-          </article>
-        </li>
-      </ul>
+      <div class="film-section__content" id="contenu-tendances">
+        <p class="film-section__intro">Les films les mieux notés du moment.</p>
+
+        <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="tendances-dark-knight">
+              <span class="film-ribbon film-ribbon--top">Top 10</span>
+              <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="tendances-dark-knight">
+                  <a href="#">The Dark Knight</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--action">Action</li>
+                        <li class="badge badge-genre badge-genre--crime">Crime</li>
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-dark-knight">Ma liste</button>
+              </div>
+            </article>
+          </li>
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="tendances-interstellar">
+              <span class="film-ribbon film-ribbon--top">Top 10</span>
+              <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="tendances-interstellar">
+                  <a href="#">Interstellar</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-interstellar">Ma liste</button>
+              </div>
+            </article>
+          </li>
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="tendances-pulp-fiction">
+              <span class="film-ribbon film-ribbon--top">Top 10</span>
+              <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="tendances-pulp-fiction">
+                  <a href="#">Pulp Fiction</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--crime">Crime</li>
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="tendances-pulp-fiction">Ma liste</button>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="film-section" id="recommandes" aria-labelledby="recommandes-titre">
-      <h2 class="film-section__title" id="recommandes-titre">Recommandés pour vous</h2>
-      <p class="film-section__intro">Une sélection variée choisie pour vous.</p>
+      <div class="film-section__header d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h2 class="film-section__title" id="recommandes-titre">Recommandés pour vous</h2>
+        <button class="btn btn-sm section-toggle" type="button" aria-expanded="true" aria-controls="contenu-recommandes" aria-describedby="recommandes-titre">Masquer</button>
+      </div>
 
-      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="recommandes-inception">
-            <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="recommandes-inception">
-                <a href="#">Inception</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                      <li class="badge badge-genre badge-genre--thriller">Thriller</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-inception">Ma liste</button>
-            </div>
-          </article>
-        </li>
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="recommandes-matrix">
-            <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="recommandes-matrix">
-                <a href="#">The Matrix</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--action">Action</li>
-                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-matrix">Ma liste</button>
-            </div>
-          </article>
-        </li>
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="recommandes-forrest-gump">
-            <img class="card-img-top film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="recommandes-forrest-gump">
-                <a href="#">Forrest Gump</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H22M">2h22</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.4">4,4</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                      <li class="badge badge-genre badge-genre--romance">Romance</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-forrest-gump">Ma liste</button>
-            </div>
-          </article>
-        </li>
-      </ul>
+      <div class="film-section__content" id="contenu-recommandes">
+        <p class="film-section__intro">Une sélection variée choisie pour vous.</p>
+
+        <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="recommandes-inception">
+              <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="recommandes-inception">
+                  <a href="#">Inception</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                        <li class="badge badge-genre badge-genre--thriller">Thriller</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-inception">Ma liste</button>
+              </div>
+            </article>
+          </li>
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="recommandes-matrix">
+              <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="recommandes-matrix">
+                  <a href="#">The Matrix</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--action">Action</li>
+                        <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-matrix">Ma liste</button>
+              </div>
+            </article>
+          </li>
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="recommandes-forrest-gump">
+              <img class="card-img-top film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="recommandes-forrest-gump">
+                  <a href="#">Forrest Gump</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H22M">2h22</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.4">4,4</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                        <li class="badge badge-genre badge-genre--romance">Romance</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="recommandes-forrest-gump">Ma liste</button>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="film-section" id="nouveautes" aria-labelledby="nouveautes-titre">
-      <h2 class="film-section__title" id="nouveautes-titre">Nouveautés</h2>
-      <p class="film-section__intro">Les derniers films ajoutés au catalogue.</p>
+      <div class="film-section__header d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h2 class="film-section__title" id="nouveautes-titre">Nouveautés</h2>
+        <button class="btn btn-sm section-toggle" type="button" aria-expanded="true" aria-controls="contenu-nouveautes" aria-describedby="nouveautes-titre">Masquer</button>
+      </div>
 
-      <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="nouveautes-interstellar">
-            <span class="film-ribbon film-ribbon--new">Nouveau</span>
-            <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="nouveautes-interstellar">
-                <a href="#">Interstellar</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-interstellar">Ma liste</button>
-            </div>
-          </article>
-        </li>
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="nouveautes-dark-knight">
-            <span class="film-ribbon film-ribbon--new">Nouveau</span>
-            <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="nouveautes-dark-knight">
-                <a href="#">The Dark Knight</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--action">Action</li>
-                      <li class="badge badge-genre badge-genre--crime">Crime</li>
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-dark-knight">Ma liste</button>
-            </div>
-          </article>
-        </li>
-        <li class="film-grid__item col-9 col-sm-6 col-md-4">
-          <article class="card film-card" aria-labelledby="nouveautes-inception">
-            <span class="film-ribbon film-ribbon--new">Nouveau</span>
-            <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="nouveautes-inception">
-                <a href="#">Inception</a>
-              </h3>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                      <li class="badge badge-genre badge-genre--thriller">Thriller</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-              <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-inception">Ma liste</button>
-            </div>
-          </article>
-        </li>
-      </ul>
+      <div class="film-section__content" id="contenu-nouveautes">
+        <p class="film-section__intro">Les derniers films ajoutés au catalogue.</p>
+
+        <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="nouveautes-interstellar">
+              <span class="film-ribbon film-ribbon--new">Nouveau</span>
+              <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="nouveautes-interstellar">
+                  <a href="#">Interstellar</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-interstellar">Ma liste</button>
+              </div>
+            </article>
+          </li>
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="nouveautes-dark-knight">
+              <span class="film-ribbon film-ribbon--new">Nouveau</span>
+              <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="nouveautes-dark-knight">
+                  <a href="#">The Dark Knight</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--action">Action</li>
+                        <li class="badge badge-genre badge-genre--crime">Crime</li>
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-dark-knight">Ma liste</button>
+              </div>
+            </article>
+          </li>
+          <li class="film-grid__item col-9 col-sm-6 col-md-4">
+            <article class="card film-card" aria-labelledby="nouveautes-inception">
+              <span class="film-ribbon film-ribbon--new">Nouveau</span>
+              <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="nouveautes-inception">
+                  <a href="#">Inception</a>
+                </h3>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                        <li class="badge badge-genre badge-genre--thriller">Thriller</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+                <button class="btn btn-secondary btn-sm" type="button" aria-pressed="false" aria-describedby="nouveautes-inception">Ma liste</button>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="film-section" id="catalogue" aria-labelledby="catalogue-titre">
-      <h2 class="film-section__title" id="catalogue-titre">Tout le catalogue</h2>
-      <p class="film-section__intro">Tous nos films, du plus court résumé au plus long.</p>
+      <div class="film-section__header d-flex flex-wrap align-items-center justify-content-between gap-2">
+        <h2 class="film-section__title" id="catalogue-titre">Tout le catalogue</h2>
+        <button class="btn btn-sm section-toggle" type="button" aria-expanded="true" aria-controls="contenu-catalogue" aria-describedby="catalogue-titre">Masquer</button>
+      </div>
 
-      <ul class="masonry row row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 g-3 g-md-4 mt-2 pb-4 align-items-start">
-        <li class="masonry__item">
-          <article class="card film-card" aria-labelledby="catalogue-matrix">
-            <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="catalogue-matrix">
-                <a href="#">The Matrix</a>
-              </h3>
-              <p class="card-text film-card__synopsis">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation.</p>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--action">Action</li>
-                      <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="masonry__item">
-          <article class="card film-card" aria-labelledby="catalogue-forrest-gump">
-            <img class="card-img-top film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="catalogue-forrest-gump">
-                <a href="#">Forrest Gump</a>
-              </h3>
-              <p class="card-text film-card__synopsis">Homme simple au grand cœur, Forrest traverse sans le vouloir trente ans d'histoire américaine, de la guerre du Viêt Nam au scandale du Watergate, sans jamais cesser de penser à Jenny, son amour d'enfance.</p>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H22M">2h22</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.4">4,4</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                      <li class="badge badge-genre badge-genre--romance">Romance</li>
-                      <li class="badge badge-genre badge-genre--comedie">Comédie</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="masonry__item">
-          <article class="card film-card" aria-labelledby="catalogue-interstellar">
-            <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="catalogue-interstellar">
-                <a href="#">Interstellar</a>
-              </h3>
-              <p class="card-text film-card__synopsis">Alors que la Terre se meurt, un groupe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="masonry__item">
-          <article class="card film-card" aria-labelledby="catalogue-pulp-fiction">
-            <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="catalogue-pulp-fiction">
-                <a href="#">Pulp Fiction</a>
-              </h3>
-              <p class="card-text film-card__synopsis">Plusieurs histoires de gangsters de Los Angeles s'entremêlent.</p>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--crime">Crime</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="masonry__item">
-          <article class="card film-card" aria-labelledby="catalogue-dark-knight">
-            <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="catalogue-dark-knight">
-                <a href="#">The Dark Knight</a>
-              </h3>
-              <p class="card-text film-card__synopsis">Batman, aidé du lieutenant Gordon et du procureur Harvey Dent, s'attaque au crime organisé de Gotham. Mais un nouveau criminel, le Joker, plonge la ville dans le chaos et pousse le justicier dans ses derniers retranchements.</p>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
-                <div>
-                  <dt>Genres</dt>
-                  <dd>
-                    <ul class="film-card__genres">
-                      <li class="badge badge-genre badge-genre--action">Action</li>
-                      <li class="badge badge-genre badge-genre--crime">Crime</li>
-                      <li class="badge badge-genre badge-genre--drame">Drame</li>
-                    </ul>
-                  </dd>
-                </div>
-              </dl>
-            </div>
-          </article>
-        </li>
-        <li class="masonry__item">
-          <article class="card film-card" aria-labelledby="catalogue-inception">
-            <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
-            <div class="card-body film-card__body">
-              <h3 class="card-title film-card__title" id="catalogue-inception">
-                <a href="#">Inception</a>
-              </h3>
-              <p class="card-text film-card__synopsis">Dom Cobb vole des secrets dans les rêves. On lui propose une dernière mission : implanter une idée dans l'esprit d'un héritier.</p>
-              <dl class="film-card__meta">
-                <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
-                <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
-                <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
-              </dl>
-            </div>
-          </article>
-        </li>
-      </ul>
+      <div class="film-section__content" id="contenu-catalogue">
+        <p class="film-section__intro">Tous nos films, du plus court résumé au plus long.</p>
+
+        <ul class="masonry row row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5 g-3 g-md-4 mt-2 pb-4 align-items-start">
+          <li class="masonry__item">
+            <article class="card film-card" aria-labelledby="catalogue-matrix">
+              <img class="card-img-top film-card__poster" src="images/films/matrix.jpeg" alt="Affiche du film The Matrix" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="catalogue-matrix">
+                  <a href="#">The Matrix</a>
+                </h3>
+                <p class="card-text film-card__synopsis">Un pirate informatique découvre que le monde qu'il connaît n'est qu'une simulation.</p>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="1999">1999</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H16M">2h16</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--action">Action</li>
+                        <li class="badge badge-genre badge-genre--science-fiction">Science-fiction</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </li>
+          <li class="masonry__item">
+            <article class="card film-card" aria-labelledby="catalogue-forrest-gump">
+              <img class="card-img-top film-card__poster" src="images/films/forrest_gump.jpg" alt="Affiche du film Forrest Gump" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="catalogue-forrest-gump">
+                  <a href="#">Forrest Gump</a>
+                </h3>
+                <p class="card-text film-card__synopsis">Homme simple au grand cœur, Forrest traverse sans le vouloir trente ans d'histoire américaine, de la guerre du Viêt Nam au scandale du Watergate, sans jamais cesser de penser à Jenny, son amour d'enfance.</p>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H22M">2h22</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.4">4,4</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                        <li class="badge badge-genre badge-genre--romance">Romance</li>
+                        <li class="badge badge-genre badge-genre--comedie">Comédie</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </li>
+          <li class="masonry__item">
+            <article class="card film-card" aria-labelledby="catalogue-interstellar">
+              <img class="card-img-top film-card__poster" src="images/films/Interstellar_film_poster.jpg" alt="Affiche du film Interstellar" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="catalogue-interstellar">
+                  <a href="#">Interstellar</a>
+                </h3>
+                <p class="card-text film-card__synopsis">Alors que la Terre se meurt, un groupe d'astronautes franchit un trou de ver pour trouver une nouvelle planète habitable.</p>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2014">2014</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H49M">2h49</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.7">4,7</data>/5</dd></div>
+                </dl>
+              </div>
+            </article>
+          </li>
+          <li class="masonry__item">
+            <article class="card film-card" aria-labelledby="catalogue-pulp-fiction">
+              <img class="card-img-top film-card__poster" src="images/films/pulp_fiction.jpg" alt="Affiche du film Pulp Fiction" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="catalogue-pulp-fiction">
+                  <a href="#">Pulp Fiction</a>
+                </h3>
+                <p class="card-text film-card__synopsis">Plusieurs histoires de gangsters de Los Angeles s'entremêlent.</p>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="1994">1994</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H34M">2h34</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.6">4,6</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--crime">Crime</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </li>
+          <li class="masonry__item">
+            <article class="card film-card" aria-labelledby="catalogue-dark-knight">
+              <img class="card-img-top film-card__poster" src="images/films/darknight.webp" alt="Affiche du film The Dark Knight" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="catalogue-dark-knight">
+                  <a href="#">The Dark Knight</a>
+                </h3>
+                <p class="card-text film-card__synopsis">Batman, aidé du lieutenant Gordon et du procureur Harvey Dent, s'attaque au crime organisé de Gotham. Mais un nouveau criminel, le Joker, plonge la ville dans le chaos et pousse le justicier dans ses derniers retranchements.</p>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2008">2008</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H32M">2h32</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.8">4,8</data>/5</dd></div>
+                  <div>
+                    <dt>Genres</dt>
+                    <dd>
+                      <ul class="film-card__genres">
+                        <li class="badge badge-genre badge-genre--action">Action</li>
+                        <li class="badge badge-genre badge-genre--crime">Crime</li>
+                        <li class="badge badge-genre badge-genre--drame">Drame</li>
+                      </ul>
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </li>
+          <li class="masonry__item">
+            <article class="card film-card" aria-labelledby="catalogue-inception">
+              <img class="card-img-top film-card__poster" src="images/films/inception.webp" alt="Affiche du film Inception" width="300" height="450" loading="lazy">
+              <div class="card-body film-card__body">
+                <h3 class="card-title film-card__title" id="catalogue-inception">
+                  <a href="#">Inception</a>
+                </h3>
+                <p class="card-text film-card__synopsis">Dom Cobb vole des secrets dans les rêves. On lui propose une dernière mission : implanter une idée dans l'esprit d'un héritier.</p>
+                <dl class="film-card__meta">
+                  <div><dt>Année</dt><dd><time datetime="2010">2010</time></dd></div>
+                  <div><dt>Durée</dt><dd><time datetime="PT2H28M">2h28</time></dd></div>
+                  <div><dt>Note</dt><dd><data value="4.5">4,5</data>/5</dd></div>
+                </dl>
+              </div>
+            </article>
+          </li>
+        </ul>
+      </div>
     </section>
 
     <section class="signup" id="inscription" aria-labelledby="inscription-titre" data-breadcrumb="Inscription">

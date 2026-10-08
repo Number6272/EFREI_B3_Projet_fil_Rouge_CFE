@@ -51,7 +51,8 @@ $utilities-responsive: (
 );
 
 $utilities-simple: (
-  "align-items",     // align-items-start
+  "align-items",     // align-items-start, align-items-center
+  "justify-content", // justify-content-between (en-têtes de section, jour 4)
   "gap",             // gap-2, gap-3
   "margin",          // m-0
   "margin-x",        // mx-auto

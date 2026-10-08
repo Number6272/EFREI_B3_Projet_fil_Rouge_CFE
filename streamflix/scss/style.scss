@@ -33,5 +33,8 @@
 // 5. Pages : styles propres à la page d'accueil
 @use "pages/home";
 
+// 6. Jour 4 : CSS requis pour les exercices JavaScript
+@use "pages/exercices";
+
 // utils/ (variables et mixins) n'est pas listé ici : chaque partial
 // le charge lui-même avec @use, car il ne produit aucun CSS.

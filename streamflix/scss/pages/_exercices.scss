@@ -1,0 +1,55 @@
+// ==========================================================================
+// PAGES / EXERCICES DU JOUR 4 : CSS requis pour les exercices
+// Les règles de la consigne, dans le même ordre, ajoutées exercice par exercice.
+// ==========================================================================
+
+@use "../utils/variables" as *;
+@use "../utils/mixins" as *;
+
+/* Exercice 1 - Sections masquées */
+.hidden {
+  display: none;
+}
+
+/* Exercice 1 - Bouton « Masquer / Afficher » (ajout StreamFlix) */
+
+/* En-tête de section : titre à gauche, bouton à droite
+   (d-flex justify-content-between… dans le HTML) */
+.film-section__header .film-section__title {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Bouton discret en pilule, aux couleurs du thème actif */
+.section-toggle {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-border-color: var(--color-border);
+  --bs-btn-hover-color: var(--color-text);
+  --bs-btn-hover-bg: var(--color-surface);
+  --bs-btn-hover-border-color: var(--color-text-muted);
+  --bs-btn-active-color: var(--color-text);
+  --bs-btn-active-bg: var(--color-surface);
+  --bs-btn-active-border-color: var(--color-text);
+
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+}
+
+/* Flèche ▴ quand la section est ouverte, ▾ quand elle est fermée (suit aria-expanded) */
+.section-toggle::after {
+  content: "▴";
+}
+
+.section-toggle[aria-expanded="false"]::after {
+  content: "▾";
+}
+
+/* Exercice 3 - Films vus */
+/* (étape suivante) */
+
+/* Exercice 5 - Modal */
+/* (étape suivante) */
+
+/* Exercice 6 - Thème sombre */
+/* (étape suivante) */
