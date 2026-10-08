@@ -45,6 +45,15 @@
   content: "▾";
 }
 
+/* Exercice 2 - Compteur de films (ajout StreamFlix, pas de CSS dans la consigne) */
+
+/* Paragraphe créé en JS à la fin du footer. col-12 (dans le JS) lui donne
+   toute la largeur de la grille Bootstrap du footer */
+.site-footer__count {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
 /* Exercice 3 - Films vus */
 /* (étape suivante) */
 

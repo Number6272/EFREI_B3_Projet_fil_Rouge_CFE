@@ -485,7 +485,26 @@ sectionButtons.forEach(function (button) {
 // EXERCICE 2 : Compteur de films
 // ===================================
 
-// Votre code ici...
+// On compte les <article> du catalogue : c'est là que chaque film apparaît une seule fois.
+// querySelectorAll("article") compterait 15 cartes, car les films de Tendances,
+// Recommandés et Nouveautés sont aussi dans le catalogue (6 films différents).
+const filmCount = document.querySelectorAll("#catalogue article").length;
+console.log("Nombre de films dans le catalogue :", filmCount);
+
+// Création du paragraphe qui affichera le résultat
+const counter = document.createElement("p");
+counter.className = "site-footer__count col-12";
+
+// Texte au pluriel ou au singulier selon le nombre de films
+if (filmCount > 1) {
+  counter.textContent = "Catalogue : " + filmCount + " films disponibles";
+} else {
+  counter.textContent = "Catalogue : " + filmCount + " film disponible";
+}
+
+// Ajout du paragraphe à la fin du footer
+const footer = document.querySelector(".site-footer");
+footer.appendChild(counter);
 
 // ===================================
 // EXERCICE 3 : Films vus
