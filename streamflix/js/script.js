@@ -510,7 +510,24 @@ footer.appendChild(counter);
 // EXERCICE 3 : Films vus
 // ===================================
 
-// Votre code ici...
+// Toutes les cartes de films de la page (les 15 cartes, dans toutes les sections)
+const filmCards = document.querySelectorAll(".film-card");
+
+// Un event listener sur chaque carte
+filmCards.forEach(function (card) {
+  card.addEventListener("click", function (event) {
+    // event.target = l'élément exact sur lequel on a cliqué (affiche, titre, texte, bouton…).
+    // Si c'est le bouton « Ma liste » ou le lien du titre, ce n'est pas un clic « vu » :
+    // closest() regarde si l'élément cliqué est (ou est dans) un bouton ou un lien.
+    if (event.target.closest("button, a")) {
+      return;
+    }
+
+    // toggle ajoute la classe .watched si elle est absente, la retire sinon.
+    // Le badge « ✓ Vu » est dessiné par le CSS (.watched::after)
+    card.classList.toggle("watched");
+  });
+});
 
 // ===================================
 // EXERCICE 4 : Recherche

@@ -55,7 +55,46 @@
 }
 
 /* Exercice 3 - Films vus */
-/* (étape suivante) */
+.watched {
+  opacity: 0.6;
+  position: relative;
+}
+
+.watched::after {
+  content: "✓ Vu";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: green;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Exercice 3 - Complément StreamFlix
+   .film-card::after existe déjà (components/_cards.scss) : c'est le reflet lumineux
+   du survol, qui couvre toute la carte (inset: 0) et reste invisible (opacity: 0).
+   Le badge en hériterait. On remet donc ce qu'il faut pour un petit badge visible.
+   .film-card.watched::after est plus précis que .film-card:hover::after : il gagne aussi au survol */
+.film-card.watched::after {
+  left: auto;
+  bottom: auto;
+  z-index: 3;
+  opacity: 1;
+  font-size: var(--fs-sm);
+  font-weight: 700;
+}
+
+/* Sur les grandes cartes, l'affiche est à gauche et le titre en haut à droite :
+   on laisse de la place au badge pour qu'il ne passe pas sur le titre */
+.film-card.watched .film-card__title {
+  padding-right: 4rem;
+}
+
+/* Les cartes sont cliquables : curseur main */
+.film-card {
+  cursor: pointer;
+}
 
 /* Exercice 5 - Modal */
 /* (étape suivante) */
