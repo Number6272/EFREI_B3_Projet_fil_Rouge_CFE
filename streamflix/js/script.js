@@ -302,7 +302,7 @@ function initHeroFallback() {
 
 function initSearch() {
   const form = document.querySelector(".search-form");
-  const input = document.querySelector("#recherche");
+  const input = document.querySelector("#search");
   const list = document.querySelector("#suggestions");
   if (!form || !input || !list) return;
 
@@ -533,7 +533,58 @@ filmCards.forEach(function (card) {
 // EXERCICE 4 : Recherche
 // ===================================
 
-// Votre code ici...
+// Le champ de recherche du header (renommé #search). Il garde aussi ses suggestions du jour 3.
+const searchInput = document.querySelector("#search");
+
+// Met le texte en minuscules et retire les accents : « Comédie » devient « comedie »
+function normalizeText(text) {
+  return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+}
+
+// Les sections qui contiennent des cartes de films (pas le carrousel « À ne pas manquer »)
+const filmSections = [...document.querySelectorAll(".film-section")].filter(
+  (section) => section.querySelector("article")
+);
+
+// Un message « Aucun résultat » par section, créé une fois et caché au départ
+filmSections.forEach((section) => {
+  const message = document.createElement("p");
+  message.className = "search-empty";
+  message.hidden = true;
+  section.querySelector(".film-section__content").appendChild(message);
+});
+
+searchInput.addEventListener("input", function () {
+  const searchTerm = normalizeText(this.value.trim());
+
+  filmSections.forEach((section) => {
+    const articles = section.querySelectorAll("article");
+    let visibleCount = 0;
+
+    articles.forEach((article) => {
+      // On cherche dans le titre et dans les genres (comme les suggestions du jour 3)
+      const title = normalizeText(article.querySelector("h3").textContent);
+      const genreList = article.querySelector(".film-card__genres");
+      const genres = genreList ? normalizeText(genreList.textContent) : "";
+
+      // On cache le <li> qui contient la carte, sinon sa colonne vide resterait dans la grille.
+      // "" au lieu de "block" : le <li> reprend le display prévu par le CSS (flex)
+      const item = article.closest("li");
+
+      if (title.includes(searchTerm) || genres.includes(searchTerm)) {
+        item.style.display = "";
+        visibleCount++;
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    // Message « Aucun résultat » si plus aucun film n'est visible dans cette section
+    const message = section.querySelector(".search-empty");
+    message.textContent = "Aucun résultat pour « " + this.value.trim() + " » dans cette section.";
+    message.hidden = visibleCount > 0;
+  });
+});
 
 // ===================================
 // EXERCICE 5 : Modal

@@ -96,6 +96,19 @@
   cursor: pointer;
 }
 
+/* Exercice 4 - Recherche (ajout StreamFlix, pas de CSS dans la consigne) */
+
+/* Message « Aucun résultat » créé en JS sous une section vide */
+.search-empty {
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  font-size: var(--fs-sm);
+  text-align: center;
+}
+
 /* Exercice 5 - Modal */
 /* (étape suivante) */
 
