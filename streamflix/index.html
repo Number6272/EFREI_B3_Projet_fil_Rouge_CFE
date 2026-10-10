@@ -236,7 +236,7 @@
 
       <div class="film-section__content" id="contenu-tendances">
         <p class="film-section__intro">Les films les mieux notés du moment.</p>
-        <p class="film-section__intro">Astuce : cliquez sur une carte pour marquer le film comme vu, cliquez encore pour retirer le badge.</p>
+        <p class="film-section__intro">Astuce : cliquez sur une affiche ou un titre pour ouvrir la fiche du film, ailleurs sur la carte pour le marquer comme vu.</p>
 
         <ul class="film-grid row g-3 g-lg-4 flex-nowrap flex-md-wrap mt-2 pb-4">
           <li class="film-grid__item col-9 col-sm-6 col-md-4">
@@ -797,6 +797,13 @@
           <button class="btn btn-primary" type="button">Lecture</button>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div id="modal" class="simple-modal" role="dialog" aria-modal="true" aria-label="Fiche du film">
+    <div class="simple-modal__content">
+      <button class="simple-modal__close" type="button" aria-label="Fermer la fiche">&times;</button>
+      <div id="modal-body"></div>
     </div>
   </div>
 </body>

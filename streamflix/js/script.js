@@ -517,9 +517,10 @@ const filmCards = document.querySelectorAll(".film-card");
 filmCards.forEach(function (card) {
   card.addEventListener("click", function (event) {
     // event.target = l'élément exact sur lequel on a cliqué (affiche, titre, texte, bouton…).
-    // Si c'est le bouton « Ma liste » ou le lien du titre, ce n'est pas un clic « vu » :
-    // closest() regarde si l'élément cliqué est (ou est dans) un bouton ou un lien.
-    if (event.target.closest("button, a")) {
+    // closest() regarde si l'élément cliqué est (ou est dans) l'affiche, le titre ou un bouton :
+    // - affiche ou titre → c'est la modal de l'exercice 5 qui s'en occupe
+    // - bouton « Ma liste » → ce n'est pas un clic « vu »
+    if (event.target.closest(".film-card__poster, .film-card__title, button")) {
       return;
     }
 
@@ -590,4 +591,102 @@ searchInput.addEventListener("input", function () {
 // EXERCICE 5 : Modal
 // ===================================
 
-// Votre code ici...
+// Les id #modal et #modal-body sont ceux de la consigne. Les classes sont renommées
+// (.simple-modal…) car .modal existe déjà dans Bootstrap (voir _exercices.scss).
+const modal = document.querySelector("#modal");
+const closeButton = document.querySelector(".simple-modal__close");
+
+// Élément qui avait le focus avant l'ouverture (on y revient à la fermeture)
+let lastFocused = null;
+
+// Fonction fournie, complétée : elle reçoit toutes les infos du film, pas seulement le titre
+function openModal(film) {
+  const modalBody = document.querySelector("#modal-body");
+
+  modalBody.innerHTML = `
+    <h2>${film.title}</h2>
+    <div class="simple-modal__film">
+      <img class="simple-modal__poster" src="${film.poster}" alt="${film.alt}" width="300" height="450">
+      <div class="simple-modal__infos">
+        <p class="simple-modal__meta">${film.year} · ${film.duration} · ${film.rating}</p>
+        <p>${film.genres}</p>
+        <p>${film.synopsis}</p>
+      </div>
+    </div>
+  `;
+  modal.style.display = "block";
+
+  // Le focus va sur × : au clavier, Entrée ferme tout de suite la modal
+  lastFocused = document.activeElement;
+  closeButton.focus();
+}
+
+// Fonction fournie, complétée : le focus revient où il était avant l'ouverture
+function closeModal() {
+  modal.style.display = "none";
+
+  if (lastFocused) {
+    lastFocused.focus();
+  }
+}
+
+// Récupère les infos du film cliqué, en les lisant dans le HTML de sa carte
+function getFilmInfos(card) {
+  const title = card.querySelector("h3").textContent.trim();
+  const poster = card.querySelector(".film-card__poster");
+  const times = card.querySelectorAll(".film-card__meta time");
+  const rating = card.querySelector(".film-card__meta data");
+  const genres = card.querySelectorAll(".film-card__genres li");
+
+  // Seules les cartes du catalogue ont un résumé : pour les autres sections,
+  // on va le chercher dans la carte du catalogue qui a le même titre
+  let synopsis = card.querySelector(".film-card__synopsis");
+  if (!synopsis) {
+    document.querySelectorAll("#catalogue .film-card").forEach(function (catalogueCard) {
+      if (catalogueCard.querySelector("h3").textContent.trim() === title) {
+        synopsis = catalogueCard.querySelector(".film-card__synopsis");
+      }
+    });
+  }
+
+  return {
+    title: title,
+    poster: poster.getAttribute("src"),
+    alt: poster.getAttribute("alt"),
+    year: times[0].textContent,
+    duration: times[1].textContent,
+    rating: rating.textContent + "/5",
+    genres: [...genres].map((genre) => genre.textContent).join(", "),
+    synopsis: synopsis ? synopsis.textContent : "",
+  };
+}
+
+// Event listeners sur les films : clic sur l'affiche ou sur le titre → ouverture de la modal
+filmCards.forEach(function (card) {
+  card.addEventListener("click", function (event) {
+    if (!event.target.closest(".film-card__poster, .film-card__title")) {
+      return;
+    }
+
+    // Le titre est un lien href="#" : on empêche le retour en haut de page
+    event.preventDefault();
+    openModal(getFilmInfos(card));
+  });
+});
+
+// Event listener sur le bouton close (×) → fermeture
+closeButton.addEventListener("click", closeModal);
+
+// En plus : clic sur le fond noir (en dehors de la boîte blanche) → fermeture
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    closeModal();
+  }
+});
+
+// En plus : touche Échap → fermeture
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape" && modal.style.display === "block") {
+    closeModal();
+  }
+});

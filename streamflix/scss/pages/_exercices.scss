@@ -109,8 +109,101 @@
   text-align: center;
 }
 
-/* Exercice 5 - Modal */
-/* (étape suivante) */
+/* Exercice 5 - Modal
+   .modal, .modal-content et .close de la consigne sont renommées en .simple-modal,
+   .simple-modal__content et .simple-modal__close : .modal et .modal-content existent
+   déjà dans Bootstrap et servent à la modal « Plus d'infos » du Hero. Avec les noms
+   de la consigne, ces règles auraient aussi changé cette modal-là.
+   Les propriétés sont celles de la consigne, sauf 2 changements commentés. */
+.simple-modal {
+  display: none;
+  position: fixed;
+  z-index: 1050; /* 1000 dans la consigne, mais le header sticky est à 1030 et passerait devant */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Fond noir à 80 % : calque noir + opacity, au lieu de rgba(0,0,0,0.8),
+   pour garder des couleurs nommées */
+.simple-modal::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: black;
+  opacity: 0.8;
+}
+
+.simple-modal__content {
+  position: relative; /* passe au-dessus du calque noir */
+  background-color: white;
+  color: black; /* en thème sombre, le texte de la page est blanc : invisible sur fond blanc */
+  margin: 15% auto;
+  padding: 20px;
+  width: 80%;
+  max-width: 500px;
+  border-radius: var(--radius-md);
+}
+
+/* <button> au lieu du <span> de la consigne : utilisable au clavier (Tab puis Entrée) */
+.simple-modal__close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 0 var(--space-xs);
+  background: none;
+  border: 0;
+  color: black;
+  line-height: 1;
+}
+
+.simple-modal__close:hover {
+  color: crimson;
+}
+
+.simple-modal__close:focus-visible {
+  outline-color: black;
+}
+
+/* Contenu ajouté par openModal() : titre, affiche et infos du film côte à côte */
+.simple-modal h2 {
+  margin-bottom: var(--space-md);
+  font-family: var(--font-title);
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+.simple-modal__film {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.simple-modal__poster {
+  width: 35%;
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+.simple-modal__infos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  font-size: var(--fs-sm);
+}
+
+.simple-modal__meta {
+  font-weight: 700;
+}
+
+/* Tablette et plus : la boîte descend un peu moins bas */
+@include respond-to(tablette) {
+  .simple-modal__content {
+    margin-top: 10%;
+  }
+}
 
 /* Exercice 6 - Thème sombre */
 /* (étape suivante) */
