@@ -690,3 +690,50 @@ document.addEventListener("keydown", function (event) {
     closeModal();
   }
 });
+
+// ===================================
+// EXERCICE 6 : Changement de thème (bonus)
+// ===================================
+
+// Le bouton « Mode sombre / Mode clair » travaille avec le sélecteur à 3 thèmes du jour 2 :
+// - thème sombre → <body class="dark-theme">, le bouton propose « Mode clair »
+// - thème clair ou cinéma → pas de classe, le bouton propose « Mode sombre »
+const themeButton = document.querySelector("#theme-toggle");
+const themeInputs = document.querySelectorAll('input[name="theme"]');
+
+// Modification conditionnelle du texte : le bouton propose toujours l'autre mode
+function updateThemeButton() {
+  if (document.body.classList.contains("dark-theme")) {
+    themeButton.textContent = "Mode clair";
+  } else {
+    themeButton.textContent = "Mode sombre";
+  }
+}
+
+// Clic sur le bouton → toggle de la classe .dark-theme sur <body>
+themeButton.addEventListener("click", function () {
+  document.body.classList.toggle("dark-theme");
+  updateThemeButton();
+
+  // On coche la pastille correspondante du sélecteur à 3 thèmes.
+  // L'événement "change" la fait appliquer et sauvegarder par initTheme() (jour 2)
+  const isDark = document.body.classList.contains("dark-theme");
+  const input = document.querySelector(isDark ? "#theme-sombre" : "#theme-clair");
+  input.checked = true;
+  input.dispatchEvent(new Event("change"));
+});
+
+// Si on choisit un thème avec les pastilles, la classe et le bouton suivent.
+// toggle avec un 2e argument : true = ajoute la classe, false = la retire
+function syncDarkTheme() {
+  const isDark = document.querySelector("#theme-sombre").checked;
+  document.body.classList.toggle("dark-theme", isDark);
+  updateThemeButton();
+}
+
+themeInputs.forEach(function (input) {
+  input.addEventListener("change", syncDarkTheme);
+});
+
+// Au chargement : le thème sauvegardé a déjà été restauré par initTheme()
+syncDarkTheme();

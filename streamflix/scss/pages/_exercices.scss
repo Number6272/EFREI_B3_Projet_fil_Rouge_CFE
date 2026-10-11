@@ -205,5 +205,27 @@
   }
 }
 
-/* Exercice 6 - Thème sombre */
-/* (étape suivante) */
+/* Exercice 6 - Thème sombre
+   Classe posée sur <body> en JS quand le thème sombre est actif.
+   #1a1a1a vient de la consigne : il n'existe pas de couleur nommée équivalente */
+.dark-theme {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+/* Exercice 6 - Bouton « Mode sombre / Mode clair » du header (ajout StreamFlix) :
+   même pilule que les boutons « Masquer » */
+.theme-toggle {
+  --bs-btn-color: var(--color-text);
+  --bs-btn-border-color: var(--color-border);
+  --bs-btn-hover-color: var(--color-text);
+  --bs-btn-hover-bg: var(--color-surface);
+  --bs-btn-hover-border-color: var(--color-text-muted);
+  --bs-btn-active-color: var(--color-text);
+  --bs-btn-active-bg: var(--color-surface);
+  --bs-btn-active-border-color: var(--color-text);
+
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-xs);
+}
